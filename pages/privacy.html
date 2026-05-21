@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy — Love &amp; Lordship</title>
+  <meta name="description" content="How Love & Lordship collects, uses, and protects your information." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../components/nav.css" />
+  <link rel="stylesheet" href="../components/hero.css" />
+  <link rel="stylesheet" href="../components/pillars.css" />
+  <link rel="stylesheet" href="../components/book-media.css" />
+  <link rel="stylesheet" href="../components/sections.css" />
+  <link rel="stylesheet" href="../components/pages.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="../components/nav.jsx"></script>
+  <script type="text/babel" src="../components/footer-events-app.jsx"></script>
+  <script type="text/babel" src="../components/page-shell.jsx"></script>
+
+  <script type="text/babel">
+    function PrivacyPage() {
+      return (
+        <PageShell header={
+          <PageHeader
+            eyebrow="Last updated · May 2026"
+            title="Privacy <em>Policy</em>."
+            sub="How Love & Lordship collects, uses, and protects information about the people who visit, give, register, or otherwise engage with this ministry."
+            deco="P"
+          />
+        }>
+          <section className="page-section">
+            <div className="wrap">
+              <div className="legal">
+                <h2>What we collect</h2>
+                <p>When you sign up for our newsletter, register for an event, give a gift, or contact us, you may share information such as your name, email address, phone number, mailing address, and payment details. We use cookies and standard analytics on this website to understand how visitors move through pages.</p>
+
+                <h2>How we use it</h2>
+                <p>We use your information only to:</p>
+                <ul>
+                  <li>Deliver newsletters and resources you've requested</li>
+                  <li>Process and acknowledge gifts and tax-deductible receipts</li>
+                  <li>Register you for events and follow up afterward</li>
+                  <li>Respond to questions, prayer requests, or partnership inquiries</li>
+                  <li>Improve this website and the L&amp;L app</li>
+                </ul>
+
+                <h2>What we never do</h2>
+                <p>We do not sell, rent, or trade your information. Period. We do not share your data with third parties for advertising. We do not store payment card numbers — all giving is processed by our payment partner under PCI-compliant standards.</p>
+
+                <h2>Cookies and analytics</h2>
+                <p>This site uses essential cookies to remember preferences (like your selected palette or accepted notices) and aggregated analytics to count visits and understand which pages help most. Analytics are anonymized; we do not build advertising profiles.</p>
+
+                <h2>Your rights</h2>
+                <p>You can unsubscribe from any email with one click. You can request a copy of the information we hold about you, ask us to correct it, or ask us to delete it. Email <strong>privacy@loveandlordship.com</strong> and we'll respond within ten business days.</p>
+
+                <h2>Children</h2>
+                <p>This site is intended for adults. We do not knowingly collect information from children under thirteen. If you believe a child has provided us information, contact us and we'll delete it immediately.</p>
+
+                <h2>Changes to this policy</h2>
+                <p>If we update this policy meaningfully, we'll note the change at the top of this page and, where appropriate, email subscribers.</p>
+
+                <h2>Questions</h2>
+                <p>Email privacy@loveandlordship.com or write to PO Box 911111, Lexington, KY 40591.</p>
+              </div>
+            </div>
+          </section>
+        </PageShell>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<PrivacyPage />);
+  </script>
+</body>
+</html>

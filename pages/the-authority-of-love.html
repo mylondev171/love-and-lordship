@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Authority of Love — Greg Williams</title>
+  <meta name="description" content="The Authority of Love by Greg Williams — a discipleship foundation for marriage, family, and every relationship. Now available in second edition." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../components/nav.css" />
+  <link rel="stylesheet" href="../components/hero.css" />
+  <link rel="stylesheet" href="../components/pillars.css" />
+  <link rel="stylesheet" href="../components/book-media.css" />
+  <link rel="stylesheet" href="../components/sections.css" />
+  <link rel="stylesheet" href="../components/pages.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="../components/nav.jsx"></script>
+  <script type="text/babel" src="../components/footer-events-app.jsx"></script>
+  <script type="text/babel" src="../components/page-shell.jsx"></script>
+
+  <script type="text/babel">
+    const CHAPTERS = [
+      { n: "01", t: "Begin with the <em>Lordship</em> of Christ", p: "1–24" },
+      { n: "02", t: "The order of love: vertical before horizontal", p: "25–52" },
+      { n: "03", t: "What scripture says about covenant", p: "53–82" },
+      { n: "04", t: "Marriage as a portrait of Christ and His church", p: "83–116" },
+      { n: "05", t: "The disciple-making family", p: "117–148" },
+      { n: "06", t: "Friendship, purity, and the heart's true longing", p: "149–176" },
+      { n: "07", t: "Forgiveness that <em>actually</em> heals", p: "177–204" },
+      { n: "08", t: "Multiplication: making disciples who make disciples", p: "205–238" },
+      { n: "09", t: "Living the authority of love in ordinary days", p: "239–270" },
+    ];
+    const ENDORSE = [
+      { q: "Greg's foundational message centers on the Lordship of Christ, encouraging discipleship beyond marriage, family, and purity into all areas of Christian life.", by: "International Marriage & Family Conference", role: "Douala, Cameroon" },
+      { q: "We've placed The Authority of Love into the hands of every mother we serve. It's the curriculum that finally connects love to discipleship.", by: "Director, Sisters for Life", role: "Louisville, KY" },
+      { q: "A clear, biblical roadmap for couples and pastors alike. We're using it in pre-marital counseling and small groups.", by: "Pastor J. Edmonds", role: "Cross Point Church, Cincinnati" },
+      { q: "Greg writes the way he lives — plainly, faithfully, and with a deep love for the Word.", by: "Dr. K. Adeyemi", role: "International Director" },
+    ];
+
+    function BookPage() {
+      return (
+        <PageShell header={
+          <PageHeader
+            eyebrow="The Book · 2nd Edition"
+            title="The Authority of <em>Love</em>."
+            sub="A roadmap for every life and relationship — built on the priority relationship of Lordship to Christ. By Greg Williams."
+            deco="A"
+          />
+        }>
+          <section className="page-section">
+            <div className="wrap">
+              <div className="split-cols">
+                <div>
+                  <div className="bookprop">
+                    <div className="em">2nd Edition · Greg Williams</div>
+                    <h3>The<br/>Authority<br/>of Love</h3>
+                    <div className="by">Greg Williams</div>
+                  </div>
+                </div>
+                <div>
+                  <div className="eyebrow">About the book</div>
+                  <h2>One foundation. <em>Nine</em> chapters. A whole life reframed.</h2>
+                  <p>
+                    Drawn from twenty years of teaching couples, families, and churches across the world, <em>The Authority of Love</em> lays the biblical foundation under everything Love &amp; Lordship does — and gives the reader a practical, week-by-week path to live it.
+                  </p>
+                  <p>
+                    The second edition adds a small-group facilitator track, a 30-day reading plan, and updated questions for both individual study and pre-marital counseling.
+                  </p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 10, margin: "28px 0 12px" }}>
+                    <a className="btn btn-give" href="#order">
+                      Order now — $24.99
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                    <a className="btn btn-ghost" href="#sample">Read a sample chapter</a>
+                  </div>
+                  <div style={{ display: "flex", gap: 16, fontSize: 13, color: "var(--ink-mute)", flexWrap: "wrap", marginTop: 6 }}>
+                    <span>Paperback · 288 pages</span>
+                    <span>·</span>
+                    <span>Kindle &amp; Audible available</span>
+                    <span>·</span>
+                    <span>ISBN 978-1-XXXX-XXX-X</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section" style={{ background: "var(--paper)" }}>
+            <div className="wrap">
+              <div className="eyebrow">Table of Contents</div>
+              <h2>What you'll <em>walk through</em>.</h2>
+              <div className="toc" style={{ marginTop: 28 }}>
+                {CHAPTERS.map(c => (
+                  <div className="toc-row" key={c.n}>
+                    <div className="toc-num">{c.n}</div>
+                    <div className="toc-title" dangerouslySetInnerHTML={{ __html: c.t }} />
+                    <div className="toc-pages">{c.p}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section" id="sample">
+            <div className="wrap">
+              <div className="eyebrow">Sample chapter</div>
+              <h2>Begin with the <em>Lordship</em> of Christ.</h2>
+              <p>Download a free PDF of Chapter 1 — no email required. Read the opening, get a feel for the tone, and decide if this is the book for your marriage, your small group, or your church.</p>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
+                <a className="btn btn-primary" href="#">
+                  Download Chapter 1 (PDF)
+                </a>
+                <a className="btn-link" href="library.html">Listen to the audiobook sample <span className="arr">→</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section" style={{ background: "var(--paper)" }}>
+            <div className="wrap">
+              <div className="eyebrow">Endorsements</div>
+              <h2>What partners are <em>saying</em>.</h2>
+              <div className="endorse-grid" style={{ marginTop: 28 }}>
+                {ENDORSE.map((e, i) => (
+                  <div className="endorse" key={i}>
+                    <p className="q">"{e.q}"</p>
+                    <div className="by">{e.by}</div>
+                    <div className="role">{e.role}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section" id="order">
+            <div className="wrap">
+              <div className="eyebrow">Order</div>
+              <h2>Get a copy. Or order for your <em>whole group</em>.</h2>
+              <div className="split-cols right" style={{ marginTop: 24 }}>
+                <div>
+                  <p>Individual copies ship from our Lexington office. For small-group, church, or partner-ministry quantities of ten or more, we offer a discounted rate and direct fulfillment.</p>
+                  <ul style={{ paddingLeft: 18, color: "var(--ink-soft)", fontSize: 16, lineHeight: 1.7 }}>
+                    <li>1 copy — $24.99</li>
+                    <li>Small group (3–9 copies) — $19.99 each</li>
+                    <li>Church / partner (10+ copies) — $14.99 each</li>
+                    <li>Audiobook (Audible / Apple Books) — $14.99</li>
+                  </ul>
+                </div>
+                <div className="form-card">
+                  <h3 style={{ marginTop: 0 }}>Place an order</h3>
+                  <div className="form-row">
+                    <div className="field"><label>Quantity</label><input type="number" defaultValue="1" min="1" /></div>
+                    <div className="field"><label>Format</label><select><option>Paperback</option><option>Kindle</option><option>Audible</option></select></div>
+                  </div>
+                  <div className="form-row full">
+                    <div className="field"><label>Name</label><input type="text" placeholder="Your name" /></div>
+                  </div>
+                  <div className="form-row full">
+                    <div className="field"><label>Email</label><input type="email" placeholder="you@email.com" /></div>
+                  </div>
+                  <div className="form-row full">
+                    <div className="field"><label>Shipping address</label><textarea placeholder="Street, city, state, zip" rows="3"></textarea></div>
+                  </div>
+                  <button className="btn btn-give" style={{ width: "100%", justifyContent: "center", marginTop: 8 }}>Continue to checkout</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <CTAStrip
+            eyebrow="Use it in your group"
+            title="A small-group <em>track</em> is included."
+            body="Facilitator guide, discussion questions, and a 30-day reading plan included with every copy."
+            primary={<a className="btn btn-give" href="#order">Order copies for your group</a>}
+            secondary={<a className="btn btn-ghost" href="contact.html" style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>Ask a question</a>}
+          />
+        </PageShell>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<BookPage />);
+  </script>
+</body>
+</html>

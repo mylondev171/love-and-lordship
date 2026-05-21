@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Use — Love &amp; Lordship</title>
+  <meta name="description" content="The terms under which the Love & Lordship website, app, and resources are made available." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../components/nav.css" />
+  <link rel="stylesheet" href="../components/hero.css" />
+  <link rel="stylesheet" href="../components/pillars.css" />
+  <link rel="stylesheet" href="../components/book-media.css" />
+  <link rel="stylesheet" href="../components/sections.css" />
+  <link rel="stylesheet" href="../components/pages.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="../components/nav.jsx"></script>
+  <script type="text/babel" src="../components/footer-events-app.jsx"></script>
+  <script type="text/babel" src="../components/page-shell.jsx"></script>
+
+  <script type="text/babel">
+    function TermsPage() {
+      return (
+        <PageShell header={
+          <PageHeader
+            eyebrow="Last updated · May 2026"
+            title="Terms of <em>Use</em>."
+            sub="Plain-language terms governing the use of this website, the L&L app, and the resources made available by Love & Lordship."
+            deco="T"
+          />
+        }>
+          <section className="page-section">
+            <div className="wrap">
+              <div className="legal">
+                <h2>Acceptance</h2>
+                <p>By using this website, the Love &amp; Lordship app, or any of the resources we publish, you agree to these terms. If you do not agree, please do not use the site or our resources.</p>
+
+                <h2>The ministry</h2>
+                <p>Love &amp; Lordship is a registered 501(c)(3) Christian ministry organized in the Commonwealth of Kentucky. Donations made through this site are tax-deductible to the fullest extent of the law.</p>
+
+                <h2>Use of content</h2>
+                <p>Sermons, articles, devotionals, podcast episodes, study guides, and other content are made freely available for personal reading, listening, sharing, and small-group use. You may quote our content with attribution. You may not:</p>
+                <ul>
+                  <li>Republish or sell our content for profit</li>
+                  <li>Edit our content in a way that changes the original meaning</li>
+                  <li>Use our name, logos, or likenesses for endorsement without written permission</li>
+                </ul>
+
+                <h2>The book and curriculum</h2>
+                <p>The Authority of Love book and accompanying curriculum are copyrighted. Photocopying or redistributing the workbook chapters for use outside a small group you are personally leading is not permitted without written consent.</p>
+
+                <h2>Giving</h2>
+                <p>All gifts to Love &amp; Lordship are voluntary, irrevocable contributions. We acknowledge gifts in writing within fifteen business days. We retain discretion over how donated funds are deployed within our mission. Recurring giving can be canceled at any time from your giving dashboard or by contacting us.</p>
+
+                <h2>User-submitted content</h2>
+                <p>By submitting a question, prayer request, testimony, or other content to us, you grant Love &amp; Lordship a non-exclusive, royalty-free license to use it in our ministry — anonymously unless you have explicitly given us permission to use your name.</p>
+
+                <h2>No medical, legal, or counseling advice</h2>
+                <p>Our resources are pastoral in nature. They do not constitute professional medical, mental-health, legal, or financial advice. If you are in crisis, please reach out to qualified local professionals or call/text 988 (Suicide &amp; Crisis Lifeline) immediately.</p>
+
+                <h2>Limitations of liability</h2>
+                <p>This website is provided "as is." We do our best to keep it accurate and available, but we cannot guarantee uninterrupted access. To the fullest extent permitted by law, Love &amp; Lordship is not liable for indirect or consequential damages arising from the use of this site.</p>
+
+                <h2>Changes</h2>
+                <p>We may update these terms occasionally. Material changes will be noted at the top of this page.</p>
+
+                <h2>Contact</h2>
+                <p>Questions about these terms? Email legal@loveandlordship.com or write to PO Box 911111, Lexington, KY 40591.</p>
+              </div>
+            </div>
+          </section>
+        </PageShell>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<TermsPage />);
+  </script>
+</body>
+</html>

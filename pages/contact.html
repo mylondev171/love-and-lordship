@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Love &amp; Lordship</title>
+  <meta name="description" content="Reach the Love & Lordship team — office address, phone, prayer requests, partner support, press inquiries." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../components/nav.css" />
+  <link rel="stylesheet" href="../components/hero.css" />
+  <link rel="stylesheet" href="../components/pillars.css" />
+  <link rel="stylesheet" href="../components/book-media.css" />
+  <link rel="stylesheet" href="../components/sections.css" />
+  <link rel="stylesheet" href="../components/pages.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="../components/nav.jsx"></script>
+  <script type="text/babel" src="../components/footer-events-app.jsx"></script>
+  <script type="text/babel" src="../components/page-shell.jsx"></script>
+
+  <script type="text/babel">
+    const REASONS = [
+      "General inquiry",
+      "Prayer request",
+      "Partner / giving question",
+      "Event registration help",
+      "Invite Greg to speak",
+      "Press / media",
+      "Volunteer interest",
+    ];
+
+    const FAQ = [
+      { q: "How long does it take to hear back?", a: "We respond to most messages within two business days. Prayer requests are forwarded to our prayer team within twenty-four hours." },
+      { q: "Where do partnership gifts go?", a: "Roughly 70% of every gift directly funds curriculum, broadcast, and global discipleship. 18% covers staff and office, 12% covers fundraising and partner care. We're a registered 501(c)(3) and our annual report is available on request." },
+      { q: "Can Greg speak at our church?", a: "Yes — Greg keeps a limited speaking calendar each year. The fastest path is the Invite Greg page, which captures the details we need to give you an honest answer quickly." },
+      { q: "Is the Authority of Love curriculum free for partner ministries?", a: "We offer the curriculum at no cost to vetted partner ministries serving vulnerable populations. Contact us to start the conversation." },
+    ];
+
+    function ContactPage() {
+      const [sent, setSent] = React.useState(false);
+
+      return (
+        <PageShell header={
+          <PageHeader
+            eyebrow="Contact"
+            title="We'd love to <em>hear from you</em>."
+            sub="Prayer, partnership, events, press — whatever the reason, send a note and a real person will read it."
+            deco="C"
+          />
+        }>
+          <section className="page-section">
+            <div className="wrap">
+              <div className="split-cols right">
+                <div>
+                  <div className="form-card">
+                    {sent ? (
+                      <div style={{ textAlign: "center", padding: "32px 0" }}>
+                        <div style={{ width: 56, height: 56, borderRadius: "50%", background: "var(--wine)", color: "var(--bg)", display: "grid", placeItems: "center", margin: "0 auto 16px" }}>
+                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 11.5l4 4L17 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                        </div>
+                        <h3 style={{ margin: 0 }}>Thank you.</h3>
+                        <p style={{ margin: "8px auto 0", maxWidth: 360 }}>Your message is with our team. We'll be in touch within two business days.</p>
+                      </div>
+                    ) : (
+                      <form onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+                        <div className="eyebrow" style={{ marginBottom: 14 }}>Send a message</div>
+                        <div className="form-row">
+                          <div className="field"><label>First name</label><input type="text" required /></div>
+                          <div className="field"><label>Last name</label><input type="text" required /></div>
+                        </div>
+                        <div className="form-row">
+                          <div className="field"><label>Email</label><input type="email" required /></div>
+                          <div className="field"><label>Phone (optional)</label><input type="tel" /></div>
+                        </div>
+                        <div className="form-row full">
+                          <div className="field"><label>Reason</label>
+                            <select>
+                              {REASONS.map(r => <option key={r}>{r}</option>)}
+                            </select>
+                          </div>
+                        </div>
+                        <div className="form-row full">
+                          <div className="field"><label>Message</label><textarea required placeholder="Tell us what you'd like to share."></textarea></div>
+                        </div>
+                        <button className="btn btn-give" style={{ width: "100%", justifyContent: "center", marginTop: 8 }} type="submit">Send message</button>
+                      </form>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <div className="eyebrow">Direct</div>
+                  <h2>Find <em>us</em>.</h2>
+                  <div className="contact-info" style={{ marginTop: 24 }}>
+                    <div className="contact-row">
+                      <div className="ic">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M8 14s-5-3.5-5-7.5A5 5 0 0 1 13 6.5C13 10.5 8 14 8 14z"/><circle cx="8" cy="6.5" r="1.5"/></svg>
+                      </div>
+                      <div>
+                        <div className="lbl">Mailing address</div>
+                        <div className="val">PO Box 911111<br/>Lexington, KY 40591</div>
+                      </div>
+                    </div>
+                    <div className="contact-row">
+                      <div className="ic">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 3h3l1 3-2 1c.6 1.6 1.8 2.8 3.4 3.4l1-2 3 1v3a1 1 0 0 1-1 1A10 10 0 0 1 3 4a1 1 0 0 1 1-1z"/></svg>
+                      </div>
+                      <div>
+                        <div className="lbl">Phone</div>
+                        <div className="val">(859) 229-6504</div>
+                      </div>
+                    </div>
+                    <div className="contact-row">
+                      <div className="ic">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M2 5l6 4 6-4"/></svg>
+                      </div>
+                      <div>
+                        <div className="lbl">General email</div>
+                        <div className="val">hello@loveandlordship.com</div>
+                      </div>
+                    </div>
+                    <div className="contact-row">
+                      <div className="ic">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M8 2v6l4 2"/><circle cx="8" cy="8" r="6"/></svg>
+                      </div>
+                      <div>
+                        <div className="lbl">Office hours</div>
+                        <div className="val">Mon–Fri · 9 AM – 5 PM ET</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section" style={{ background: "var(--paper)" }}>
+            <div className="wrap">
+              <div className="eyebrow">FAQ</div>
+              <h2>Common <em>questions</em>.</h2>
+              <div className="faq" style={{ marginTop: 28 }}>
+                {FAQ.map((f, i) => (
+                  <details key={i}>
+                    <summary>{f.q}</summary>
+                    <p>{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        </PageShell>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<ContactPage />);
+  </script>
+</body>
+</html>

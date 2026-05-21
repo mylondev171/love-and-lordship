@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Statement of Faith — Love &amp; Lordship</title>
+  <meta name="description" content="The doctrinal foundation of Love & Lordship — what we believe and teach, in plain language." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../components/nav.css" />
+  <link rel="stylesheet" href="../components/hero.css" />
+  <link rel="stylesheet" href="../components/pillars.css" />
+  <link rel="stylesheet" href="../components/book-media.css" />
+  <link rel="stylesheet" href="../components/sections.css" />
+  <link rel="stylesheet" href="../components/pages.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="../components/nav.jsx"></script>
+  <script type="text/babel" src="../components/footer-events-app.jsx"></script>
+  <script type="text/babel" src="../components/page-shell.jsx"></script>
+
+  <script type="text/babel">
+    const DOCTRINE = [
+      {
+        h: "The Scriptures",
+        p: "We believe the Bible — Old and New Testaments — is the inspired, infallible Word of God and the final authority for faith and life. Scripture is our primary source for understanding God, ourselves, and the world."
+      },
+      {
+        h: "God in three persons",
+        p: "We believe in one God who exists eternally in three persons: Father, Son, and Holy Spirit. Each is fully God, distinct in person, united in essence, and equally worthy of worship."
+      },
+      {
+        h: "Jesus Christ — Lord and Savior",
+        p: "We believe that Jesus Christ is fully God and fully man. He was conceived by the Holy Spirit, born of the virgin Mary, lived a sinless life, died on the cross as our substitute, rose bodily from the dead, ascended to the right hand of the Father, and will return in glory. He is the only way to the Father."
+      },
+      {
+        h: "The Lordship of Christ",
+        p: "We believe that following Jesus means living under His Lordship — not merely accepting Him as Savior, but submitting every relationship, decision, and ambition to His authority. This is the foundation under everything Love & Lordship teaches."
+      },
+      {
+        h: "The Holy Spirit",
+        p: "We believe the Holy Spirit indwells every follower of Christ, convicts of sin, empowers for holy living, gifts the church for ministry, and produces in us the fruit of righteousness for the glory of God."
+      },
+      {
+        h: "Humanity, sin, and salvation",
+        p: "We believe humans are made in the image of God, fell into sin through Adam, and are now alienated from God apart from Christ. Salvation comes by grace through faith in Jesus alone — not by works — and is sealed by the Holy Spirit unto the day of redemption."
+      },
+      {
+        h: "Marriage and family",
+        p: "We believe marriage is a covenant between one man and one woman, instituted by God as a lifelong portrait of Christ and His church. Family is the first place disciples are made — and the most important mission field most believers will ever steward."
+      },
+      {
+        h: "The church",
+        p: "We believe the church — the body of Christ — is composed of all believers everywhere. The local church gathers for worship, teaching, the sacraments (baptism and the Lord's Supper), discipleship, and the carrying out of Christ's commission."
+      },
+      {
+        h: "The return of Christ",
+        p: "We believe Jesus will return personally, visibly, and bodily to judge the living and the dead, gather His people, and reign forever. This hope shapes how we live today."
+      },
+    ];
+
+    function StatementPage() {
+      return (
+        <PageShell header={
+          <PageHeader
+            eyebrow="What we believe"
+            title="Statement of <em>Faith</em>."
+            sub="The doctrinal foundation of Love & Lordship — in plain language, so you can know exactly where we stand."
+            deco="F"
+          />
+        }>
+          <section className="page-section">
+            <div className="wrap" style={{ maxWidth: 880, margin: "0 auto" }}>
+              {DOCTRINE.map((d, i) => (
+                <div className="doctrine" key={i}>
+                  <h3>{d.h}</h3>
+                  <p>{d.p}</p>
+                </div>
+              ))}
+              <div className="pull">
+                "If anyone wants to be my disciple, let him deny himself, take up his cross daily, and follow me."
+                <cite>— Luke 9:23</cite>
+              </div>
+              <p style={{ marginTop: 32, fontSize: 15, color: "var(--ink-mute)" }}>
+                Have questions or need clarification? We'd be glad to talk. <a className="btn-link" href="contact.html">Get in touch <span className="arr">→</span></a>
+              </p>
+            </div>
+          </section>
+
+          <CTAStrip
+            title="Walk through this <em>with</em> us."
+            body="The Authority of Love unpacks every conviction above in chapter-and-verse depth — and gives you a thirty-day plan to live them."
+            primary={<a className="btn btn-give" href="the-authority-of-love.html">Order the book</a>}
+            secondary={<a className="btn btn-ghost" href="library.html" style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>Browse teaching</a>}
+          />
+        </PageShell>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<StatementPage />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Love &amp; Lordship</title>
+  <meta name="description" content="The story of Greg & Ami Williams and the ministry of Love & Lordship — twenty years of teaching, eight countries, one foundation." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../components/nav.css" />
+  <link rel="stylesheet" href="../components/hero.css" />
+  <link rel="stylesheet" href="../components/pillars.css" />
+  <link rel="stylesheet" href="../components/book-media.css" />
+  <link rel="stylesheet" href="../components/sections.css" />
+  <link rel="stylesheet" href="../components/pages.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="../components/nav.jsx"></script>
+  <script type="text/babel" src="../components/footer-events-app.jsx"></script>
+  <script type="text/babel" src="../components/page-shell.jsx"></script>
+
+  <script type="text/babel">
+    function AboutPage() {
+      return (
+        <PageShell header={
+          <PageHeader
+            eyebrow="About the ministry"
+            title="A <em>foundation</em> built on a 62-year covenant."
+            sub="The story behind Love & Lordship — and the people, places, and convictions that shape what we do."
+            deco="L"
+          />
+        }>
+          <section className="page-section">
+            <div className="wrap">
+              <div className="split-cols">
+                <div>
+                  <div className="eyebrow">Founders</div>
+                  <h2>Greg &amp; Ami <em>Williams</em>.</h2>
+                </div>
+                <div>
+                  <p>
+                    Greg's parents were married for nearly 62 years before his mother passed away. That covenant — through every season, every hardship, every joy — became the foundation under everything Greg teaches today.
+                  </p>
+                  <p>
+                    Greg met Ami in 1991. They've been married 34 years. Together they raised three children, welcomed two grandchildren, and walked alongside thousands of couples, parents, and pastors across the United States and abroad.
+                  </p>
+                  <p>
+                    The ministry of Love &amp; Lordship grew out of one persistent question: <em>How do I build a deeper relationship with Christ — and how do I let that shape every other relationship in my life?</em>
+                  </p>
+                  <div className="pull">
+                    "The greatest thing my parents taught me was that Love is a commitment."
+                    <cite>— Greg Williams</cite>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section" style={{ background: "var(--paper)" }}>
+            <div className="wrap">
+              <div className="eyebrow">Timeline</div>
+              <h2>Twenty years. Eight countries. <em>One</em> message.</h2>
+              <div className="timeline" style={{ marginTop: 36 }}>
+                <div className="timeline-item">
+                  <div className="year">1991</div>
+                  <h3>Greg and Ami marry</h3>
+                  <p>The first chapter of a partnership that becomes the bedrock of the ministry.</p>
+                </div>
+                <div className="timeline-item">
+                  <div className="year">2005</div>
+                  <h3>The teaching begins</h3>
+                  <p>Greg starts speaking to pastors, couples, and church leaders in central Kentucky.</p>
+                </div>
+                <div className="timeline-item">
+                  <div className="year">2012</div>
+                  <h3>Marriage Unleashed airs on WTVQ</h3>
+                  <p>A weekly broadcast on relationships, character, and the foundation of biblical love.</p>
+                </div>
+                <div className="timeline-item">
+                  <div className="year">2018</div>
+                  <h3>International Marriage &amp; Family Conference</h3>
+                  <p>Greg delivers the keynote in Douala, Cameroon — the message goes global.</p>
+                </div>
+                <div className="timeline-item">
+                  <div className="year">2022</div>
+                  <h3>The Authority of Love (first edition)</h3>
+                  <p>Chosen as discipleship curriculum by Sisters for Life and Marriage for Life.</p>
+                </div>
+                <div className="timeline-item">
+                  <div className="year">2026</div>
+                  <h3>Love &amp; Lordship App launches</h3>
+                  <p>Devotionals, live Q&amp;A, and one-tap partnership — built for how people actually live.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section" id="reach">
+            <div className="wrap">
+              <div className="eyebrow">Reach</div>
+              <h2>From Lexington <em>to</em> Lagos.</h2>
+              <p>The teaching has been received in churches and partner ministries on three continents — and the work continues to multiply through trained leaders, not staff alone.</p>
+              <div className="fact-grid">
+                <div className="fact"><div className="n">50+</div><div className="l">Partner ministries actively using the curriculum</div></div>
+                <div className="fact"><div className="n">8</div><div className="l">Countries hosting Love &amp; Lordship teaching</div></div>
+                <div className="fact"><div className="n">20+</div><div className="l">Years of teaching, writing, and broadcasting</div></div>
+                <div className="fact"><div className="n">62</div><div className="l">Years Greg's parents stayed married</div></div>
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section" style={{ background: "var(--paper)" }}>
+            <div className="wrap">
+              <div className="eyebrow">Leadership</div>
+              <h2>The team <em>carrying</em> the work forward.</h2>
+              <div className="people-grid" style={{ marginTop: 32 }}>
+                {[
+                  { n: "Greg Williams", r: "President &amp; Founder" },
+                  { n: "Ami Williams", r: "Co-Founder, Women's Ministry" },
+                  { n: "Pastor J. Brewer", r: "Board Chair" },
+                  { n: "Dr. K. Adeyemi", r: "International Director" },
+                  { n: "Sarah Lin", r: "Director of Content" },
+                  { n: "Michael Pruitt", r: "Operations" },
+                ].map((p) => (
+                  <div className="person" key={p.n}>
+                    <div className="ph">
+                      <div className="imgph dark"><span className="lbl">portrait · headshot</span></div>
+                    </div>
+                    <div className="bd">
+                      <h4>{p.n}</h4>
+                      <div className="role" dangerouslySetInnerHTML={{ __html: p.r }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="page-section">
+            <div className="wrap">
+              <div className="split-cols">
+                <div>
+                  <div className="eyebrow">Convictions</div>
+                  <h2>What we <em>believe</em>.</h2>
+                </div>
+                <div>
+                  <p>Love &amp; Lordship stands within historic, evangelical Christianity. We affirm the authority of Scripture, the Lordship of Jesus Christ, the work of the Holy Spirit, and the call to live every relationship as a witness to the Gospel.</p>
+                  <p>The full doctrinal statement is available on a dedicated page.</p>
+                  <div style={{ display: "flex", gap: 12, marginTop: 24 }}>
+                    <a className="btn btn-primary" href="statement-of-faith.html">Read the statement of faith</a>
+                    <a className="btn-link" href="contact.html">Contact us with questions <span className="arr">→</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <CTAStrip
+            title="Partner with the next <em>thousand</em> disciples."
+            body="Your monthly partnership funds curriculum, broadcast, and global discipleship."
+            primary={<a className="btn btn-give" href="../Love%20and%20Lordship.html#give">Become a partner</a>}
+            secondary={<a className="btn btn-ghost" href="invite-greg.html" style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>Invite Greg to speak</a>}
+          />
+        </PageShell>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<AboutPage />);
+  </script>
+</body>
+</html>

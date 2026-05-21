@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events — Love &amp; Lordship</title>
+  <meta name="description" content="Marriage conferences, discipleship intensives, and partner events from Love & Lordship — find one near you or invite us to your city." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../components/nav.css" />
+  <link rel="stylesheet" href="../components/hero.css" />
+  <link rel="stylesheet" href="../components/pillars.css" />
+  <link rel="stylesheet" href="../components/book-media.css" />
+  <link rel="stylesheet" href="../components/sections.css" />
+  <link rel="stylesheet" href="../components/pages.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="../components/nav.jsx"></script>
+  <script type="text/babel" src="../components/footer-events-app.jsx"></script>
+  <script type="text/babel" src="../components/page-shell.jsx"></script>
+
+  <script type="text/babel">
+    const ALL_EVENTS = [
+      { date: "Apr 25", year: "2026", name: "Authority of Love · <em>Marriage Conference</em>", loc: "Lexington, KY", type: "In-person", badge: "Featured", price: "$89/couple", featured: true },
+      { date: "May 09", year: "2026", name: "Disciple-Making Parents · <em>Weekend Intensive</em>", loc: "Louisville, KY", type: "In-person", badge: "Live", price: "$49/person" },
+      { date: "Jun 14", year: "2026", name: "Sisters for Life · Curriculum Training", loc: "Cincinnati, OH", type: "Partner event", badge: "Partner", price: "Free" },
+      { date: "Jul 02", year: "2026", name: "Marriage &amp; Family Symposium", loc: "Online · global", type: "Webinar", badge: "Online", price: "Free" },
+      { date: "Aug 16", year: "2026", name: "Men of Authority · Retreat", loc: "Red River Gorge, KY", type: "In-person", badge: "Retreat", price: "$199" },
+      { date: "Sep 18", year: "2026", name: "International Marriage &amp; Family Conf.", loc: "Douala, Cameroon", type: "Keynote", badge: "Travel", price: "—" },
+      { date: "Oct 10", year: "2026", name: "Authority of Love · <em>Marriage Conference</em>", loc: "Dallas, TX", type: "In-person", badge: "Live", price: "$89/couple" },
+      { date: "Nov 07", year: "2026", name: "Authority of Love · <em>Marriage Conference</em>", loc: "Indianapolis, IN", type: "In-person", badge: "Live", price: "$89/couple" },
+      { date: "Dec 04", year: "2026", name: "Year-End Partner Gathering", loc: "Lexington, KY", type: "Partner event", badge: "Partner", price: "By invite" },
+    ];
+    const FILTERS = ["All", "In-person", "Online", "Partner event", "Retreat"];
+
+    function Pin() { return <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M6.5 11.5s4-3.2 4-6.5a4 4 0 1 0-8 0c0 3.3 4 6.5 4 6.5z"/><circle cx="6.5" cy="5" r="1.4"/></svg>; }
+    function CalIcon() { return <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="1.5" y="2.5" width="10" height="9" rx="1"/><path d="M1.5 5h10M4 1.5v2M9 1.5v2"/></svg>; }
+    function Ticket() { return <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M2 4h9v5H2zM2 6.5h9"/></svg>; }
+
+    function EventsPage() {
+      const [filter, setFilter] = React.useState("All");
+      const visible = ALL_EVENTS.filter(e => filter === "All" || e.type === filter);
+
+      return (
+        <PageShell header={
+          <PageHeader
+            eyebrow="Conferences · Trainings · Retreats"
+            title="Where we'll be <em>this year</em>."
+            sub="From a Saturday-morning marriage conference in your city to an international keynote — find an event, register, or invite us to come to you."
+            deco="E"
+          />
+        }>
+          <section className="page-section">
+            <div className="wrap">
+              <div className="chip-row">
+                {FILTERS.map(f => (
+                  <button className={"chip" + (filter === f ? " on" : "")} key={f} onClick={() => setFilter(f)}>{f}</button>
+                ))}
+              </div>
+
+              <div className="events-list">
+                {visible.map((e, i) => (
+                  <a className="event-row" key={i} href="#">
+                    <div className="date">{e.date}<span className="yr">{e.year}</span></div>
+                    <div className="info">
+                      <h3 dangerouslySetInnerHTML={{ __html: e.name }} />
+                      <div className="meta">
+                        <span><Pin /> {e.loc}</span>
+                        <span><CalIcon /> {e.type}</span>
+                        <span><Ticket /> {e.price}</span>
+                      </div>
+                    </div>
+                    <span className={"badge" + (e.featured ? " featured" : "")}>{e.badge}</span>
+                    <span className="go" aria-hidden="true">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                  </a>
+                ))}
+              </div>
+
+              {visible.length === 0 && (
+                <div style={{ padding: "60px 0", textAlign: "center", color: "var(--ink-mute)" }}>
+                  No events match this filter yet. <a className="btn-link" href="#" onClick={(ev) => { ev.preventDefault(); setFilter("All"); }}>Show all <span className="arr">→</span></a>
+                </div>
+              )}
+            </div>
+          </section>
+
+          <section className="page-section" style={{ background: "var(--paper)" }}>
+            <div className="wrap">
+              <div className="split-cols">
+                <div>
+                  <div className="eyebrow">What to expect</div>
+                  <h2>Every event has the same <em>foundation</em>.</h2>
+                </div>
+                <div>
+                  <p>Worship and a clear word from Scripture; practical, road-tested teaching on marriage, family, and discipleship; and time to actually talk to your spouse or small group between sessions. Travel light — we'll do the heavy lifting.</p>
+                  <ul style={{ paddingLeft: 18, color: "var(--ink-soft)", fontSize: 16, lineHeight: 1.7 }}>
+                    <li>Saturday-morning marriage conferences run 9 AM – 3 PM with two breaks.</li>
+                    <li>Retreats are Friday evening through Sunday morning.</li>
+                    <li>Webinars and replays are available afterward to all registered attendees.</li>
+                    <li>Scholarships available — contact us before registering.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <CTAStrip
+            eyebrow="Host us"
+            title="Bring an event to your <em>city</em>."
+            body="We work with churches, partner ministries, and individuals to bring conferences, intensives, and trainings to communities across the country and around the world."
+            primary={<a className="btn btn-give" href="invite-greg.html">Invite Greg to speak</a>}
+            secondary={<a className="btn btn-ghost" href="contact.html" style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>Ask a question</a>}
+          />
+        </PageShell>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<EventsPage />);
+  </script>
+</body>
+</html>
