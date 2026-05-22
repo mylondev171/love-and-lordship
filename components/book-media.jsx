@@ -46,8 +46,8 @@ function Book({ onDonate }) {
                   <path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </a>
-              <a className="btn btn-ghost" href="pages/the-authority-of-love.html#sample" style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>
-                Sample chapter (free)
+              <a className="btn btn-ghost" href="pages/the-authority-of-love.html#preview" style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>
+                Watch the book intro
               </a>
             </div>
             <p className="book-pull">
