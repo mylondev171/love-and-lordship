@@ -1,11 +1,10 @@
 /* global React */
 const { useState, useEffect, useRef } = React;
 
-function NavLogo({ homeBase = "#top" }) {
+function NavLogo({ homeBase = "#top", imgBase = "" }) {
   return (
     <a href={homeBase} className="nav-logo" aria-label="Love and Lordship — Home">
-      <span className="mark" aria-hidden="true"></span>
-      <span>Love <span className="ampersand">&amp;</span> Lordship</span>
+      <img className="nav-logo-img" src={`${imgBase}assets/images/logo-white-on-blue.jpg`} alt="Love & Lordship" />
     </a>
   );
 }
@@ -24,20 +23,22 @@ const NAV_ITEMS = [
     label: "Mission",
     cols: [
       {
-        title: "Five Pillars",
+        title: "Foundation / Pillars",
         items: [
-          { name: "Lordship", href: "#pillars" },
+          { name: "Love & Lordship", href: "#pillars" },
           { name: "Discipleship", href: "#pillars" },
           { name: "Relationship", href: "#pillars" },
           { name: "Marriage", href: "#pillars" },
           { name: "Family", href: "#pillars" },
+          { name: "Church", href: "#pillars" },
+          { name: "Culture", href: "#pillars" },
         ],
       },
       {
         title: "Who We Are",
         items: [
           { name: "Our Vision", href: "pages/about.html" },
-          { name: "Greg & Ami Williams", href: "pages/about.html" },
+          { name: "Greg Williams", href: "pages/about.html" },
           { name: "Global Reach", href: "#impact" },
           { name: "Statement of Faith", href: "pages/statement-of-faith.html" },
         ],
@@ -47,12 +48,12 @@ const NAV_ITEMS = [
         items: [
           { name: "Attend an Event", href: "pages/events.html" },
           { name: "Host a Conference", href: "pages/invite-greg.html" },
-          { name: "Become a Partner", href: "#give" },
+          { name: "Become a Partner", href: "https://give.cornerstone.cc/loveandlordship" },
           { name: "Volunteer", href: "pages/contact.html" },
         ],
       },
     ],
-    feature: { eyebrow: "Now Available", title: "The Authority of Love", body: "Greg Williams' new book — chosen as curriculum by Sisters for Life.", cta: "Order the book", href: "pages/the-authority-of-love.html" },
+    feature: { eyebrow: "Now Available", title: "The Authority of Love, Second Edition", body: "Greg & Ami Williams' book — chosen as curriculum by Sisters for Life.", cta: "Order the book", href: "pages/the-authority-of-love.html" },
   },
   {
     key: "media",
@@ -61,32 +62,29 @@ const NAV_ITEMS = [
       {
         title: "Watch",
         items: [
-          { name: "Sermons & Teachings", href: "pages/library.html" },
-          { name: "Marriage Unleashed", href: "pages/library.html" },
-          { name: "Character Matters", href: "pages/library.html" },
-          { name: "Conference Replays", href: "pages/library.html" },
-        ],
-      },
-      {
-        title: "Read",
-        items: [
-          { name: "The Authority of Love", href: "pages/the-authority-of-love.html" },
-          { name: "Articles & Devotions", href: "pages/library.html" },
-          { name: "YHWH Magazine", href: "pages/library.html" },
-          { name: "Study Guides", href: "pages/library.html" },
+          { name: "Family Foundation Friday", href: "pages/library.html?fmt=Watch&series=Family%20Foundation%20Friday" },
+          { name: "Wednesdays 4 Women", href: "pages/library.html?fmt=Watch&series=Wednesdays%204%20Women" },
+          { name: "All videos", href: "pages/library.html?fmt=Watch" },
         ],
       },
       {
         title: "Listen",
         items: [
-          { name: "The Authority of Love — Podcast", href: "pages/library.html" },
-          { name: "KY's Voice", href: "pages/library.html" },
-          { name: "WJMM 99.1 FM", href: "pages/library.html" },
-          { name: "Apple · Spotify · YouTube", href: "pages/library.html" },
+          { name: "The Authority of Love — daily radio", href: "pages/library.html?fmt=Listen&series=The%20Authority%20of%20Love%20%C2%B7%20Daily%20radio" },
+          { name: "God Comes First", href: "pages/library.html?fmt=Listen&series=God%20Comes%20First" },
+          { name: "Apple Podcasts · Podbean · RSS", href: "pages/library.html#subscribe" },
+        ],
+      },
+      {
+        title: "Read",
+        items: [
+          { name: "The Authority of Love, Second Edition", href: "pages/the-authority-of-love.html" },
+          { name: "Articles & devotionals", href: "pages/library.html?fmt=Read" },
+          { name: "The “One Another” series", href: "pages/library.html?fmt=Read&series=One%20Another" },
         ],
       },
     ],
-    feature: { eyebrow: "Weekdays · 11:00 AM ET", title: "The Authority of Love radio", body: "Live on Central Kentucky Christian Radio WJMM 99.1 FM.", cta: "Tune in today", href: "pages/library.html" },
+    feature: { eyebrow: "Now live", title: "The Love & Lordship App", body: "Messages, podcasts, articles and events — inside connectapp. Download it and enter the access code to join.", cta: "Get the app", href: "#app" },
   },
   {
     key: "events",
@@ -141,7 +139,7 @@ function Nav({ onDonate, homeBase = "" }) {
   return (
     <header className={"nav-shell" + (scrolled ? " scrolled" : "")}>
       <div className="nav-inner">
-        <NavLogo homeBase={homeBase || "#top"} />
+        <NavLogo homeBase={homeBase || "#top"} imgBase={homeBase ? "../" : ""} />
         <nav className="nav-links" onMouseLeave={handleLeave}>
           {NAV_ITEMS.map((item) => {
             if (!item.cols) {
@@ -168,12 +166,12 @@ function Nav({ onDonate, homeBase = "" }) {
           })}
         </nav>
         <div className="nav-right">
-          <button className="nav-search only-desktop" aria-label="Search">
+          <a className="nav-search only-desktop" aria-label="Search the library" href={link("pages/library.html") + "?focus=1"}>
             <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
               <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.5"/>
               <path d="M14 14l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
-          </button>
+          </a>
           <button className="btn btn-give nav-give" onClick={onDonate}>
             <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
               <path d="M8 14s-5-3.5-5-7.5A3 3 0 0 1 8 4a3 3 0 0 1 5 2.5C13 10.5 8 14 8 14z" fill="currentColor"/>
@@ -220,7 +218,7 @@ function Nav({ onDonate, homeBase = "" }) {
 
       <div className={"mobile-drawer" + (mobile ? " open" : "")}>
         <h6>Mission</h6>
-        {["Lordship","Discipleship","Relationship","Marriage","Family"].map(n => <a key={n} href={link("#pillars")} onClick={() => setMobile(false)}>{n}</a>)}
+        {["Love & Lordship","Discipleship","Relationship","Marriage","Family","Church","Culture"].map(n => <a key={n} href={link("#pillars")} onClick={() => setMobile(false)}>{n}</a>)}
         <h6>Media</h6>
         <a href={link("#media")} onClick={() => setMobile(false)}>Watch</a>
         <a href={link("#media")} onClick={() => setMobile(false)}>Read</a>

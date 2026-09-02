@@ -1,31 +1,40 @@
 /* global React */
-const EVENTS = [
-  {
-    date: "Apr 25", year: "2026", name: "Authority of Love · <em>Marriage Conference</em>",
-    loc: "Lexington, KY",
-    type: "In-person", badge: "Featured", featured: true,
-  },
-  {
-    date: "May 09", year: "2026", name: "Disciple-Making Parents · <em>Weekend Intensive</em>",
-    loc: "Louisville, KY",
-    type: "In-person", badge: "Live",
-  },
-  {
-    date: "Jun 14", year: "2026", name: "Sisters for Life · Curriculum Training",
-    loc: "Cincinnati, OH",
-    type: "Partner event", badge: "Partner",
-  },
-  {
-    date: "Jul 02", year: "2026", name: "Marriage &amp; Family Symposium",
-    loc: "Online · global",
-    type: "Webinar", badge: "Online",
-  },
-  {
-    date: "Sep 18", year: "2026", name: "International Marriage &amp; Family Conf.",
-    loc: "Douala, Cameroon",
-    type: "Keynote", badge: "Travel",
-  },
-];
+// 2026 schedule, taken from loveandlordship.com/ministry-updates-events/ on
+// 2026-09-02. `on` is the ISO start date used to split upcoming from past.
+// Add new dates here (pages/events.html reads the same list via window.LL_EVENTS).
+const LL_EVENTS = [
+  { on: "2026-01-24", date: "Jan 24",    name: "Super Saturday for Men",                       loc: "The Mission Church · Lexington, KY",            type: "Men's event" },
+  { on: "2026-01-31", date: "Jan 31",    name: "Saturday Morning Men's Group",                 loc: "NECC · Lexington, KY",                          type: "Men's event" },
+  { on: "2026-02-07", date: "Feb 7",     name: "IronMan",                                      loc: "Russ Young's · Lexington, KY",                  type: "Men's event" },
+  { on: "2026-02-17", date: "Feb 17",    name: "Celebrate Recovery",                           loc: "Jessamine Christian Church · Nicholasville, KY", type: "Partner event" },
+  { on: "2026-02-27", date: "Feb 27",    name: "KY's Voice — live 11 AM on WGTK 970 AM; replays 4 &amp; 8 PM on WBNA 21", loc: "Louisville, KY",  type: "Broadcast" },
+  { on: "2026-04-18", date: "Apr 18",    name: "Saturday Morning Men's Group",                 loc: "NECC · Lexington, KY",                          type: "Men's event" },
+  { on: "2026-04-25", date: "Apr 25",    name: "America Reads the Bible — Scripture reading",  loc: "Museum of the Bible · Washington, DC",          type: "Partner event" },
+  { on: "2026-05-02", date: "May 2",     name: "IronMan",                                      loc: "Russ Young's · Lexington, KY",                  type: "Men's event" },
+  { on: "2026-05-12", date: "May 12",    name: "Celebrate Recovery",                           loc: "Jessamine Christian Church · Nicholasville, KY", type: "Partner event" },
+  { on: "2026-05-29", date: "May 29–31", name: "Colson Fellows Conference &amp; Commissioning", loc: "Knoxville, TN",                                type: "Partner event" },
+  { on: "2026-07-25", date: "Jul 25",    name: "Saturday Morning Men's Group",                 loc: "NECC · Lexington, KY",                          type: "Men's event" },
+  { on: "2026-07-26", date: "Jul 26",    name: "Greg preaching",                               loc: "Peyton's Lick Christian Church · Mt Sterling, KY", type: "Church service" },
+  { on: "2026-08-01", date: "Aug 1",     name: "IronMan",                                      loc: "Russ Young's · Lexington, KY",                  type: "Men's event" },
+  { on: "2026-08-18", date: "Aug 18",    name: "Celebrate Recovery",                           loc: "Jessamine Christian Church · Nicholasville, KY", type: "Partner event" },
+  { on: "2026-09-18", date: "Sep 18–20", name: "Men's Retreat",                                loc: "Camp Loucon · Leitchfield, KY",                 type: "Retreat", featured: true },
+  { on: "2026-09-25", date: "Sep 25–26", name: "Communion 250 service",                        loc: "Renfro Valley · Mt Vernon, KY",                 type: "Church service" },
+  { on: "2026-10-02", date: "Oct 2",     name: "Upper Room Men — speaking",                    loc: "Southeast Christian Church · Louisville, KY",   type: "Men's event" },
+  { on: "2026-10-05", date: "Oct 5",     name: "KY Right to Life Golf Scramble",               loc: "Shelbyville Country Club · Shelbyville, KY",    type: "Partner event" },
+  { on: "2026-10-17", date: "Oct 17",    name: "Saturday Morning Men's Group",                 loc: "NECC · Lexington, KY",                          type: "Men's event" },
+  { on: "2026-10-24", date: "Oct 24",    name: "3rd Annual KY Family Forum — leadership role", loc: "Embassy Suites · Lexington, KY",                type: "Partner event" },
+  { on: "2026-11-07", date: "Nov 7",     name: "IronMan",                                      loc: "Russ Young's · Lexington, KY",                  type: "Men's event" },
+  { on: "2026-11-10", date: "Nov 10",    name: "Celebrate Recovery",                           loc: "Jessamine Christian Church · Nicholasville, KY", type: "Partner event" },
+  { on: "2026-11-15", date: "Nov 15",    name: "Ministry sharing event",                       loc: "The Mission Church · Lexington, KY",            type: "Church service" },
+].map(e => ({ year: e.on.slice(0, 4), badge: e.type, ...e }));
+window.LL_EVENTS = LL_EVENTS;
+
+const todayISO = () => new Date().toISOString().slice(0, 10);
+const upcomingEvents = () => LL_EVENTS.filter(e => e.on >= todayISO());
+window.LL_upcomingEvents = upcomingEvents;
+
+// Homepage preview: the next four dates on the calendar.
+const EVENTS = upcomingEvents().slice(0, 4);
 
 function Pin() { return <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M6.5 11.5s4-3.2 4-6.5a4 4 0 1 0-8 0c0 3.3 4 6.5 4 6.5z"/><circle cx="6.5" cy="5" r="1.4"/></svg>; }
 function CalIcon() { return <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="1.5" y="2.5" width="10" height="9" rx="1"/><path d="M1.5 5h10M4 1.5v2M9 1.5v2"/></svg>; }
@@ -37,7 +46,7 @@ function Events() {
         <div className="events-head reveal">
           <div>
             <div className="eyebrow">Coming up</div>
-            <h2>Where we'll be <em>this year</em>.</h2>
+            <h2>Where we'll be <em>next</em>.</h2>
           </div>
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
             <a className="btn btn-ghost" href="pages/events.html">Filter</a>
@@ -45,7 +54,11 @@ function Events() {
           </div>
         </div>
         <div className="events-list">
-          {EVENTS.map((e, i) => (
+          {EVENTS.length === 0 ? (
+            <div style={{ padding: "40px 0", textAlign: "center", color: "var(--ink-mute)", border: "1px dashed var(--line)", borderRadius: "var(--r-md)" }}>
+              No dates on the calendar right now. <a className="btn-link" href="pages/events.html">See the full 2026 schedule <span className="arr">→</span></a>
+            </div>
+          ) : EVENTS.map((e, i) => (
             <a className="event-row" key={i} href="pages/events.html">
               <div className="date">{e.date}<span className="yr">{e.year}</span></div>
               <div className="info">
@@ -131,44 +144,49 @@ function AppPromo() {
       <div className="wrap">
         <div className="app-grid">
           <div className="app-copy reveal-stagger">
-            <div className="eyebrow">The L&amp;L App</div>
+            <div className="eyebrow">The L&amp;L App · Available now</div>
             <h2>The teaching, the community, and the daily rhythm — in your <em>pocket</em>.</h2>
             <p className="lead">
-              Stream sermons, follow reading plans, join live Q&amp;A discussions, and partner with the
-              mission — all from one beautifully simple app, designed for the way real life actually
-              works.
+              The Love &amp; Lordship app lives inside <strong>connectapp.</strong> — a private, ad-free community
+              platform. Download it, search for <strong>Love &amp; Lordship</strong>, and enter the access code
+              to join. Every message, podcast, article and event lands there first, sorted into channels
+              that match the seven priorities on this site.
             </p>
+            <div className="app-code" aria-label="Access code">
+              <span className="lbl">Access code</span>
+              <span className="code">love</span>
+            </div>
             <div className="app-features">
               <div className="app-feature">
                 <div className="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 3v10M12 3v10M4 6h8M4 10h8"/></svg></div>
                 <div>
-                  <div className="ttl">Daily devotionals &amp; reading plans</div>
-                  <div className="desc">Walk through the Authority of Love framework with a 30-day plan, audio devotionals, and journaling prompts.</div>
+                  <div className="ttl">Eleven channels, one foundation</div>
+                  <div className="desc">Daily radio, Family Foundation Friday, Wednesdays 4 Women, articles and more — each in its own channel, sorted by priority.</div>
                 </div>
               </div>
               <div className="app-feature">
                 <div className="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg></div>
                 <div>
-                  <div className="ttl">Live Q&amp;A &amp; small-group discussions</div>
-                  <div className="desc">Join hosted conversations with Greg, Ami, and partner ministry leaders — replay anytime.</div>
+                  <div className="ttl">Events &amp; updates, first</div>
+                  <div className="desc">New dates, registrations and ministry updates arrive as notifications — no algorithm, no ads, no noise.</div>
                 </div>
               </div>
               <div className="app-feature">
                 <div className="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M8 14s-5-3.5-5-7.5A3 3 0 0 1 8 4a3 3 0 0 1 5 2.5C13 10.5 8 14 8 14z"/></svg></div>
                 <div>
-                  <div className="ttl">Give from anywhere</div>
-                  <div className="desc">One-tap recurring giving, instant receipts, and impact updates from partner ministries.</div>
+                  <div className="ttl">Partner from anywhere</div>
+                  <div className="desc">One tap to give through Cornerstone, plus a direct line to ask Greg a question or invite him to speak.</div>
                 </div>
               </div>
             </div>
             <div className="app-stores">
-              <a className="app-store" href="#">
+              <a className="app-store" href="https://apps.apple.com/us/app/connectapp/id6447310443" target="_blank" rel="noopener noreferrer">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="currentColor" aria-hidden="true"><path d="M15.7 11.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 2.9 2.4 1.2 0 1.6-.8 3.1-.8 1.5 0 1.8.8 3.1.7 1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.6-.1-.1-2.6-1-2.6-4.1zM13.5 5c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.4z"/></svg>
                 <span className="label">
                   <small>Download on the</small>App Store
                 </span>
               </a>
-              <a className="app-store" href="#">
+              <a className="app-store" href="https://play.google.com/store/apps/details?id=social.inthezone.com" target="_blank" rel="noopener noreferrer">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="currentColor" aria-hidden="true"><path d="M3.5 2.7c-.3.3-.5.8-.5 1.4v14c0 .6.2 1.1.5 1.4l9.4-8.4-9.4-8.4zm10.9 9.8 2.7 1.5c1.2.7 1.2 1.7 0 2.4l-2.5 1.4-2.9-2.6 2.7-2.7zm-1.2-1.2 2.7-2.7-2.5-1.4c-1.2-.7-2.3-.3-2.3-.3l2.1 4.4zm-9.4 8.4 8-7.2-2.7-2.7-5.3 9.9z"/></svg>
                 <span className="label">
                   <small>Get it on</small>Google Play
@@ -249,7 +267,9 @@ function Footer({ onDonate, homeBase = "" }) {
       <div className="wrap">
         <div className="footer-grid">
           <div className="footer-brand">
-            <div className="logo"><span className="mark"></span> Love <em style={{ color: "var(--gold)", fontStyle: "italic", margin: "0 4px" }}>&amp;</em> Lordship</div>
+            <a href={link("#top")} className="footer-logo" aria-label="Love & Lordship — Home">
+              <img src={`${homeBase ? "../" : ""}assets/images/logo-white-on-blue.jpg`} alt="Love &amp; Lordship" />
+            </a>
             <p>Building every life and relationship on the Love &amp; Lordship of Jesus Christ.</p>
             <div className="footer-socials">
               {SOCIALS.map(s => (
@@ -262,11 +282,13 @@ function Footer({ onDonate, homeBase = "" }) {
           <div>
             <h6>Mission</h6>
             <ul>
-              <li><a href={link("#pillars")}>Lordship</a></li>
+              <li><a href={link("#pillars")}>Love &amp; Lordship</a></li>
               <li><a href={link("#pillars")}>Discipleship</a></li>
               <li><a href={link("#pillars")}>Relationship</a></li>
               <li><a href={link("#pillars")}>Marriage</a></li>
               <li><a href={link("#pillars")}>Family</a></li>
+              <li><a href={link("#pillars")}>Church</a></li>
+              <li><a href={link("#pillars")}>Culture</a></li>
             </ul>
           </div>
           <div>
@@ -276,7 +298,6 @@ function Footer({ onDonate, homeBase = "" }) {
               <li><a href={link("pages/library.html")}>Read</a></li>
               <li><a href={link("pages/library.html")}>Listen</a></li>
               <li><a href={link("pages/the-authority-of-love.html")}>The book</a></li>
-              <li><a href={link("pages/library.html")}>Radio · WJMM 99.1</a></li>
             </ul>
           </div>
           <div>
@@ -296,7 +317,7 @@ function Footer({ onDonate, homeBase = "" }) {
           </div>
         </div>
         <div className="footer-bottom">
-          <div>© 2026 Love &amp; Lordship · PO Box 911111, Lexington, KY 40591 · (859) 229-6504</div>
+          <div>© 2026 Love &amp; Lordship · 324 Timothy Drive, Nicholasville, KY 40356 · (859) 229-6504</div>
           <div style={{ display: "flex", gap: 16 }}>
             <a href={link("pages/terms.html")}>Terms of Use</a>
             <a href={link("pages/privacy.html")}>Privacy</a>
@@ -337,7 +358,7 @@ function DonateModal({ open, onClose }) {
         </button>
         <div className="eyebrow" style={{ marginBottom: 8 }}>Partner with us</div>
         <h3>Build the next <em>thousand</em> disciples.</h3>
-        <p className="sub">Every gift trains marriages, equips parents, and sends teaching to the eight countries already using the message.</p>
+        <p className="sub">Every gift trains marriages, equips parents, and sends teaching to the ten countries already using the message.</p>
 
         <div className="donate-frequency">
           <button className={freq === "monthly" ? "on" : ""} onClick={() => setFreq("monthly")}>Monthly partner</button>
@@ -366,10 +387,10 @@ function DonateModal({ open, onClose }) {
 
         <div className="donate-cta">
           <button className="btn btn-ghost" onClick={onClose}>Not now</button>
-          <button className="btn btn-give" onClick={() => alert("Redirecting to give.cornerstone.cc/loveandlordship")}>
-            Continue
+          <a className="btn btn-give" href="https://give.cornerstone.cc/loveandlordship" target="_blank" rel="noopener noreferrer">
+            Continue to Cornerstone
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
+          </a>
         </div>
 
         <div className="donate-footer">

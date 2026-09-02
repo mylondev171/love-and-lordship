@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Library — Watch, Read, Listen — Love &amp; Lordship</title>
-  <meta name="description" content="The complete Love & Lordship media library — sermons, articles, podcasts, and radio. Filter by topic, format, or series." />
+  <title>Library — Watch, Listen, Read — Love &amp; Lordship</title>
+  <meta name="description" content="The complete Love & Lordship library — every video, podcast episode, radio program and article from 30+ years of teaching, organized by the seven priorities. Search or filter by format." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,102 +25,201 @@
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
+  <!-- The catalog itself. Regenerate with scratchpad/ll/build_library.py (see README note in data/library.js). -->
+  <script src="../data/library.js"></script>
+
   <script type="text/babel" src="../components/nav.jsx"></script>
   <script type="text/babel" src="../components/footer-events-app.jsx"></script>
   <script type="text/babel" src="../components/page-shell.jsx"></script>
 
   <script type="text/babel">
-    const LIBRARY = [
-      { fmt: "Watch", topic: "Lordship", series: "Authority of Love", title: "What the Authority of Love really means", dur: "32 min", img: "video · keynote stage", imgPath: "../assets/images/keynote-stage.png" },
-      { fmt: "Watch", topic: "Marriage", series: "Marriage Unleashed", title: "Marriage isn't a contract — it's a covenant", dur: "12 min", img: "video · marriage talk", imgPath: "../assets/images/marriage-talk.png" },
-      { fmt: "Watch", topic: "Family", series: "Character Matters", title: "Character starts in the home", dur: "8 min", img: "video · classroom", imgPath: "../assets/images/classroom.png" },
-      { fmt: "Watch", topic: "Discipleship", series: "Conference", title: "Greg in Cameroon — the African church rising", dur: "23 min", img: "video · conference", imgPath: "../assets/images/conference-africa.png" },
-      { fmt: "Watch", topic: "Family", series: "Devotional", title: "A father's blessing changes a son", dur: "6 min", img: "video · father & son", imgPath: "../assets/images/father-blessing.png" },
-      { fmt: "Watch", topic: "Lordship", series: "Sermon", title: "Surrender is a daily decision", dur: "28 min", img: "video · pulpit", imgPath: "../assets/images/pulpit.png" },
-      { fmt: "Read", topic: "Relationship", series: "Essay", title: "The week we re-learned forgiveness", dur: "12 min read", img: "photo · open journal", imgPath: "../assets/images/open-journal.png" },
-      { fmt: "Read", topic: "Discipleship", series: "Article", title: "Why we don't teach 'find your purpose'", dur: "5 min read", img: "photo · notebook", imgPath: "../assets/images/notebook.png" },
-      { fmt: "Read", topic: "Marriage", series: "Article", title: "The first conversation every couple needs", dur: "8 min read", img: "photo · two coffee cups", imgPath: "../assets/images/two-coffee-cups.png" },
-      { fmt: "Read", topic: "Lordship", series: "Reading plan", title: "Authority of Love — 30-day reading plan", dur: "30 days", img: "photo · bible & pen", imgPath: "../assets/images/bible-and-pen.png" },
-      { fmt: "Read", topic: "Family", series: "Article", title: "Grandparenting on purpose", dur: "3 min read", img: "photo · grandparent & child", imgPath: "../assets/images/grandparent-and-child.png" },
-      { fmt: "Read", topic: "Relationship", series: "Devotional", title: "Loved · A 30-day journey", dur: "30 days", img: "photo · sunrise", imgPath: "../assets/images/sunrise.png" },
-      { fmt: "Listen", topic: "Lordship", series: "Radio", title: "The Authority of Love — weekdays, 11 AM ET", dur: "WJMM 99.1 FM", img: "audio · microphone", imgPath: "../assets/images/microphone-studio.png" },
-      { fmt: "Listen", topic: "Discipleship", series: "Podcast Ep. 142", title: "Discipleship in a distracted age", dur: "38 min", img: "audio · podcast cover", imgPath: "../assets/images/podcast-cover.png" },
-      { fmt: "Listen", topic: "Relationship", series: "KY's Voice", title: "Listening before answering", dur: "Monthly · 26 min", img: "audio · radio dial", imgPath: "../assets/images/radio-dial.png" },
-      { fmt: "Listen", topic: "Marriage", series: "Podcast Ep. 141", title: "When marriages survive the hard years", dur: "41 min", img: "audio · couple interview", imgPath: "../assets/images/marriage-resilient.png" },
-      { fmt: "Listen", topic: "Family", series: "Podcast Ep. 140", title: "Conversations every teenager needs", dur: "44 min", img: "audio · podcast cover", imgPath: "../assets/images/podcast-cover.png" },
-      { fmt: "Listen", topic: "Lordship", series: "Sermon audio", title: "The cost of going second", dur: "29 min", img: "audio · waveform", imgPath: "../assets/images/waveform.png" },
+    const ALL = window.LL_LIBRARY || [];
+    const FORMATS = ["All", "Watch", "Listen", "Read"];
+    const PILLARS = [
+      { key: "all",          n: "",   label: "All priorities" },
+      { key: "lordship",     n: "01", label: "Love & Lordship" },
+      { key: "discipleship", n: "02", label: "Discipleship" },
+      { key: "relationship", n: "03", label: "Relationship" },
+      { key: "marriage",     n: "04", label: "Marriage" },
+      { key: "family",       n: "05", label: "Family" },
+      { key: "church",       n: "06", label: "Church" },
+      { key: "culture",      n: "07", label: "Culture" },
     ];
-    const FORMATS = ["All", "Watch", "Read", "Listen"];
-    const TOPICS = ["All topics", "Lordship", "Discipleship", "Relationship", "Marriage", "Family"];
+    const PILLAR_LABEL = Object.fromEntries(PILLARS.map(p => [p.key, p.label]));
+    const SERIES = (() => {
+      const counts = {};
+      ALL.forEach(i => { counts[i.s] = (counts[i.s] || 0) + 1; });
+      return Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([name, n]) => ({ name, n }));
+    })();
+    const PAGE = 40;
 
-    function Play() { return <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M4 3l6 3.5L4 10z" fill="currentColor"/></svg>; }
+    const SUBSCRIBE = [
+      { name: "Apple Podcasts", href: "https://podcasts.apple.com/us/podcast/love-and-lordship/id1478796007" },
+      { name: "Podbean", href: "https://loveandlordship.podbean.com/" },
+      { name: "YouTube", href: "https://www.youtube.com/channel/UCY9DJ9AIFc3eXXvmmWn-6AQ" },
+      { name: "RSS", href: "https://feed.podbean.com/loveandlordship/feed.xml" },
+    ];
+
+    function FmtIcon({ f }) {
+      const c = { width: 14, height: 14, viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round" };
+      if (f === "Watch") return <svg {...c}><path d="M4 3l8 5-8 5z" fill="currentColor" stroke="none"/></svg>;
+      if (f === "Listen") return <svg {...c}><path d="M3 9v-1a5 5 0 0 1 10 0v1"/><rect x="2" y="9" width="3" height="4" rx="1"/><rect x="11" y="9" width="3" height="4" rx="1"/></svg>;
+      return <svg {...c}><path d="M3 3h5l1 1v9H3zM13 3H8l-1 1v9h6z"/></svg>;
+    }
+
+    function fmtDate(d) {
+      if (!d) return "";
+      const [y, m, day] = d.split("-").map(Number);
+      const dt = new Date(y, m - 1, day);
+      return dt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    }
+
+    function readParams() {
+      const q = new URLSearchParams(window.location.search);
+      const fmt = FORMATS.find(f => f.toLowerCase() === (q.get("fmt") || "").toLowerCase()) || "All";
+      const pillar = PILLARS.find(p => p.key === (q.get("pillar") || "").toLowerCase())?.key || "all";
+      const series = q.get("series") || "All";
+      return { fmt, pillar, series, q: q.get("q") || "", focus: q.has("focus") };
+    }
 
     function LibraryPage() {
-      const [fmt, setFmt] = React.useState("All");
-      const [topic, setTopic] = React.useState("All topics");
+      const init = React.useMemo(readParams, []);
+      const [fmt, setFmt] = React.useState(init.fmt);
+      const [pillar, setPillar] = React.useState(init.pillar);
+      const [series, setSeries] = React.useState(init.series);
+      const [q, setQ] = React.useState(init.q);
+      const [limit, setLimit] = React.useState(PAGE);
+      const searchRef = React.useRef(null);
 
-      const visible = LIBRARY.filter(item =>
-        (fmt === "All" || item.fmt === fmt) &&
-        (topic === "All topics" || item.topic === topic)
-      );
+      React.useEffect(() => { if (init.focus && searchRef.current) searchRef.current.focus(); }, []);
+      React.useEffect(() => { setLimit(PAGE); }, [fmt, pillar, series, q]);
+      React.useEffect(() => {
+        const p = new URLSearchParams();
+        if (fmt !== "All") p.set("fmt", fmt);
+        if (pillar !== "all") p.set("pillar", pillar);
+        if (series !== "All") p.set("series", series);
+        if (q.trim()) p.set("q", q.trim());
+        const s = p.toString();
+        window.history.replaceState(null, "", window.location.pathname + (s ? "?" + s : ""));
+      }, [fmt, pillar, series, q]);
+
+      const terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      const visible = React.useMemo(() => ALL.filter(i =>
+        (fmt === "All" || i.f === fmt) &&
+        (pillar === "all" || i.p.includes(pillar)) &&
+        (series === "All" || i.s === series) &&
+        (terms.length === 0 || terms.every(t => (i.t + " " + (i.x || "") + " " + i.s).toLowerCase().includes(t)))
+      ), [fmt, pillar, series, q]);
+
+      const shown = visible.slice(0, limit);
+      const active = PILLARS.find(p => p.key === pillar);
+      const counts = React.useMemo(() => ({
+        Watch: ALL.filter(i => i.f === "Watch").length,
+        Listen: ALL.filter(i => i.f === "Listen").length,
+        Read: ALL.filter(i => i.f === "Read").length,
+      }), []);
+
+      const reset = () => { setFmt("All"); setPillar("all"); setSeries("All"); setQ(""); };
 
       return (
         <PageShell header={
           <PageHeader
-            eyebrow="Watch · Read · Listen"
+            eyebrow="Watch · Listen · Read"
             title="The full <em>library</em>."
-            sub="Every sermon, article, podcast, and radio episode from twenty years of teaching. Filter by format or by mission pillar."
-            deco="M"
+            sub={`${counts.Watch.toLocaleString()} videos, ${counts.Listen.toLocaleString()} podcast and radio episodes, and ${counts.Read.toLocaleString()} articles from 30+ years of teaching — organized by the seven priorities. Search, or filter by format.`}
+            deco="L"
           />
         }>
-          <section className="page-section">
+          <section className="page-section lib-section">
             <div className="wrap">
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
-                <div className="chip-row" style={{ marginBottom: 0 }}>
-                  {FORMATS.map(f => (
-                    <button className={"chip" + (fmt === f ? " on" : "")} key={f} onClick={() => setFmt(f)}>{f}</button>
-                  ))}
-                </div>
-                <div className="chip-row" style={{ marginBottom: 0 }}>
-                  {TOPICS.map(t => (
-                    <button className={"chip" + (topic === t ? " on" : "")} key={t} onClick={() => setTopic(t)}>{t}</button>
-                  ))}
+              <div className="lib-controls">
+                <label className="lib-search">
+                  <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.5"/><path d="M14 14l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                  <input ref={searchRef} type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Search titles and summaries — try “forgiveness”, “parenting”, “Philippians”" aria-label="Search the library" />
+                  {q && <button type="button" className="lib-clear" onClick={() => setQ("")} aria-label="Clear search">×</button>}
+                </label>
+
+                <div className="lib-filter-rows">
+                  <div className="chip-row" style={{ marginBottom: 0 }}>
+                    {FORMATS.map(f => (
+                      <button className={"chip" + (fmt === f ? " on" : "")} key={f} onClick={() => setFmt(f)}>
+                        {f !== "All" && <FmtIcon f={f} />}{f}
+                        {f !== "All" && <span className="chip-n">{counts[f].toLocaleString()}</span>}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="chip-row" style={{ marginBottom: 0 }}>
+                    {PILLARS.map(p => (
+                      <button className={"chip" + (pillar === p.key ? " on" : "")} key={p.key} onClick={() => setPillar(p.key)}>
+                        {p.n && <span className="chip-num">{p.n}</span>}{p.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="lib-series-row">
+                    <label className="lib-select">
+                      <span>Series</span>
+                      <select value={series} onChange={e => setSeries(e.target.value)}>
+                        <option value="All">All series</option>
+                        {SERIES.map(s => <option key={s.name} value={s.name}>{s.name} ({s.n})</option>)}
+                      </select>
+                    </label>
+                    {(fmt !== "All" || pillar !== "all" || series !== "All" || q) && (
+                      <button className="btn-link lib-reset" onClick={reset}>Clear filters <span className="arr">×</span></button>
+                    )}
+                  </div>
                 </div>
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
-                <div className="eyebrow">{visible.length} resource{visible.length === 1 ? "" : "s"}</div>
+              <div className="lib-count">
+                <div className="eyebrow">
+                  {visible.length.toLocaleString()} resource{visible.length === 1 ? "" : "s"}
+                  {pillar !== "all" && <> · {active.n} {active.label}</>}
+                  {fmt !== "All" && <> · {fmt}</>}
+                </div>
                 <div className="muted" style={{ fontSize: 13 }}>Sorted by most recent</div>
               </div>
 
-              <div className="lib-grid">
-                {visible.map((m, i) => (
-                  <a className="lib-card" key={i} href="#">
-                    <div className="th">
-                      <div className="imgph dark">
-                        {m.imgPath && <img src={m.imgPath} alt="" />}
-                        <span className="lbl">{m.img}</span>
+              <div className="lib-list">
+                {shown.map(m => (
+                  <a className="lib-row" key={m.i} href={m.u} target="_blank" rel="noopener noreferrer">
+                    <div className={"lib-th " + m.f.toLowerCase()}>
+                      {m.th ? <img src={m.th} alt="" loading="lazy" /> : <span className="lib-th-icn"><FmtIcon f={m.f} /></span>}
+                    </div>
+                    <div className="lib-body">
+                      <div className="lib-kicker">
+                        <span className={"lib-fmt " + m.f.toLowerCase()}><FmtIcon f={m.f} /> {m.f}</span>
+                        <span className="lib-series">{m.s}</span>
                       </div>
-                      <span className="play" aria-hidden="true"><Play /></span>
+                      <h4>{m.t}</h4>
+                      {m.x && <p className="lib-sum">{m.x}</p>}
+                      <div className="lib-meta">
+                        <span>{fmtDate(m.d)}</span>
+                        {m.m && <span>{m.m}</span>}
+                        <span className="lib-pills">{m.p.map(p => <button type="button" key={p} className={"lib-pill" + (pillar === p ? " on" : "")} onClick={(e) => { e.preventDefault(); setPillar(p); }}>{PILLAR_LABEL[p]}</button>)}</span>
+                      </div>
                     </div>
-                    <div className="meta">
-                      <span className="badge">{m.fmt} · {m.topic}</span>
-                      <h4>{m.title}</h4>
-                      <span className="dur">{m.dur} · {m.series}</span>
-                    </div>
+                    <span className="go" aria-hidden="true">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M6 4h6v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
                   </a>
                 ))}
               </div>
 
               {visible.length === 0 && (
                 <div style={{ padding: "80px 0", textAlign: "center", color: "var(--ink-mute)" }}>
-                  Nothing here yet — try a different filter.
+                  Nothing matches those filters yet. <button className="btn-link" onClick={reset}>Clear filters <span className="arr">→</span></button>
+                </div>
+              )}
+
+              {shown.length < visible.length && (
+                <div className="lib-more">
+                  <button className="btn btn-ghost" onClick={() => setLimit(limit + PAGE)}>Show more ({(visible.length - shown.length).toLocaleString()} remaining)</button>
                 </div>
               )}
             </div>
           </section>
 
-          <section className="page-section" style={{ background: "var(--paper)" }}>
+          <section className="page-section" id="subscribe" style={{ background: "var(--paper)" }}>
             <div className="wrap">
               <div className="split-cols">
                 <div>
@@ -128,12 +227,9 @@
                   <h2>Take it with you — <em>wherever</em> you listen.</h2>
                 </div>
                 <div>
-                  <p>The Authority of Love podcast is published weekly. New sermons drop every Sunday evening. The radio program airs weekdays at 11:00 AM ET on WJMM 99.1 FM and is rebroadcast monthly on Word Media's WGTK 970 AM.</p>
+                  <p>The Authority of Love airs on WJMM 99.1 FM, Central Kentucky's Christian radio, and every program is released as a podcast. Family Foundation Friday and Wednesdays 4 Women are weekly, and the video of each program is on YouTube. Everything above links straight to the source.</p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 22 }}>
-                    <a className="btn btn-ghost" href="#">Apple Podcasts</a>
-                    <a className="btn btn-ghost" href="#">Spotify</a>
-                    <a className="btn btn-ghost" href="#">YouTube</a>
-                    <a className="btn btn-ghost" href="#">RSS</a>
+                    {SUBSCRIBE.map(s => <a className="btn btn-ghost" key={s.name} href={s.href} target="_blank" rel="noopener noreferrer">{s.name}</a>)}
                   </div>
                 </div>
               </div>
@@ -141,10 +237,11 @@
           </section>
 
           <CTAStrip
-            eyebrow="Newsletter"
-            title="A weekly devotional, <em>delivered</em>."
-            body="Greg's weekly letter — devotional, reflection, and event invites. New subscribers get the 30-day Authority of Love reading plan."
-            primary={<a className="btn btn-give" href="../Love%20and%20Lordship.html#newsletter">Subscribe to the letter</a>}
+            eyebrow="The L&L App"
+            title="The same library, organized for your <em>pocket</em>."
+            body="Every message, podcast and article lands in the Love & Lordship app first, sorted by the same seven priorities. Free inside connectapp. — download it and enter the access code to join."
+            primary={<a className="btn btn-give" href={HOME_BASE + "#app"}>Get the app</a>}
+            secondary={<a className="btn btn-ghost" href={HOME_BASE + "#newsletter"} style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>Subscribe to the letter</a>}
           />
         </PageShell>
       );

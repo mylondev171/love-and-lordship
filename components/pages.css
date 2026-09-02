@@ -581,6 +581,21 @@
   opacity: 0.6;
 }
 
+/* Real book cover override on subpage */
+.bookprop.bookprop-real {
+  background: transparent;
+  padding: 0;
+}
+.bookprop.bookprop-real::before { display: none; }
+.bookprop.bookprop-real img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+
 /* Contact info block */
 .contact-info {
   display: grid;
@@ -622,3 +637,101 @@
 .legal p { font-size: 16px; }
 .legal ul { padding-left: 1.2em; color: var(--ink-soft); font-size: 16px; line-height: 1.65; }
 .legal li { margin-bottom: 8px; }
+
+
+/* ---------- Library (pages/library.html) ---------- */
+.lib-controls { display: grid; gap: 18px; margin-bottom: 28px; }
+.lib-search {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 18px; height: 56px;
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  background: var(--bg-elev, var(--bg));
+  color: var(--ink-mute);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.lib-search:focus-within { border-color: var(--wine); box-shadow: 0 0 0 4px oklch(0.40 0.16 264 / 0.12); color: var(--wine); }
+.lib-search input {
+  flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+  font: inherit; font-size: 16px; color: var(--ink);
+}
+.lib-search input::placeholder { color: var(--ink-mute); }
+.lib-search input::-webkit-search-cancel-button { display: none; }
+.lib-clear { border: 0; background: var(--paper); color: var(--ink-soft); width: 28px; height: 28px; border-radius: 50%; font-size: 18px; line-height: 1; cursor: pointer; }
+.lib-clear:hover { background: var(--ink); color: var(--bg); }
+.lib-filter-rows { display: grid; gap: 12px; }
+.chip { display: inline-flex; align-items: center; gap: 7px; }
+.chip-n { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; color: var(--ink-mute); }
+.chip.on .chip-n { color: oklch(0.8 0.02 250); }
+.chip-num { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; color: var(--wine); }
+.chip.on .chip-num { color: var(--gold); }
+.lib-series-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.lib-select { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-mute); }
+.lib-select span { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+.lib-select select {
+  font: inherit; font-size: 14px; color: var(--ink);
+  padding: 9px 36px 9px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-elev, var(--bg));
+  appearance: none; -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-mute) 50%), linear-gradient(135deg, var(--ink-mute) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 55%, calc(100% - 13px) 55%; background-size: 5px 5px; background-repeat: no-repeat;
+  max-width: min(70vw, 360px);
+}
+.lib-select select:focus { outline: 0; border-color: var(--wine); }
+.lib-reset { font-size: 13px; }
+.lib-count { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; gap: 16px; flex-wrap: wrap; }
+
+.lib-list { border-top: 1px solid var(--line); }
+.lib-row {
+  display: grid; grid-template-columns: 128px 1fr auto; gap: 24px; align-items: center;
+  padding: 22px 0; border-bottom: 1px solid var(--line);
+  transition: padding 0.3s var(--ease); position: relative;
+}
+.lib-row:hover { padding-left: 12px; }
+.lib-th {
+  width: 128px; height: 72px; border-radius: var(--r-sm, 8px); overflow: hidden;
+  background: var(--paper); display: grid; place-items: center; color: var(--wine);
+}
+.lib-th img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.lib-th.listen { background: var(--ink); color: var(--gold); }
+.lib-th.read { background: var(--paper); color: var(--wine); }
+.lib-th-icn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid currentColor; display: grid; place-items: center; opacity: 0.85; }
+.lib-body { min-width: 0; }
+.lib-kicker { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 6px; }
+.lib-fmt {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--wine);
+}
+.lib-fmt.listen { color: var(--ink-soft); }
+.lib-series { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); }
+.lib-row h4 {
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(19px, 1.7vw, 24px);
+  line-height: 1.15; letter-spacing: -0.012em; margin: 0 0 6px; color: var(--ink);
+  transition: color 0.2s var(--ease);
+}
+.lib-row:hover h4 { color: var(--wine); }
+.lib-sum { font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 8px; max-width: 70ch; }
+.lib-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 12.5px; color: var(--ink-mute); }
+.lib-pills { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.lib-pill {
+  font: inherit; font-size: 11.5px; padding: 3px 9px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: transparent; color: var(--ink-soft);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.lib-pill:hover { border-color: var(--wine); color: var(--wine); }
+.lib-pill.on { background: var(--wine); border-color: var(--wine); color: #fff; }
+.lib-row .go {
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+  display: grid; place-items: center; color: var(--ink-mute);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.lib-row:hover .go { background: var(--wine); color: var(--bg); border-color: var(--wine); }
+.lib-more { display: flex; justify-content: center; padding: 36px 0 0; }
+
+@media (max-width: 760px) {
+  .lib-row { grid-template-columns: 1fr; gap: 12px; }
+  .lib-row:hover { padding-left: 0; }
+  .lib-th { width: 100%; height: 160px; }
+  .lib-row .go { display: none; }
+  .lib-search { height: 50px; }
+  .lib-search input { font-size: 15px; }
+}

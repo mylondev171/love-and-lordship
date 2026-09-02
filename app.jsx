@@ -17,15 +17,15 @@ function useReveal() {
 }
 
 const PALETTE_SWATCHES = [
+  ["#234093", "#eef1f6", "#d2bb6a"],
   ["#9b2c2c", "#f7f1e8", "#c89e4f"],
-  ["#2a4d8f", "#eef1f6", "#7ba4d6"],
   ["#2f5b3f", "#eef2eb", "#b59a4a"],
   ["#2c2c2c", "#f0efed", "#8a8a8a"],
 ];
-const PALETTE_KEYS = ["warm", "cool", "forest", "mono"];
+const PALETTE_KEYS = ["brand", "warm", "forest", "mono"];
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "palette": ["#9b2c2c", "#f7f1e8", "#c89e4f"],
+  "palette": ["#234093", "#eef1f6", "#d2bb6a"],
   "density": "comfortable",
   "pillarLayout": "tabs",
   "typeMix": "serif-sans",
@@ -35,12 +35,12 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 function applyPalette(p) {
   const root = document.documentElement;
   const palettes = {
+    brand: { bg: "0.975 0.008 250", bgElev: "0.985 0.006 250", paper: "0.95 0.012 250", ink: "0.18 0.018 260", inkSoft: "0.38 0.022 260", inkMute: "0.55 0.018 255", line: "0.88 0.012 245", lineSoft: "0.92 0.01 245", wine: "0.40 0.16 264", wineDeep: "0.30 0.16 264", gold: "0.78 0.10 85" },
     warm: { bg: "0.975 0.012 78", bgElev: "0.985 0.008 78", paper: "0.96 0.018 75", ink: "0.18 0.015 60", inkSoft: "0.38 0.018 60", inkMute: "0.55 0.018 65", line: "0.88 0.015 70", lineSoft: "0.92 0.012 72", wine: "0.42 0.12 25", wineDeep: "0.34 0.12 25", gold: "0.72 0.085 80" },
-    cool: { bg: "0.975 0.008 230", bgElev: "0.985 0.006 230", paper: "0.95 0.012 230", ink: "0.18 0.018 250", inkSoft: "0.38 0.022 250", inkMute: "0.55 0.018 245", line: "0.88 0.012 235", lineSoft: "0.92 0.01 235", wine: "0.42 0.13 250", wineDeep: "0.32 0.13 252", gold: "0.7 0.08 200" },
     forest: { bg: "0.97 0.01 100", bgElev: "0.985 0.008 100", paper: "0.94 0.014 110", ink: "0.18 0.018 140", inkSoft: "0.36 0.02 140", inkMute: "0.55 0.018 130", line: "0.88 0.012 120", lineSoft: "0.92 0.01 120", wine: "0.4 0.11 140", wineDeep: "0.3 0.11 142", gold: "0.72 0.085 90" },
     mono: { bg: "0.97 0.003 60", bgElev: "0.985 0.002 60", paper: "0.95 0.004 60", ink: "0.18 0.005 60", inkSoft: "0.38 0.005 60", inkMute: "0.55 0.005 60", line: "0.88 0.003 60", lineSoft: "0.92 0.002 60", wine: "0.25 0.01 60", wineDeep: "0.18 0.01 60", gold: "0.6 0.01 80" },
   };
-  const v = palettes[p] || palettes.warm;
+  const v = palettes[p] || palettes.brand;
   root.style.setProperty("--bg", `oklch(${v.bg})`);
   root.style.setProperty("--bg-elev", `oklch(${v.bgElev})`);
   root.style.setProperty("--paper", `oklch(${v.paper})`);

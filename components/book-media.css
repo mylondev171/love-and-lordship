@@ -27,6 +27,17 @@
   margin: 0 auto;
   perspective: 1400px;
 }
+/* When both front and back covers are shown, switch to a small stacked layout */
+.book-cover-wrap:has(.book-cover-back) {
+  aspect-ratio: auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 18px;
+  align-items: start;
+  max-width: 520px;
+}
+.book-cover-back { transform: rotateY(8deg) translateY(28px); opacity: 0.92; }
+.book-cover-wrap:has(.book-cover-back):hover .book-cover-back { transform: rotateY(4deg) translateY(20px); }
 .book-cover {
   position: relative;
   width: 100%; height: 100%;
@@ -111,6 +122,29 @@
   color: var(--gold);
   opacity: 0.7;
 }
+
+/* Real book cover image — overrides the faux book panels */
+.book-cover.book-cover-real {
+  background: transparent;
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 5/7;
+}
+.book-cover.book-cover-real img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.book-cover.book-cover-real .spine-edge,
+.book-cover.book-cover-real .pages-edge,
+.book-cover.book-cover-real .em-line,
+.book-cover.book-cover-real h2,
+.book-cover.book-cover-real .seal,
+.book-cover.book-cover-real .by-line,
+.book-cover.book-cover-real .ed { display: none; }
 
 .book-copy .eyebrow { color: var(--gold); }
 .book-copy h2 {

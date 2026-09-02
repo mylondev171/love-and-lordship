@@ -5,31 +5,28 @@ function Book({ onDonate }) {
       <div className="wrap">
         <div className="book-grid">
           <div className="book-cover-wrap reveal">
-            <div className="book-cover">
-              <span className="spine-edge" aria-hidden="true"></span>
-              <span className="pages-edge" aria-hidden="true"></span>
-              <div className="em-line">2nd Edition · Greg Williams</div>
-              <h2>The<br/>Authority<br/>of Love</h2>
-              <div className="seal" aria-hidden="true"><span className="seal-letter">L</span></div>
-              <div className="by-line">A discipleship foundation</div>
-              <div className="ed">L &amp; L · MMXXVI</div>
+            <div className="book-cover book-cover-real">
+              <img src="assets/images/book-cover-front.jpg" alt="The Authority of Love, Second Edition — front cover" />
+            </div>
+            <div className="book-cover book-cover-real book-cover-back">
+              <img src="assets/images/book-cover-back.jpg" alt="The Authority of Love, Second Edition — back cover with endorsement" />
             </div>
           </div>
 
           <div className="book-copy reveal-stagger">
             <div className="eyebrow">The Book</div>
-            <h2>A roadmap for every <em>life and relationship</em>.</h2>
+            <h2>The roadmap for every <em>life and relationship</em>.</h2>
             <p className="lead">
-              Drawn from twenty years of teaching couples, families, and churches across the world,
+              Drawn from 30+ years of teaching men, couples, families, and churches in KY, the US and around the globe,
               <em> The Authority of Love</em> lays the biblical foundation under everything we do —
-              and gives you a practical, week-by-week path to live it.
+              and gives you a practical path to live it.
             </p>
             <ul className="book-bullets">
               {[
                 "Chosen by Sisters for Life as core discipleship curriculum",
-                "Used in 8 countries and 50+ partner ministries",
+                "Shared in at least 10 countries and 50+ partner ministries",
                 "Designed for personal study, marriages, and small groups",
-                "Companion study guide and small-group facilitator track",
+                "Companion study guide for family, class and small-groups",
               ].map((b) => (
                 <li key={b}>
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -41,7 +38,7 @@ function Book({ onDonate }) {
             </ul>
             <div className="book-cta-row">
               <a className="btn btn-give" href="pages/the-authority-of-love.html">
-                Order the book
+                Order The Authority of Love, Second Edition
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M3 7h8m-3-3 3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -51,9 +48,8 @@ function Book({ onDonate }) {
               </a>
             </div>
             <p className="book-pull">
-              "Greg's foundational message centers on the Lordship of Christ, encouraging discipleship
-              beyond marriage, family, and purity into all areas of Christian life."
-              <cite>— International Marriage &amp; Family Conference</cite>
+              "This is such an important book for today's church… a wake-up call for the modern-day American church to restore the Biblical standards of marriage, family and the church which are still compelling and transforming."
+              <cite>— Bob Russell, CEO, Bob Russell Ministries · Senior Minister (Ret.), Southeast Christian Church</cite>
             </p>
           </div>
         </div>

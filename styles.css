@@ -1,19 +1,20 @@
 /* Love & Lordship — Site Redesign */
 
 :root {
-  /* Warm editorial palette — oklch shared chroma family */
-  --bg: oklch(0.975 0.012 78);
-  --bg-elev: oklch(0.985 0.008 78);
-  --paper: oklch(0.96 0.018 75);
-  --ink: oklch(0.18 0.015 60);
-  --ink-soft: oklch(0.38 0.018 60);
-  --ink-mute: oklch(0.55 0.018 65);
-  --line: oklch(0.88 0.015 70);
-  --line-soft: oklch(0.92 0.012 72);
-  --wine: oklch(0.42 0.12 25);
-  --wine-deep: oklch(0.34 0.12 25);
-  --gold: oklch(0.72 0.085 80);
-  --olive: oklch(0.5 0.06 130);
+  /* L&L brand-blue palette — oklch shared chroma family */
+  --bg: oklch(0.975 0.008 250);
+  --bg-elev: oklch(0.985 0.006 250);
+  --paper: oklch(0.95 0.012 250);
+  --ink: oklch(0.18 0.018 260);
+  --ink-soft: oklch(0.38 0.022 260);
+  --ink-mute: oklch(0.55 0.018 255);
+  --line: oklch(0.88 0.012 245);
+  --line-soft: oklch(0.92 0.01 245);
+  /* Brand royal blue (matches L&L logo on blue background) */
+  --wine: oklch(0.40 0.16 264);
+  --wine-deep: oklch(0.30 0.16 264);
+  --gold: oklch(0.78 0.10 85);
+  --olive: oklch(0.55 0.06 200);
 
   --font-display: "Newsreader", "Source Serif 4", Georgia, serif;
   --font-sans: "Manrope", -apple-system, "Helvetica Neue", system-ui, sans-serif;
@@ -56,7 +57,7 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
 
-::selection { background: var(--wine); color: #fff5e6; }
+::selection { background: var(--wine); color: #eef2fb; }
 
 /* Type ============================================== */
 .display {
@@ -122,10 +123,10 @@ section { position: relative; }
 
 .btn-give {
   background: var(--wine);
-  color: oklch(0.97 0.02 70);
-  box-shadow: 0 6px 20px -8px oklch(0.42 0.12 25 / 0.6);
+  color: oklch(0.98 0.008 250);
+  box-shadow: 0 6px 20px -8px oklch(0.40 0.16 264 / 0.6);
 }
-.btn-give:hover { background: var(--wine-deep); box-shadow: 0 10px 28px -8px oklch(0.42 0.12 25 / 0.7); }
+.btn-give:hover { background: var(--wine-deep); box-shadow: 0 10px 28px -8px oklch(0.40 0.16 264 / 0.7); }
 
 .btn-ghost {
   background: transparent;

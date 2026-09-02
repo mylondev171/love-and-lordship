@@ -31,6 +31,36 @@
   background: radial-gradient(circle at 30% 30%, var(--gold), var(--wine) 70%);
 }
 
+/* Scripture block under eyebrow */
+.hero-scripture {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 28px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--wine);
+  background: var(--bg-elev);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  max-width: 560px;
+}
+.hero-scripture p { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--ink-soft); }
+.hero-scripture .ref {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-right: 10px;
+  font-weight: 600;
+}
+.hero-scripture .txt {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15.5px;
+  color: var(--ink);
+}
+
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 350;
@@ -189,6 +219,18 @@
   width: 12px;
   background: linear-gradient(90deg, oklch(0 0 0 / 0.3), transparent);
   pointer-events: none;
+}
+
+/* Real book cover variant — overrides faux book card */
+.hero-card.book.book-real {
+  background: transparent;
+  padding: 0;
+  box-shadow: var(--shadow-3);
+}
+.hero-card.book.book-real::after { display: none; }
+.hero-card.book.book-real img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  border-radius: inherit;
 }
 
 /* Animated hero watermark — types out "Love & Lordship" on load */

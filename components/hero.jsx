@@ -83,15 +83,26 @@ function Hero({ onDonate }) {
               <span className="dot" aria-hidden="true"></span>
               <span>A Ministry for Every Life &amp; Every Relationship</span>
             </div>
+            <div className="hero-scripture">
+              <p>
+                <span className="ref">Mark 12:29–31</span>
+                <span className="txt">"Love the Lord your God with all your heart… and love your neighbor as yourself."</span>
+              </p>
+              <p>
+                <span className="ref">1 Peter 3:15</span>
+                <span className="txt">"In your hearts revere Christ as Lord. Always be prepared to give an answer…"</span>
+              </p>
+            </div>
             <h1>
-              Every life,<br/>
-              every relationship<br/>
-              <em>built on Love</em> <span className="amp">&amp;</span> <em>Lordship.</em>
+              Every life, every relationship<br/>
+              built on the <em>Love</em> <span className="amp">&amp;</span> <em>Lordship</em><br/>
+              of Jesus Christ.
             </h1>
             <p className="hero-sub">
-              For more than twenty years, Greg &amp; Ami Williams have been making disciples
-              who make disciples — sharing a biblical foundation for marriage, family, and
-              relationship with churches in eight countries and counting.
+              For more than thirty years, Greg Williams has been making disciples who make disciples —
+              sharing a biblical foundation of Christ's Lordship and our discipleship for life,
+              marriage, family, and relationship with individuals, couples, families and churches
+              across the USA and in ten countries and counting.
             </p>
             <div className="hero-ctas">
               <button className="btn btn-primary" onClick={() => document.getElementById("pillars").scrollIntoView({ behavior: "smooth" })}>
@@ -141,19 +152,15 @@ function Hero({ onDonate }) {
                 <span className="lbl">photo · family gathered</span>
               </div>
             </div>
-            <div className="hero-card book">
-              <span className="spine"></span>
-              <div className="em">A New Book by Greg Williams</div>
-              <h3>The Authority<br/>of Love</h3>
-              <div className="crest">L</div>
-              <div className="by">Greg Williams</div>
+            <div className="hero-card book book-real">
+              <img src="assets/images/book-cover-front.jpg" alt="The Authority of Love, Second Edition — by Greg & Ami Williams" />
             </div>
           </div>
         </div>
 
         <div className="hero-strip" aria-hidden="true">
           <div className="hero-strip-track">
-            {[..."Lordship · Discipleship · Relationship · Marriage · Family · Love & Lordship · Lordship · Discipleship · Relationship · Marriage · Family · Love & Lordship".split(" · ")].map((w, i) => (
+            {[..."Lordship · Discipleship · Relationship · Marriage · Family · Church · Culture · Lordship · Discipleship · Relationship · Marriage · Family · Church · Culture".split(" · ")].map((w, i) => (
               <span className="hero-strip-item" key={i}>
                 {w}
                 <span className="sep" aria-hidden="true"></span>

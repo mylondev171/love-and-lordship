@@ -30,22 +30,26 @@
   <script type="text/babel" src="../components/page-shell.jsx"></script>
 
   <script type="text/babel">
+    // NOTE: Chapter titles and page numbers below are PLACEHOLDERS — to be
+    // replaced with the actual Table of Contents from the printed book.
     const CHAPTERS = [
-      { n: "01", t: "Begin with the <em>Lordship</em> of Christ", p: "1–24" },
-      { n: "02", t: "The order of love: vertical before horizontal", p: "25–52" },
-      { n: "03", t: "What scripture says about covenant", p: "53–82" },
-      { n: "04", t: "Marriage as a portrait of Christ and His church", p: "83–116" },
-      { n: "05", t: "The disciple-making family", p: "117–148" },
-      { n: "06", t: "Friendship, purity, and the heart's true longing", p: "149–176" },
-      { n: "07", t: "Forgiveness that <em>actually</em> heals", p: "177–204" },
-      { n: "08", t: "Multiplication: making disciples who make disciples", p: "205–238" },
-      { n: "09", t: "Living the authority of love in ordinary days", p: "239–270" },
+      { n: "01", t: "Section title — TBD from print copy", p: "" },
+      { n: "02", t: "Section title — TBD from print copy", p: "" },
+      { n: "03", t: "Section title — TBD from print copy", p: "" },
+      { n: "04", t: "Section title — TBD from print copy", p: "" },
+      { n: "05", t: "Section title — TBD from print copy", p: "" },
+      { n: "06", t: "Section title — TBD from print copy", p: "" },
+      { n: "07", t: "Section title — TBD from print copy", p: "" },
+      { n: "08", t: "Section title — TBD from print copy", p: "" },
     ];
+    // NOTE: Endorsements below were drafted for the design pass — they should
+    // be replaced or trimmed by the client. Bob Russell endorsement is from
+    // the printed back cover; the others should be selected from the existing
+    // loveandlordship.com endorsements list.
     const ENDORSE = [
+      { q: "This is such an important book for today's church. In my fifty plus years of ministry I have witnessed churches so concerned about being relevant that they wind up reflecting the culture rather than redeeming it. Greg's book is indeed, a 'wake up call for the modern-day American church' to restore the Biblical standards of marriage, family and the church which are still compelling and transforming.", by: "Bob Russell", role: "CEO, Bob Russell Ministries · Senior Minister (Retired), Southeast Christian Church, Louisville, KY" },
       { q: "Greg's foundational message centers on the Lordship of Christ, encouraging discipleship beyond marriage, family, and purity into all areas of Christian life.", by: "International Marriage & Family Conference", role: "Douala, Cameroon" },
       { q: "We've placed The Authority of Love into the hands of every mother we serve. It's the curriculum that finally connects love to discipleship.", by: "Director, Sisters for Life", role: "Louisville, KY" },
-      { q: "A clear, biblical roadmap for couples and pastors alike. We're using it in pre-marital counseling and small groups.", by: "Pastor J. Edmonds", role: "Cross Point Church, Cincinnati" },
-      { q: "Greg writes the way he lives — plainly, faithfully, and with a deep love for the Word.", by: "Dr. K. Adeyemi", role: "International Director" },
     ];
     const ORDER_LINKS = [
       { t: "Paperback", d: "The Authority of Love, Second Edition. Order a copy for yourself, your marriage, or your whole small group — ships from Amazon.", href: "https://bit.ly/TAOL2edPB", cta: "Order on Amazon" },
@@ -57,9 +61,9 @@
       return (
         <PageShell header={
           <PageHeader
-            eyebrow="The Book · 2nd Edition"
-            title="The Authority of <em>Love</em>."
-            sub="A roadmap for every life and relationship — built on the priority relationship of Lordship to Christ. By Greg Williams."
+            eyebrow="The Book"
+            title="The Authority of Love, <em>Second Edition</em>."
+            sub="A roadmap for every life and relationship — built on the priority of the Love & Lordship of Christ. By Greg & Ami Williams."
             deco="A"
           />
         }>
@@ -67,20 +71,18 @@
             <div className="wrap">
               <div className="split-cols">
                 <div>
-                  <div className="bookprop">
-                    <div className="em">2nd Edition · Greg Williams</div>
-                    <h3>The<br/>Authority<br/>of Love</h3>
-                    <div className="by">Greg Williams</div>
+                  <div className="bookprop bookprop-real">
+                    <img src="../assets/images/book-cover-front.jpg" alt="The Authority of Love, Second Edition — front cover" />
                   </div>
                 </div>
                 <div>
                   <div className="eyebrow">About the book</div>
-                  <h2>One foundation. <em>Nine</em> chapters. A whole life reframed.</h2>
+                  <h2>One foundation. 8 sections. Your life and relationships <em>transformed</em>.</h2>
                   <p>
-                    Drawn from twenty years of teaching couples, families, and churches across the world, <em>The Authority of Love</em> lays the biblical foundation under everything Love &amp; Lordship does — and gives the reader a practical, week-by-week path to live it.
+                    Drawn from 30+ years of teaching and discipling men, couples, families, and churches around the world, <em>The Authority of Love</em> lays the biblical foundation for everything Love &amp; Lordship does — and gives the reader a practical, Biblical path to live it.
                   </p>
                   <p>
-                    The second edition refines the original throughout, with updated study questions for individual reading, pre-marital counseling, and small-group discussion. A separate companion workbook is available for deeper group study.
+                    The second edition refines the original throughout, with updated study questions for individual reflection, pre-marital, marriage, and small-group discussion. A separate companion workbook is also available for individual and group study.
                   </p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 10, margin: "28px 0 12px" }}>
                     <a className="btn btn-give" href="#order">
@@ -91,13 +93,6 @@
                     </a>
                     <a className="btn btn-ghost" href="#preview">Watch the book intro</a>
                   </div>
-                  <div style={{ display: "flex", gap: 16, fontSize: 13, color: "var(--ink-mute)", flexWrap: "wrap", marginTop: 6 }}>
-                    <span>Paperback · 288 pages</span>
-                    <span>·</span>
-                    <span>Kindle edition available</span>
-                    <span>·</span>
-                    <span>ISBN 978-1-7362393-5-3</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -107,6 +102,7 @@
             <div className="wrap">
               <div className="eyebrow">Table of Contents</div>
               <h2>What you'll <em>walk through</em>.</h2>
+              <p style={{ color: "var(--ink-mute)", fontSize: 14, marginTop: 8 }}>Section titles and page numbers will be added from the printed second edition.</p>
               <div className="toc" style={{ marginTop: 28 }}>
                 {CHAPTERS.map(c => (
                   <div className="toc-row" key={c.n}>
@@ -123,9 +119,9 @@
             <div className="wrap">
               <div className="eyebrow">First look</div>
               <h2>Watch the <em>introduction</em>.</h2>
-              <p>Before you buy, watch a short video summary of <em>The Authority of Love</em> — the heart of the book, who it's for, and how to use it in your marriage, small group, or church.</p>
+              <p>Before you buy, watch a short video introduction to <em>The Authority of Love</em> — the heart of the book, who it's for, and how to use it in your marriage, small group, or church.</p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", marginTop: 18 }}>
-                <a className="btn btn-primary" href="https://vimeo.com/537969983" target="_blank" rel="noopener noreferrer">
+                <a className="btn btn-primary" href="https://www.youtube.com/watch?v=fry-GUJbcgA&t=3s" target="_blank" rel="noopener noreferrer">
                   Watch the book introduction
                 </a>
                 <a className="btn-link" href="#order">Where to order the book <span className="arr">→</span></a>
@@ -154,7 +150,7 @@
               <div className="eyebrow">Order</div>
               <h2>Where to <em>get the book</em>.</h2>
               <p>
-                The Authority of Love (Second Edition) and its companion workbook are available
+                The Authority of Love, Second Edition and its companion workbook are available
                 through Amazon — order a single copy or as many as your marriage, small group,
                 church, or partner ministry needs.
               </p>
@@ -178,8 +174,8 @@
               <div className="form-card" style={{ marginTop: 24 }}>
                 <h3 style={{ marginTop: 0 }}>Prefer to order by mail?</h3>
                 <p style={{ marginBottom: 0 }}>
-                  Send a check to <strong>The Family Foundation, PO Box 911111, Lexington, KY
-                  40591-1111</strong>. Note <em>"TAOL"</em> on the memo line and include your
+                  Send a check to <strong>Love &amp; Lordship, 324 Timothy Drive, Nicholasville,
+                  KY 40356</strong>. Note <em>"TAOL"</em> on the memo line and include your
                   return address, and we'll ship your copy.
                 </p>
               </div>
@@ -187,11 +183,11 @@
           </section>
 
           <CTAStrip
-            eyebrow="Use it in your group"
-            title="A companion <em>workbook</em> for groups."
-            body="The Authority of Love Workbook — Living in God's Covenant Design — adds reflection and discussion material for personal study and small-group facilitation."
-            primary={<a className="btn btn-give" href="https://bit.ly/TAOLWorkbook" target="_blank" rel="noopener noreferrer">Order the workbook</a>}
-            secondary={<a className="btn btn-ghost" href="contact.html" style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>Ask a question</a>}
+            eyebrow="Have a question?"
+            title="Ask us <em>anything</em>."
+            body="Bulk pricing, ministry partnerships, mail orders, study-guide tracks — happy to help."
+            primary={<a className="btn btn-give" href="contact.html">Ask a question</a>}
+            secondary={<a className="btn btn-ghost" href="https://bit.ly/TAOLWorkbook" target="_blank" rel="noopener noreferrer" style={{ borderColor: "oklch(0.4 0.02 60)", color: "oklch(0.92 0.02 70)" }}>Order the workbook</a>}
           />
         </PageShell>
       );

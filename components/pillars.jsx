@@ -1,99 +1,107 @@
 /* global React */
+// Watch / Listen / Read for each priority open the on-site library, filtered
+// to that priority and format (data/library.js). The "Explore on the app"
+// button goes to the app section, which carries the store links + access code
+// (connectapp. has no public deep links into a channel).
+const LIB_BASE = "pages/library.html";
+const libChannel = (key, fmt) => `${LIB_BASE}?pillar=${key}${fmt ? `&fmt=${fmt}` : ""}`;
+
 const PILLAR_DATA = [
   {
     key: "lordship",
-    name: "Lordship",
+    name: "Love & Lordship",
+    short: "Lordship",
     n: "01",
     verse: "Colossians 1:18",
-    title: "Christ first — in <em>every</em> corner of life.",
-    body: "The foundation under everything we teach. Before marriage advice, before parenting strategy, before relational tools, there is one priority relationship: the Lordship of Jesus. Get this right and the rest follows.",
-    visual: "photo · open Bible, morning light",
-    visualImg: "assets/images/open-bible-morning.png",
+    title: "Christ first — in <em>every</em> part of life.",
+    body: "The foundation under everything we teach. Before marriage advice, before parenting strategy, before relational tools, before church servant-leadership, before engaging culture — there is one priority: the Love & Lordship of Jesus Christ. Get this right and the rest follows.",
+    visual: "Christ's Love & Lordship is the priority for all of life",
+    visualImg: "assets/images/daddy-studying-bible.jpg",
     stat: "Foundational",
-    h: "Christ as the priority relationship of life.",
-    resources: [
-      { type: "Sermon series", title: "The Authority of Love — Part I" },
-      { type: "Workbook", title: "Surrender & Sanctification" },
-      { type: "Podcast", title: "Lordship begins in the small things" },
-      { type: "Reading plan", title: "21 days of Lordship" },
-    ],
+    h: "Christ's Love & Lordship is the priority for all of life.",
   },
   {
     key: "discipleship",
     name: "Discipleship",
+    short: "Discipleship",
     n: "02",
-    verse: "Matthew 28:19",
+    verse: "Matthew 28:19; Luke 14:25–35",
     title: "Disciples who <em>make</em> disciples.",
     body: "We don't measure success by audiences reached. We measure it by lives changed who, in turn, change other lives. Practical, biblical discipleship that multiplies — exactly what the church needs in this generation.",
-    visual: "photo · mentor + mentee, coffee, talking",
+    visual: "Equipping disciples to disciple others",
     visualImg: "assets/images/mentor-mentee-coffee.png",
     stat: "Multiplying",
     h: "Equipping disciples to disciple others.",
-    resources: [
-      { type: "Curriculum", title: "Authority of Love for small groups" },
-      { type: "Conference", title: "Train the trainer · Spring '26" },
-      { type: "Article", title: "Why programs aren't discipleship" },
-      { type: "Mentor guide", title: "Walking with the next one" },
-    ],
   },
   {
     key: "relationship",
     name: "Relationship",
+    short: "Relationship",
     n: "03",
-    verse: "1 John 4:19",
+    verse: "1 John 4:19; Mark 12:31",
     title: "Loved <em>first</em>. Loving <em>back</em>.",
     body: "Every relationship in our lives — with God, with family, with neighbors, with the broken — flows from being loved first by Him. We help you live that order rightly, day after ordinary day.",
-    visual: "photo · two friends praying outdoors",
+    visual: "Love that flows from God, into us, into others",
     visualImg: "assets/images/friends-praying-outdoors.png",
-    stat: "Vertical & Horizontal",
+    stat: "Vertical & horizontal",
     h: "Love that flows from God, into us, into others.",
-    resources: [
-      { type: "Devotional", title: "Loved · A 30-day journey" },
-      { type: "Talk", title: "Purity & the heart's true longing" },
-      { type: "Article", title: "Forgiveness isn't a feeling" },
-      { type: "Workshop", title: "Restoring broken friendships" },
-    ],
   },
   {
     key: "marriage",
     name: "Marriage",
+    short: "Marriage",
     n: "04",
-    verse: "Ephesians 5:25",
-    title: "A covenant <em>worth</em> a lifetime.",
-    body: "Marriage isn't a contract you can break when it gets hard — it's a covenant that becomes a portrait of Christ and the church. Greg & Ami have walked this road for 34 years and counting, and the path is open to you.",
-    visual: "photo · hands clasped, wedding bands",
+    verse: "Ephesians 5:21–33; Hebrews 13:4",
+    title: "A lifetime worthy <em>covenant</em>.",
+    body: "Marriage isn't a contract you can break when it gets hard — it's a covenant that becomes a portrait of Christ and the church. Greg and Ami have walked this road in the Love & Lordship of Christ for 35 years by God's grace, and this ministry can help you do the same.",
+    visual: "35 years, still going strong",
     visualImg: "assets/images/hands-wedding-bands.png",
-    stat: "34 years, still going",
+    stat: "35 years, still going strong",
     h: "Marriage as covenant, not contract.",
-    resources: [
-      { type: "Marriage event", title: "Authority of Love · Lexington" },
-      { type: "Series", title: "Marriage Unleashed (WTVQ archives)" },
-      { type: "Premarital", title: "Six conversations before 'I do'" },
-      { type: "Counseling guide", title: "When the seasons shift" },
-    ],
+    extra: { label: "Premarital & marriage mentoring", note: "Greg is a certified Prepare/Enrich facilitator.", href: "https://www.prepare-enrich.com/" },
   },
   {
     key: "family",
     name: "Family",
+    short: "Family",
     n: "05",
-    verse: "Deuteronomy 6:7",
-    title: "A home that <em>raises</em> disciples.",
-    body: "From toddlers to teenagers to adult children — your home is the first and most important mission field you'll ever steward. We resource parents, grandparents, and single-parent families with practical, biblical roadmaps.",
-    visual: "photo · multigenerational dinner table",
+    verse: "Deuteronomy 6:4–9; Proverbs 22:6; Ephesians 6:4",
+    title: "Home — the place where <em>disciples</em> are raised.",
+    body: "From toddlers to teenagers to adult children — your home is the first and most important mission field you'll ever steward. We resource parents, grandparents, and single-parent families with practical, biblical discipleship.",
+    visual: "The home is the first and priority place disciples are made",
     visualImg: "assets/images/multigen-dinner-table.png",
     stat: "Three generations",
-    h: "The home as the first place disciples are made.",
-    resources: [
-      { type: "Course", title: "Disciple-making parents" },
-      { type: "Family worship", title: "30 evenings around the table" },
-      { type: "Article", title: "Grandparenting on purpose" },
-      { type: "Podcast", title: "Conversations every teenager needs" },
-    ],
+    h: "The home is the first and priority place disciples are made.",
+  },
+  {
+    key: "church",
+    name: "Church",
+    short: "Church",
+    n: "06",
+    verse: "Ephesians 4:11–16; 1 Peter 5:1–4",
+    title: "The bride — <em>led</em> by servant-shepherds.",
+    body: "The local church is Christ's chosen vehicle for discipleship — and her leaders are called to serve, shepherd, and equip the saints for works of ministry. We come alongside pastors, elders, and lay leaders to strengthen the church in love and Lordship.",
+    visual: "Servant-leadership in the local church",
+    visualImg: "assets/images/pulpit.png",
+    stat: "For pastors, elders & lay leaders",
+    h: "Servant-leadership in the local church.",
+  },
+  {
+    key: "culture",
+    name: "Culture",
+    short: "Culture",
+    n: "07",
+    verse: "Matthew 5:13–16; Romans 12:1–2",
+    title: "Salt &amp; light <em>where</em> we live.",
+    body: "Christians aren't called to retreat from culture or be conformed to it — we're called to engage it as ambassadors of the Kingdom. The Love & Lordship of Christ shapes how we live, work, vote, raise families, and love our neighbors in a watching world.",
+    visual: "Engaging culture as Kingdom ambassadors",
+    visualImg: "assets/images/keynote-stage.png",
+    stat: "Ambassadors of the Kingdom",
+    h: "Engaging culture as Kingdom ambassadors.",
   },
 ];
 
 function PillarIcon({ which }) {
-  // Tiny abstract glyphs, NOT detailed illustration
   const common = { width: 16, height: 16, viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round" };
   switch (which) {
     case "lordship":     return <svg {...common}><path d="M8 1v14M3 6h10"/></svg>;
@@ -101,18 +109,10 @@ function PillarIcon({ which }) {
     case "relationship": return <svg {...common}><circle cx="5" cy="8" r="3"/><circle cx="11" cy="8" r="3"/></svg>;
     case "marriage":     return <svg {...common}><path d="M8 13s-5-3-5-7a3 3 0 0 1 5-2 3 3 0 0 1 5 2c0 4-5 7-5 7z"/></svg>;
     case "family":       return <svg {...common}><path d="M2 14V8l6-5 6 5v6"/><path d="M6 14v-4h4v4"/></svg>;
+    case "church":       return <svg {...common}><path d="M8 1v3M6 4h4M3 7v7h10V7L8 4 3 7z"/><path d="M7 14v-3h2v3"/></svg>;
+    case "culture":      return <svg {...common}><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 3 4 3 6s-1 4-3 6c-2-2-3-4-3-6s1-4 3-6z"/></svg>;
     default: return null;
   }
-}
-
-function ResourceIcon({ type }) {
-  const t = type.toLowerCase();
-  const s = { width: 16, height: 16, viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round" };
-  if (t.includes("pod") || t.includes("talk")) return <svg {...s}><path d="M8 2v8M8 13v1M5 8a3 3 0 0 0 6 0V5a3 3 0 0 0-6 0z"/></svg>;
-  if (t.includes("read") || t.includes("article") || t.includes("devot")) return <svg {...s}><path d="M3 3h5l1 1v9H3zM13 3H8l-1 1v9h6z"/></svg>;
-  if (t.includes("event") || t.includes("conf") || t.includes("workshop")) return <svg {...s}><rect x="2.5" y="3.5" width="11" height="10" rx="1"/><path d="M2.5 6h11M6 2v3M10 2v3"/></svg>;
-  if (t.includes("curr") || t.includes("course") || t.includes("guide") || t.includes("workbook")) return <svg {...s}><path d="M3 2h10v12H3z M3 2v12 M7 2v12"/></svg>;
-  return <svg {...s}><circle cx="8" cy="8" r="5"/></svg>;
 }
 
 function Pillars({ layout = "tabs" }) {
@@ -124,15 +124,15 @@ function Pillars({ layout = "tabs" }) {
       <div className="wrap">
         <div className="pillars-head reveal">
           <div>
-            <div className="eyebrow">Our five priorities</div>
-            <h2>One foundation. <em>Five</em> places where it shows up.</h2>
+            <div className="eyebrow">Our foundation &amp; priorities</div>
+            <h2>One foundation. <em>Six</em> places where it shows up.</h2>
           </div>
           <div className="right">
             <div className="pillar-arrows only-desktop">
-              <button className="pillar-arrow" aria-label="Previous pillar" onClick={() => setIdx((idx - 1 + PILLAR_DATA.length) % PILLAR_DATA.length)}>
+              <button className="pillar-arrow" aria-label="Previous priority" onClick={() => setIdx((idx - 1 + PILLAR_DATA.length) % PILLAR_DATA.length)}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
-              <button className="pillar-arrow" aria-label="Next pillar" onClick={() => setIdx((idx + 1) % PILLAR_DATA.length)}>
+              <button className="pillar-arrow" aria-label="Next priority" onClick={() => setIdx((idx + 1) % PILLAR_DATA.length)}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
             </div>
@@ -149,7 +149,7 @@ function Pillars({ layout = "tabs" }) {
               onClick={() => setIdx(i)}
             >
               <PillarIcon which={p.key} />
-              <span>{p.n} · {p.name}</span>
+              <span>{p.n} · {p.short}</span>
             </button>
           ))}
         </div>
@@ -160,21 +160,45 @@ function Pillars({ layout = "tabs" }) {
               <div className="verse">{data.verse}</div>
               <h3 dangerouslySetInnerHTML={{ __html: data.title }} />
               <p className="body">{data.body}</p>
-              <div className="pillar-resources">
-                {data.resources.map((r) => (
-                  <a className="pillar-resource" key={r.title} href="pages/library.html">
-                    <span className="res-icn"><ResourceIcon type={r.type} /></span>
-                    <span className="res-body">
-                      <span className="res-type">{r.type}</span>
-                      <span className="res-title">{r.title}</span>
-                    </span>
-                  </a>
-                ))}
+              <div className="pillar-channels">
+                <a className="pillar-channel" href={libChannel(data.key, "Watch")}>
+                  <span className="ch-icn" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 3l8 5-8 5z" fill="currentColor"/></svg>
+                  </span>
+                  <span className="ch-body">
+                    <span className="ch-type">Watch</span>
+                    <span className="ch-title">{data.name} — videos</span>
+                  </span>
+                </a>
+                <a className="pillar-channel" href={libChannel(data.key, "Listen")}>
+                  <span className="ch-icn" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"><path d="M8 2v8M8 13v1M5 8a3 3 0 0 0 6 0V5a3 3 0 0 0-6 0z"/></svg>
+                  </span>
+                  <span className="ch-body">
+                    <span className="ch-type">Listen</span>
+                    <span className="ch-title">Podcast &amp; radio episodes</span>
+                  </span>
+                </a>
+                <a className="pillar-channel" href={libChannel(data.key, "Read")}>
+                  <span className="ch-icn" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3h5l1 1v9H3zM13 3H8l-1 1v9h6z"/></svg>
+                  </span>
+                  <span className="ch-body">
+                    <span className="ch-type">Read</span>
+                    <span className="ch-title">Articles &amp; devotionals</span>
+                  </span>
+                </a>
               </div>
+              {data.extra && (
+                <a className="pillar-extra" href={data.extra.href} target="_blank" rel="noopener noreferrer">
+                  <span className="lbl">{data.extra.label}</span>
+                  <span className="note">{data.extra.note} <span className="arr">→</span></span>
+                </a>
+              )}
             </div>
             <div className="actions">
-              <a className="btn btn-primary" href="pages/library.html">Explore {data.name.toLowerCase()}</a>
-              <a className="btn-link" href="#newsletter">Get the {data.name.toLowerCase()} reading plan <span className="arr">→</span></a>
+              <a className="btn btn-primary" href="#app">Explore on the L&amp;L App</a>
+              <a className="btn-link" href="#app">Learn about the app <span className="arr">→</span></a>
             </div>
           </div>
 
@@ -200,7 +224,7 @@ function Pillars({ layout = "tabs" }) {
                 <span className="lbl">{p.visual}</span>
               </div>
               <div className="pillar-card-meta">
-                <div className="n">Pillar {p.n}</div>
+                <div className="n">Priority {p.n}</div>
                 <h4>{p.name}</h4>
               </div>
             </div>
