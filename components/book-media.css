@@ -32,9 +32,9 @@
   aspect-ratio: auto;
   display: grid;
   grid-template-columns: 1.4fr 1fr;
-  gap: 18px;
+  gap: 22px;
   align-items: start;
-  max-width: 520px;
+  max-width: 600px;
 }
 .book-cover-back { transform: rotateY(8deg) translateY(28px); opacity: 0.92; }
 .book-cover-wrap:has(.book-cover-back):hover .book-cover-back { transform: rotateY(4deg) translateY(20px); }
@@ -123,13 +123,21 @@
   opacity: 0.7;
 }
 
-/* Real book cover image — overrides the faux book panels */
+/* Real book cover image — overrides the faux book panels.
+   The wrap is a grid item with auto margins, which sizes it to its content;
+   the covers are absolutely-positioned imgs (no intrinsic size), so without
+   an explicit width the whole column collapsed to the 18px gap and the reveal
+   never fired. Give the wrap its column and let aspect-ratio own the height. */
+.book-cover-wrap:has(.book-cover-real) { width: 100%; }
 .book-cover.book-cover-real {
   background: transparent;
   padding: 0;
   overflow: hidden;
-  aspect-ratio: 5/7;
+  height: auto;
+  aspect-ratio: 679 / 1000;
+  box-shadow: var(--shadow-3);
 }
+.book-cover.book-cover-real.book-cover-back { aspect-ratio: 612 / 792; }
 .book-cover.book-cover-real img {
   position: absolute;
   inset: 0;
