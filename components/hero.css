@@ -349,7 +349,16 @@
 
 @media (max-width: 920px) {
   .hero-grid { grid-template-columns: 1fr; }
+  /* A 1fr track is minmax(auto, 1fr): the copy's min-content width (one long
+     word of the display h1 + the quote) made the column wider than the
+     viewport and .hero's overflow:hidden clipped it. Let the column shrink. */
+  .hero-grid > * { min-width: 0; }
   .hero-stage { min-height: 460px; max-width: 520px; margin: 0 auto; }
   .hero-card.float-tl { left: 0; }
   .hero-deco.l { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: clamp(38px, 11.5vw, 48px); }
+  .hero blockquote, .hero-quote { max-width: 100%; }
 }
