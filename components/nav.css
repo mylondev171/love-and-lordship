@@ -168,6 +168,10 @@
 
 @media (max-width: 1020px) {
   .nav-links, .nav-search { display: none; }
+  /* Desktop mega-menus are never opened below this width, but while hidden
+     they still lay out at full width and added ~50px of horizontal scroll on
+     phones. The burger drawer replaces them here. */
+  .mega { display: none; }
   .nav-burger { display: inline-flex; }
   .nav-inner { grid-template-columns: auto 1fr auto; }
 }

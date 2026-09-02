@@ -317,3 +317,10 @@
 @media (max-width: 600px) {
   .media-grid { grid-template-columns: 1fr; }
 }
+
+/* Phone widths: the tab pill row was wider than the viewport and forced
+   horizontal scroll on the homepage. Stack it under the heading and let it wrap. */
+@media (max-width: 600px) {
+  .media-head { grid-template-columns: 1fr; align-items: start; }
+  .media-tabs { flex-wrap: wrap; width: fit-content; max-width: 100%; border-radius: var(--r-md); }
+}
