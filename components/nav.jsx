@@ -79,7 +79,7 @@ const NAV_ITEMS = [
         title: "Read",
         items: [
           { name: "The Authority of Love, Second Edition", href: "pages/the-authority-of-love.html" },
-          { name: "Articles & devotionals", href: "pages/library.html?fmt=Read" },
+          { name: "Articles & devotionals", href: "pages/blog.html" },
           { name: "The “One Another” series", href: "pages/library.html?fmt=Read&series=One%20Another" },
         ],
       },

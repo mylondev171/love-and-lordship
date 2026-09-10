@@ -361,4 +361,9 @@
 @media (max-width: 480px) {
   .hero h1 { font-size: clamp(38px, 11.5vw, 48px); }
   .hero blockquote, .hero-quote { max-width: 100%; }
+  /* min-height + aspect-ratio 4/5 forced the stage to 368px wide, which is
+     wider than the column on a phone, so .hero's overflow:hidden sliced the
+     right-hand card in half. Let the aspect ratio set the height instead. */
+  .hero-stage { min-height: 0; width: 100%; }
+  .hero-card.float-br { right: 2%; width: 42%; }
 }

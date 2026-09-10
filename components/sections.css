@@ -26,20 +26,6 @@
   pointer-events: none;
   z-index: 2;
 }
-.story-figure .caption {
-  position: absolute;
-  bottom: 28px; left: 28px; right: 28px;
-  color: var(--bg);
-  mix-blend-mode: difference;
-  z-index: 3;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
 
 .story-copy h2 {
   font-family: var(--font-display);

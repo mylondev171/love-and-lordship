@@ -1,0 +1,169 @@
+/* Blog article pages — long-form prose rehosted from the retired WordPress site.
+   Content markup is whatever WordPress produced (p / strong / em / ol / li /
+   blockquote), so this styles bare tags inside .article-body rather than
+   relying on classes we do not control. */
+
+.article-wrap {
+  /* Sits inside .wrap, so it inherits the page gutter and the shared max
+     width. Left-aligned rather than centred so the prose column starts on the
+     same axis as the <h1> above it. */
+  max-width: 720px;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 18px;
+}
+.article-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--line); }
+.article-pill {
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--wine);
+  text-decoration: none;
+}
+.article-pill:hover { border-color: var(--wine); }
+
+.article-body {
+  padding: clamp(32px, 5vw, 56px) 0 clamp(48px, 7vw, 80px);
+  font-size: 18px;
+  line-height: 1.72;
+  color: var(--ink-soft);
+}
+.article-body > *:first-child { margin-top: 0; }
+.article-body p { margin: 0 0 1.35em; }
+.article-body strong { color: var(--ink); font-weight: 600; }
+.article-body em { font-style: italic; }
+.article-body a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+.article-body a:hover { color: var(--wine-deep); }
+.article-body h2, .article-body h3, .article-body h5 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 1.8em 0 0.6em;
+}
+.article-body h2 { font-size: clamp(26px, 3.4vw, 34px); }
+.article-body h3 { font-size: clamp(22px, 2.8vw, 27px); }
+.article-body h5 { font-size: 19px; }
+.article-body ol, .article-body ul { margin: 0 0 1.35em; padding-left: 1.4em; }
+.article-body li { margin: 0 0 0.5em; }
+.article-body blockquote {
+  margin: 1.6em 0;
+  padding: 4px 0 4px 22px;
+  border-left: 2px solid var(--wine);
+  font-family: var(--font-serif, var(--font-display));
+  font-style: italic;
+  color: var(--ink);
+}
+.article-body img { max-width: 100%; height: auto; border-radius: var(--r-md); margin: 1.4em 0; }
+.article-body iframe { max-width: 100%; border: 0; border-radius: var(--r-md); }
+/* Old posts embed YouTube at fixed pixel sizes; keep them inside the column. */
+.article-body iframe[width] { width: 100%; aspect-ratio: 16 / 9; height: auto; }
+.article-body sup { font-size: 0.7em; }
+.article-body hr { border: 0; border-top: 1px solid var(--line-soft); margin: 2.4em 0; }
+
+/* Prev / next */
+.article-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  border-top: 1px solid var(--line-soft);
+  padding: 32px 0 0;
+  margin-bottom: clamp(48px, 7vw, 80px);
+}
+.article-nav a {
+  display: block;
+  padding: 20px 22px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.article-nav a:hover { border-color: var(--wine); transform: translateY(-2px); }
+.article-nav .k {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.article-nav .t {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.article-nav .next { text-align: right; }
+.article-nav .spacer { border: 0; }
+
+@media (max-width: 620px) {
+  .article-body { font-size: 17px; }
+  .article-nav { grid-template-columns: 1fr; }
+  .article-nav .next { text-align: left; }
+}
+
+/* ---------------------------------------------------- articles index page ---
+   Reuses .lib-controls / .lib-search / .chip / .lib-count / .lib-more from
+   pages.css; only the pieces the library list doesn't already have live here. */
+.lib-section { padding: clamp(40px, 6vw, 64px) 0 clamp(64px, 9vw, 110px); }
+.lib-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.lib-empty { padding: 48px 0; color: var(--ink-mute); font-size: 16px; }
+
+.art-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.art-list > li { border-bottom: 1px solid var(--line); }
+.art-list a {
+  display: block;
+  padding: 26px 0;
+  text-decoration: none;
+  transition: padding-left 0.3s var(--ease);
+}
+.art-list a:hover { padding-left: 14px; }
+.art-when {
+  display: flex; gap: 14px; align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.art-list h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(21px, 2.6vw, 27px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 10px 0 8px;
+}
+.art-list a:hover h3 { color: var(--wine); }
+.art-list p {
+  margin: 0;
+  max-width: 68ch;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.art-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.art-tags span {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--wine);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+@media (max-width: 620px) {
+  .art-list a:hover { padding-left: 0; }
+  .art-when { gap: 10px; font-size: 10px; }
+}

@@ -142,8 +142,8 @@ function Hero({ onDonate }) {
             </div>
             <div className="hero-card main">
               <div className="imgph" style={{ width: "100%", height: "100%" }}>
-                <img src="assets/images/teaching.png" alt="" />
-                <span className="lbl">photo · greg teaching</span>
+                <img src="assets/images/hero-teaching-osh.png" alt="" />
+                <span className="lbl">photo · teaching, from the platform</span>
               </div>
             </div>
             <div className="hero-card float-br">

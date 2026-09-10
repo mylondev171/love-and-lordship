@@ -6,14 +6,10 @@ function Story() {
         <div className="story-grid">
           <div className="story-figure reveal">
             <div className="imgph dark">
-              <img src="assets/images/greg-williams.jpg" alt="Greg Williams" />
+              <img src="assets/images/greg-williams@2x.jpg" alt="Greg Williams" />
               <span className="lbl">portrait · greg williams</span>
             </div>
             <span className="frame" aria-hidden="true"></span>
-            <div className="caption">
-              <span>Greg &amp; Ami Williams</span>
-              <span>35 yrs · 3 kids · 3 grandkids &amp; counting</span>
-            </div>
           </div>
 
           <div className="story-copy reveal-stagger">

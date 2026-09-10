@@ -295,7 +295,7 @@ function Footer({ onDonate, homeBase = "" }) {
             <h6>Media</h6>
             <ul>
               <li><a href={link("pages/library.html")}>Watch</a></li>
-              <li><a href={link("pages/library.html")}>Read</a></li>
+              <li><a href={link("pages/blog.html")}>Read</a></li>
               <li><a href={link("pages/library.html")}>Listen</a></li>
               <li><a href={link("pages/the-authority-of-love.html")}>The book</a></li>
             </ul>
