@@ -136,19 +136,19 @@ function Hero({ onDonate }) {
           <div className="hero-stage" ref={stageRef} aria-hidden="true">
             <div className="hero-card float-tl">
               <div className="imgph" style={{ width: "100%", height: "100%" }}>
-                <img src="assets/images/couple-candid.png" alt="" />
+                <img src="assets/images/couple-candid.webp" alt="" />
                 <span className="lbl">photo · couple, candid</span>
               </div>
             </div>
             <div className="hero-card main">
               <div className="imgph" style={{ width: "100%", height: "100%" }}>
-                <img src="assets/images/hero-teaching-osh.png" alt="" />
+                <img src="assets/images/hero-teaching-osh.webp" alt="" />
                 <span className="lbl">photo · teaching, from the platform</span>
               </div>
             </div>
             <div className="hero-card float-br">
               <div className="imgph" style={{ width: "100%", height: "100%" }}>
-                <img src="assets/images/family-gathered.png" alt="" />
+                <img src="assets/images/family-gathered.webp" alt="" />
                 <span className="lbl">photo · family gathered</span>
               </div>
             </div>

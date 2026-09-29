@@ -6,11 +6,15 @@ adding pages or rebuilding the articles:
 
     python tools/build_sitemap.py
 """
-import glob, json, os, datetime
+import glob, json, os, re, datetime
 
 PROJ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://loveandlordship.com"
-TODAY = datetime.date.today().isoformat()
+# Pages change when the library does, so use its build date rather than today
+# (keeps the sitemap stable between runs that find no new content).
+_lib = open(os.path.join(PROJ, "data", "library.js"), encoding="utf8").read()
+_m = re.search(r'LL_LIBRARY_BUILT="([\d-]+)"', _lib)
+TODAY = _m.group(1) if _m else datetime.date.today().isoformat()
 
 urls = [(f"{SITE}/", TODAY, "1.0")]
 for p in sorted(glob.glob(os.path.join(PROJ, "pages", "*.html"))):

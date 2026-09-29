@@ -63,8 +63,8 @@ function Book({ onDonate }) {
 // tools/build_featured.py. Watch cards use the YouTube thumbnail; Listen and
 // Read have no artwork of their own, so they rotate through the site imagery.
 const MEDIA_ART = {
-  listen: ["assets/images/microphone-studio.png", "assets/images/podcast-cover.png", "assets/images/radio-dial.png", "assets/images/marriage-resilient.png", "assets/images/waveform.png"],
-  read: ["assets/images/open-journal.png", "assets/images/notebook.png", "assets/images/two-coffee-cups.png", "assets/images/bible-and-pen.png", "assets/images/open-bible-morning.png"],
+  listen: ["assets/images/microphone-studio.webp", "assets/images/podcast-cover.webp", "assets/images/radio-dial.webp", "assets/images/marriage-resilient.webp", "assets/images/waveform.webp"],
+  read: ["assets/images/open-journal.webp", "assets/images/notebook.webp", "assets/images/two-coffee-cups.webp", "assets/images/bible-and-pen.webp", "assets/images/open-bible-morning.webp"],
 };
 const MEDIA_LIB = { watch: "Watch", listen: "Listen", read: "Read" };
 

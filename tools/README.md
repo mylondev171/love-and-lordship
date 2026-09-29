@@ -1,24 +1,45 @@
-# Library build tools
+# Site tools
 
-`data/library.js` (the catalog behind `pages/library.html` and the pillar
-Watch / Listen / Read links) is generated, not hand-edited. To refresh it:
+## Daily content refresh (automatic)
+
+n8n (Hostinger, workflow "Love & Lordship - Daily Content Refresh") triggers
+the GitHub Action `.github/workflows/refresh-content.yml` every morning. The
+Action runs:
 
 ```
-cd tools
-python pull_wp.py      # articles  -> wp_posts.json      (loveandlordship.com WordPress REST API)
-python pull_pb.py      # podcasts  -> podbean_all.json   (loveandlordship.podbean.com, all pages)
-python pull_yt.py      # videos    -> youtube.json       (YouTube channel UCY9DJ9AIFc3eXXvmmWn-6AQ, no API key)
-python build_library.py   # merges, classifies into the 7 priorities, writes ../data/library.js
-cd ..
-python tools/build_articles.py   # repoints Read links to the rehosted /blog/ pages
+python tools/refresh.py
+```
+
+which pulls YouTube, Podbean and the old WordPress site, rebuilds the library,
+articles, homepage media and sitemap, and commits only if there is new content.
+The push to `main` redeploys Vercel. Run the same command locally to refresh by hand.
+
+`tools/podbean_all.json`, `youtube.json`, `wp_posts.json` and `wp_archive.json`
+are the committed **snapshots**. A pull only replaces its snapshot if it
+succeeds and returns at least 90% as many items, so when loveandlordship.com
+(WordPress) is retired its pulls just fail and the 332 articles stay.
+
+The individual steps, if you need them (`build_library.py` runs from `tools/`):
+
+```
+cd tools && python build_library.py && cd ..   # classify into the 7 priorities -> data/library.js
+python tools/build_articles.py   # rehosted blog/*.html, data/articles.js, repoints Read links
 python tools/build_featured.py   # newest 5 Watch/Listen/Read -> data/featured.js (homepage Media section)
 python tools/build_sitemap.py    # sitemap.xml + robots.txt
 ```
 
-The pull_*.json files are scratch; delete them after building.
+Only the Python standard library is needed. `build_library.py` uses today's
+date (override with `LL_TODAY=YYYY-MM-DD`) so "future" radio air-dates sort right.
 
-Only the Python standard library is needed. `build_library.py` sets `TODAY`
-near the top; bump it when re-running so "future" radio air-dates sort right.
+## Other tools
+
+- `build_redirects.py` writes the 301s in `vercel.json` for every URL the old
+  WordPress site exposed, including its 327 `/video_post/` and `/listen/` pages
+  (list in `old_site_media_pages.json`).
+- `build-site.mjs` is the Vercel build (`npm run build`): copies the site to
+  `dist/` and precompiles the in-browser JSX so visitors don't download Babel.
+  Local preview still uses the source files and compiles in the browser.
+- EmailJS + Mailjet form setup: `emailjs/SETUP.md`.
 
 Classification is keyword-based (see `LEX` and `SERIES_PRIOR`). Every item
 gets one to three priorities; anything with no signal falls back to

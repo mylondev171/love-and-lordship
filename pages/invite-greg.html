@@ -42,6 +42,8 @@
   <script type="text/babel" src="../components/nav.jsx"></script>
   <script type="text/babel" src="../components/footer-events-app.jsx"></script>
   <script type="text/babel" src="../components/page-shell.jsx"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+  <script src="../components/emailjs-config.js"></script>
 
   <script type="text/babel">
     const TOPICS = [
@@ -57,7 +59,7 @@
     ];
 
     function InvitePage() {
-      const [sent, setSent] = React.useState(false);
+      const { status, onSubmit, reset } = useFormSender("Speaking request", (f) => `Speaking request: ${f.querySelector(".field input").value || "website"}`);
       return (
         <PageShell header={
           <PageHeader
@@ -72,10 +74,11 @@
               <div className="split-cols right">
                 <div>
                   <div className="form-card">
-                    {sent ? (
-                      <EmailSent title="Almost there." onBack={() => setSent(false)} />
+                    {status === "sent" || status === "mailto" ? (
+                      <FormResult status={status} title="Thanks for the invitation." onBack={reset} />
                     ) : (
-                      <form onSubmit={(e) => { e.preventDefault(); emailForm(e.currentTarget, 'Speaking request for Greg Williams'); setSent(true); }}>
+                      <form onSubmit={onSubmit}>
+                        <Honeypot />
                         <div className="eyebrow" style={{ marginBottom: 14 }}>Speaking request</div>
                         <div className="form-row">
                           <div className="field"><label>Your name</label><input type="text" required /></div>
@@ -121,7 +124,8 @@
                         <div className="form-row full">
                           <div className="field"><label>Tell us about your event</label><textarea placeholder="Audience, hopes, context, what's prompting the invitation…" rows="5"></textarea></div>
                         </div>
-                        <button className="btn btn-give" type="submit" style={{ width: "100%", justifyContent: "center", marginTop: 8 }}>Send speaking request</button>
+                        <button className="btn btn-give" type="submit" style={{ width: "100%", justifyContent: "center", marginTop: 8 }} disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send speaking request"}</button>
+                        {status === "error" && <FormError />}
                         <p style={{ marginTop: 14, fontSize: 12.5, color: "var(--ink-mute)", textAlign: "center", margin: "14px 0 0" }}>Greg's calendar fills 9–12 months out. The sooner, the better.</p>
                       </form>
                     )}

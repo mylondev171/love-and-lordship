@@ -1,0 +1,53 @@
+<!--
+  ============================================================================
+  LOVE & LORDSHIP — Website form notification (MAIN template body)
+  ----------------------------------------------------------------------------
+  Goes in:   EmailJS → Email Templates → "L&L website form" → Content (Code editor)
+  Sent TO:   loveandlordship@gmail.com
+  Reply-To:  {{reply_to}}
+  Subject:   {{subject}}
+
+  Used by BOTH forms (Contact and Invite Greg). {{form_type}} says which.
+  The visitor's copy lives in template-auto-reply.html and goes in the
+  AUTO-REPLY tab of THIS SAME template.
+
+  Variables sent by components/page-shell.jsx:
+    {{form_type}} {{subject}} {{from_name}} {{reply_to}} {{phone}}
+    {{message}} {{details_text}} {{{details_html}}} {{page_url}}
+  {{{details_html}}} uses TRIPLE braces on purpose: it's a pre-escaped table
+  of every field the visitor filled in.
+  ============================================================================
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>{{subject}}</title>
+</head>
+<body style="margin:0;padding:0;background:#eef1f6;font-family:Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef1f6;padding:24px 12px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #d9dee8;">
+        <tr><td style="background:#234090;padding:22px 28px;">
+          <div style="color:#d2bb6a;font-size:11px;letter-spacing:2px;text-transform:uppercase;">Website · {{form_type}}</div>
+          <div style="color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.25;margin-top:6px;">{{from_name}}</div>
+        </td></tr>
+        <tr><td style="padding:24px 28px 8px;">
+          <p style="margin:0 0 16px;color:#374151;font-size:15px;line-height:1.55;">
+            A new {{form_type}} came in through loveandlordship.com. Reply to this email to answer {{from_name}} directly.
+          </p>
+          <table role="presentation" cellpadding="0" cellspacing="0" style="font-size:14px;line-height:1.5;width:100%;">
+            {{{details_html}}}
+          </table>
+        </td></tr>
+        <tr><td style="padding:16px 28px 26px;">
+          <a href="mailto:{{reply_to}}" style="display:inline-block;background:#234090;color:#ffffff;text-decoration:none;padding:11px 20px;border-radius:999px;font-size:14px;">Reply to {{from_name}}</a>
+          <div style="margin-top:18px;color:#9ca3af;font-size:12px;">Sent from {{page_url}}</div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!--
+  ============================================================================
+  LOVE & LORDSHIP — Visitor auto-reply
+  ----------------------------------------------------------------------------
+  Goes in:   EmailJS → the SAME "L&L website form" template → Auto-Reply tab
+             (Code editor). Do not create a second template.
+  Sent TO:   {{reply_to}}
+  Reply-To:  loveandlordship@gmail.com
+  Subject:   We received your message, {{from_name}}
+
+  The form's thank-you screen says "a copy has been sent to your inbox", so
+  keep this auto-reply turned on.
+  ============================================================================
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>We received your message</title>
+</head>
+<body style="margin:0;padding:0;background:#eef1f6;font-family:Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef1f6;padding:24px 12px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #d9dee8;">
+        <tr><td style="background:#234090;padding:26px 28px;">
+          <div style="color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:22px;letter-spacing:1px;">LOVE &amp; LORDSHIP</div>
+          <div style="color:#d2bb6a;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;">Building every life and relationship on Christ</div>
+        </td></tr>
+        <tr><td style="padding:28px 28px 8px;color:#374151;font-size:15px;line-height:1.6;">
+          <p style="margin:0 0 14px;font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#111827;">Thank you, {{from_name}}.</p>
+          <p style="margin:0 0 14px;">We received your {{form_type}} and a real person will read it. Greg or someone on the Love &amp; Lordship team will be in touch.</p>
+          <p style="margin:0 0 20px;">If it's time-sensitive, you can call us at <a href="tel:+18592296504" style="color:#234090;">(859) 229-6504</a>.</p>
+          <div style="color:#6b7280;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">What you sent</div>
+          <table role="presentation" cellpadding="0" cellspacing="0" style="font-size:14px;line-height:1.5;width:100%;border-top:1px solid #e5e7eb;padding-top:8px;">
+            {{{details_html}}}
+          </table>
+        </td></tr>
+        <tr><td style="padding:20px 28px 28px;color:#6b7280;font-size:13px;line-height:1.6;border-top:1px solid #eef1f6;">
+          Love &amp; Lordship · 324 Timothy Drive, Nicholasville, KY 40356<br>
+          <a href="https://loveandlordship.com" style="color:#234090;">loveandlordship.com</a>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

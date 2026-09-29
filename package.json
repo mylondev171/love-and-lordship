@@ -1,0 +1,11 @@
+{
+  "name": "love-and-lordship",
+  "private": true,
+  "description": "Static site. `npm run build` precompiles the in-browser JSX into dist/ for production (Vercel runs this).",
+  "scripts": {
+    "build": "node tools/build-site.mjs"
+  },
+  "devDependencies": {
+    "@babel/standalone": "7.29.0"
+  }
+}

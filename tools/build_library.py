@@ -1,7 +1,8 @@
 import json, re, html, collections, datetime, os
 
 PROJ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-TODAY = datetime.date(2026, 9, 29)
+# Defaults to today; set LL_TODAY=YYYY-MM-DD to rebuild as of another date.
+TODAY = datetime.date.fromisoformat(os.environ["LL_TODAY"]) if os.environ.get("LL_TODAY") else datetime.date.today()
 pb = json.load(open("podbean_all.json", encoding="utf8"))
 yt = json.load(open("youtube.json", encoding="utf8"))
 wp = json.load(open("wp_posts.json", encoding="utf8"))

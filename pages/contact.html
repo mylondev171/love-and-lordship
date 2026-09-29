@@ -42,6 +42,8 @@
   <script type="text/babel" src="../components/nav.jsx"></script>
   <script type="text/babel" src="../components/footer-events-app.jsx"></script>
   <script type="text/babel" src="../components/page-shell.jsx"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+  <script src="../components/emailjs-config.js"></script>
 
   <script type="text/babel">
     const REASONS = [
@@ -62,7 +64,7 @@
     ];
 
     function ContactPage() {
-      const [sent, setSent] = React.useState(false);
+      const { status, onSubmit, reset } = useFormSender("Contact message", (f) => `Website message: ${f.querySelector("select").value}`);
 
       return (
         <PageShell header={
@@ -78,10 +80,11 @@
               <div className="split-cols right">
                 <div>
                   <div className="form-card">
-                    {sent ? (
-                      <EmailSent title="Almost there." onBack={() => setSent(false)} />
+                    {status === "sent" || status === "mailto" ? (
+                      <FormResult status={status} title="Thank you." onBack={reset} />
                     ) : (
-                      <form onSubmit={(e) => { e.preventDefault(); emailForm(e.currentTarget, `Website message: ${e.currentTarget.querySelector('select').value}`); setSent(true); }}>
+                      <form onSubmit={onSubmit}>
+                        <Honeypot />
                         <div className="eyebrow" style={{ marginBottom: 14 }}>Send a message</div>
                         <div className="form-row">
                           <div className="field"><label>First name</label><input type="text" required /></div>
@@ -101,7 +104,8 @@
                         <div className="form-row full">
                           <div className="field"><label>Message</label><textarea required placeholder="Tell us what you'd like to share."></textarea></div>
                         </div>
-                        <button className="btn btn-give" style={{ width: "100%", justifyContent: "center", marginTop: 8 }} type="submit">Send message</button>
+                        <button className="btn btn-give" style={{ width: "100%", justifyContent: "center", marginTop: 8 }} type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send message"}</button>
+                        {status === "error" && <FormError />}
                       </form>
                     )}
                   </div>

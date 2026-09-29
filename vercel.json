@@ -1,25 +1,1785 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/assets/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/components/((?!emailjs-config).*)\\.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(app|tweaks-panel)\\.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
   "redirects": [
-    { "source": "/about", "destination": "/pages/about.html", "permanent": true },
-    { "source": "/contact", "destination": "/pages/contact.html", "permanent": true },
-    { "source": "/newsletter", "destination": "/#newsletter", "permanent": true },
-    { "source": "/read", "destination": "/pages/blog.html", "permanent": true },
-    { "source": "/watch", "destination": "/pages/library.html?fmt=Watch", "permanent": true },
-    { "source": "/listen-podcasts", "destination": "/pages/library.html?fmt=Listen", "permanent": true },
-    { "source": "/ministry-updates-events", "destination": "/pages/events.html", "permanent": true },
-    { "source": "/events", "destination": "/pages/events.html", "permanent": true },
-    { "source": "/the-authority-of-love", "destination": "/pages/the-authority-of-love.html", "permanent": true },
-    { "source": "/mentoring-minutes-4-16-21", "destination": "/pages/library.html?series=Mentoring%20Minutes", "permanent": true },
-    { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/category/:path*", "destination": "/pages/blog.html", "permanent": true },
-    { "source": "/feed", "destination": "/pages/blog.html", "permanent": false },
-    { "source": "/wp-content/uploads/2019/09/LL-Privacy-Statement-092019.pdf", "destination": "/pages/privacy.html", "permanent": true },
-    { "source": "/wp-content/uploads/2019/09/LL-Terms-Of-Use-092019.pdf", "destination": "/pages/terms.html", "permanent": true }
+    {
+      "source": "/about",
+      "destination": "/pages/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "/pages/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/newsletter",
+      "destination": "/#newsletter",
+      "statusCode": 301
+    },
+    {
+      "source": "/read",
+      "destination": "/pages/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/watch",
+      "destination": "/pages/library.html?fmt=Watch",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen-podcasts",
+      "destination": "/pages/library.html?fmt=Listen",
+      "statusCode": 301
+    },
+    {
+      "source": "/ministry-updates-events",
+      "destination": "/pages/events.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/events",
+      "destination": "/pages/events.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-authority-of-love",
+      "destination": "/pages/the-authority-of-love.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/mentoring-minutes-4-16-21",
+      "destination": "/pages/library.html?series=Mentoring%20Minutes",
+      "statusCode": 301
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/:name",
+      "destination": "/pages/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/video-on-top",
+      "destination": "/pages/library.html?fmt=Watch",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/pages/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/feed",
+      "destination": "/pages/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/comments/feed",
+      "destination": "/pages/blog.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-content/uploads/2019/09/LL-Privacy-Statement-092019.pdf",
+      "destination": "/pages/privacy.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-content/uploads/2019/09/LL-Terms-Of-Use-092019.pdf",
+      "destination": "/pages/terms.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/living-in-harmony-with-all-others",
+      "destination": "/blog/living-in-harmony-with-all-others",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/loving-and-honoring-one-another",
+      "destination": "/blog/loving-and-honoring-one-another",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/how-to-one-another-one-another",
+      "destination": "/pages/library.html?fmt=Watch&q=how%20one%20another%20one%20another",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/loving-others",
+      "destination": "/blog/loving-others",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/whats-in-your-future",
+      "destination": "/blog/whats-in-your-future",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-christmas-blessing-2022",
+      "destination": "/pages/library.html?fmt=Watch&q=christmas%20blessing",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/christmas-is-christ",
+      "destination": "/blog/christ-is-christmas",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/christmas-stories-and-players",
+      "destination": "/pages/library.html?fmt=Watch&q=christmas%20stories%20players",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/christmas-memories-2022",
+      "destination": "/blog/christmas-memories-2022",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/giving-thanks-our-ultimate-identity-in-christ",
+      "destination": "/blog/giving-thanks-our-ultimate-identity-in-christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/identity-in-christ-6",
+      "destination": "/blog/identity-in-christ-6",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/identity-in-christ-5",
+      "destination": "/blog/identity-in-christ-5",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/identity-in-christ-4",
+      "destination": "/blog/identity-in-christ-4",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/identity-in-christ-3",
+      "destination": "/pages/library.html?fmt=Watch&q=identity%20christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/knowing-and-loving-who-you-are-in-christ-pt-2",
+      "destination": "/blog/knowing-and-loving-who-you-are-in-christ-pt-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/knowing-and-loving-who-you-are-in-christ",
+      "destination": "/blog/knowing-and-loving-who-you-are-in-christ-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/identity-in-christ-a-much-needed-part-of-his-church",
+      "destination": "/blog/knowing-and-loving-who-you-are-in-christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/identity-in-christ-pt-2",
+      "destination": "/blog/identity-in-christ-pt-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/identity-in-christ",
+      "destination": "/blog/identity-in-christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/real-love-pt-2",
+      "destination": "/blog/real-love-pt-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/real-love",
+      "destination": "/blog/real-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/wisdom-from-gods-word-love",
+      "destination": "/pages/library.html?fmt=Watch&q=wisdom%20from%20god%20word%20love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/wisdom-from-gods-word-2",
+      "destination": "/pages/library.html?fmt=Watch&q=wisdom%20from%20god%20word",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/wisdom-from-gods-word-pt-1",
+      "destination": "/blog/wisdom-from-gods-word-pt-1",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-25",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-24",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-23",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-22",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-21",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-20",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-19",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-18",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-16-2",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-16",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-15",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-14",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-13",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-12",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-11",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-10",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-9",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-8",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-7",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-6",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-5",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-4",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-3",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-2",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/names-of-god-1",
+      "destination": "/pages/library.html?fmt=Watch&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/secure-in-christ",
+      "destination": "/blog/secure-in-christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/christmas-blessing-2021",
+      "destination": "/pages/library.html?fmt=Watch&q=christmas%20blessing",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/christmas-players",
+      "destination": "/blog/christmas-players",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/christmas-memories-2",
+      "destination": "/pages/library.html?fmt=Watch&q=christmas%20memories",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/holiness-over-happiness",
+      "destination": "/blog/holiness-over-happiness",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/thanksgiving",
+      "destination": "/blog/thanksgiving",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/fighting-the-battle",
+      "destination": "/pages/library.html?fmt=Watch&q=fighting%20battle",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-lordship-of-christ",
+      "destination": "/pages/library.html?fmt=Watch&q=lordship%20christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/walking-in-christ",
+      "destination": "/pages/library.html?fmt=Watch&q=walking%20christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/a-living-sacrifice-pt-2",
+      "destination": "/pages/library.html?fmt=Watch&q=living%20sacrifice",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/a-living-sacrifice",
+      "destination": "/blog/a-living-sacrifice",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/disciples-not-zealots",
+      "destination": "/blog/disciples-not-zealots",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/gods-covenant-christ-in-us",
+      "destination": "/blog/gods-covenant-christ-in-us",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/3-indicators-of-christ-as-lord",
+      "destination": "/blog/3-indicators-of-christ-as-lord",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/recognizing-true-authority",
+      "destination": "/blog/recognizing-true-authority",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/my-mothers-legacy",
+      "destination": "/pages/library.html?fmt=Watch&q=mother%20legacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-life-god-always-intended",
+      "destination": "/blog/the-life-god-always-intended",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/gods-covenant-design-pt-2",
+      "destination": "/pages/library.html?fmt=Watch&q=god%20covenant%20design",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/gods-covenant-design-pt-1",
+      "destination": "/pages/library.html?fmt=Watch&q=god%20covenant%20design",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/renewing-our-minds-pt-2",
+      "destination": "/pages/library.html?fmt=Watch&q=renewing%20our%20minds",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/renewing-our-minds",
+      "destination": "/blog/renewing-our-minds",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/whos-discipling-our-youth",
+      "destination": "/blog/whos-discipling-our-youth",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/serpents-and-doves",
+      "destination": "/pages/library.html?fmt=Watch&q=serpents%20doves",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/practical-loving-and-leading",
+      "destination": "/pages/library.html?fmt=Watch&q=practical%20loving%20leading",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/scriptures-for-loving-and-leading",
+      "destination": "/pages/library.html?fmt=Watch&q=scriptures%20loving%20leading",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/family-church-connection",
+      "destination": "/pages/library.html?fmt=Watch&q=family%20church%20connection",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/loving-and-leading-in-home-and-church",
+      "destination": "/pages/library.html?fmt=Watch&q=loving%20leading%20home%20church",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/gods-order-for-home-and-church",
+      "destination": "/blog/gods-order-for-home-and-church",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/best-decisions-as-a-father-pt-2",
+      "destination": "/pages/library.html?fmt=Watch&q=best%20decisions%20father",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/best-decisions-as-a-father-pt-1",
+      "destination": "/pages/library.html?fmt=Watch&q=best%20decisions%20father",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/parenting-is-discipleship-pt-2",
+      "destination": "/blog/parenting-is-discipleship",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/parenting-is-discipleship",
+      "destination": "/pages/library.html?fmt=Watch&q=parenting%20discipleship",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/character-in-parenting",
+      "destination": "/pages/library.html?fmt=Watch&q=character%20parenting",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/parenting-gods-way",
+      "destination": "/pages/library.html?fmt=Watch&q=parenting%20god%20way",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/navigating-marriage-2",
+      "destination": "/blog/navigating-marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/agape-godly-love",
+      "destination": "/blog/agape-godly-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/wisdom-living-all-our-life-in-gods-truth",
+      "destination": "/pages/library.html?fmt=Watch&q=wisdom%20living%20all%20our%20life",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/truth-in-grace",
+      "destination": "/blog/truth-in-grace",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-clashing-of-kingdoms",
+      "destination": "/blog/the-clashing-of-kingdoms",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/loving-our-neighbors",
+      "destination": "/pages/library.html?fmt=Watch&q=loving%20our%20neighbor",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/truth-in-love",
+      "destination": "/pages/library.html?fmt=Watch&q=truth%20love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-discipline-of-love",
+      "destination": "/blog/the-discipline-of-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/loving-response-required",
+      "destination": "/pages/library.html?fmt=Watch&q=loving%20response%20required",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/walking-according-to-his-truth-pt-2",
+      "destination": "/pages/library.html?fmt=Watch&q=walking%20according%20his%20truth",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/walking-according-to-his-truth",
+      "destination": "/pages/library.html?fmt=Watch&q=walking%20according%20his%20truth",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/valentine-marriage-and-family-privilege",
+      "destination": "/blog/valentine-marriage-and-family-privilege",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-lordship-of-christ-walking-as-his-disciple",
+      "destination": "/blog/the-lordship-of-christ-walking-as-his-disciple",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/foundation-and-authority-the-lordship-of-christ",
+      "destination": "/pages/library.html?fmt=Watch&q=lordship%20christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/foundation-and-authority-i-e-whose-your-lord",
+      "destination": "/blog/foundation-and-authority-i-e-whose-your-lord",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/living-in-christs-love-lordship-and-victory",
+      "destination": "/blog/living-in-christs-love-lordship-and-victory",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/goodbye-2020-happy-new-year-2021-what-are-you-looking-forward-to",
+      "destination": "/blog/goodbye-2020-happy-new-year-2021",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/lessons-from-advent-christmas-pt-3",
+      "destination": "/blog/lessons-from-advent-christmas-pt-3",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/lessons-from-advent-christmas-pt-2",
+      "destination": "/pages/library.html?fmt=Watch&q=lessons%20from%20advent%20christmas",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/lessons-from-advent-christmas",
+      "destination": "/blog/lessons-from-advent-christmas",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/hot-topics-part-two",
+      "destination": "/pages/library.html?fmt=Watch&q=hot%20topics%20two",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/hot-topics-in-marriage",
+      "destination": "/pages/library.html?fmt=Watch&q=hot%20topics%20marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/forgiveness-and-trust-unconditional-love",
+      "destination": "/blog/forgiveness-and-trust-unconditional-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/in-christs-kingdom-loving-is-serving-is-authority",
+      "destination": "/pages/library.html?fmt=Watch&q=christ%20kingdom%20loving%20serving%20authority",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-authority-of-love-book-and-conference-promo",
+      "destination": "/pages/library.html?fmt=Watch&q=authority%20love%20book%20conference%20promo",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/navigating-marriage",
+      "destination": "/blog/navigating-marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/agape-marriage-and-kingdom-relationships-a-personal-story",
+      "destination": "/pages/library.html?fmt=Watch&q=agape%20marriage%20kingdom%20relationships%20personal",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/building-agape-marriages-and-kingdom-relationships",
+      "destination": "/blog/building-agape-marriages-and-kingdom-relationships",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/marriage-to-be-honored-by-all",
+      "destination": "/pages/library.html?fmt=Watch&q=marriage%20honored%20all",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/marriage-the-highest-of-human-relationships",
+      "destination": "/blog/marriage-the-highest-of-human-relationships",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/gods-covenant-order-and-his-love",
+      "destination": "/blog/gods-covenant-order-and-his-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/a-tale-of-two-loves-gods-full-orbed-love",
+      "destination": "/pages/library.html?fmt=Watch&q=tale%20two%20loves%20god%20full",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/self-and-lust-a-biblical-story-and-modern-movie-mash-up",
+      "destination": "/blog/self-and-lust-a-biblical-story-and-modern-movie-mash-up",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-cookie-jar-a-satire-on-love",
+      "destination": "/blog/the-cookie-jar-a-satire-on-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/loving-discipline-vs-lustful-desires",
+      "destination": "/blog/loving-discipline-vs-lustful-desires",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/417",
+      "destination": "/blog/loving-relationships-vs-stuff-success",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/relationship-what-we-were-created-for",
+      "destination": "/pages/library.html?fmt=Watch&q=relationship%20what%20were%20created",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/social-injustice-and-loving-relationships",
+      "destination": "/blog/social-injustice-and-loving-relationships",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/social-injustice-responding-with-compassion-in-truth",
+      "destination": "/blog/social-injustice-responding-with-compassion-in-truth",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/practical-discipleship-part-2",
+      "destination": "/blog/practical-discipleship-part-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/practical-discipleship-part-1",
+      "destination": "/blog/practical-discipleship-part-1",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/discipleship-finding-out-who-you-were-created-to-be",
+      "destination": "/blog/discipleship-finding-out-who-you-were-created-to-be",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/three-threatswhich-is-the-greatest-threat",
+      "destination": "/pages/library.html?fmt=Watch&q=three%20threats%20which%20greatest%20threat",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/gods-redemption-and-reconciliation",
+      "destination": "/pages/library.html?fmt=Watch&q=god%20redemption%20reconciliation",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/god-in-the-pandemic-church-dont-go-back-to-the-status-quo",
+      "destination": "/pages/library.html?fmt=Watch&q=god%20pandemic%20church%20don%20back",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/discipleship-response-required",
+      "destination": "/blog/discipleship-response-required",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-story-of-2-kingdoms-part-3",
+      "destination": "/pages/library.html?fmt=Watch&q=story%20kingdoms",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-story-of-2-kingdoms-part-2-authority-and-truth",
+      "destination": "/pages/library.html?fmt=Watch&q=story%20kingdoms%20authority%20truth",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-story-of-two-kingdoms",
+      "destination": "/pages/library.html?fmt=Watch&q=story%20two%20kingdoms",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/authority-in-gods-covenant-order",
+      "destination": "/blog/chapter-3-authority-in-gods-covenant-order",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/how-to-love-others-in-times-of-crisis",
+      "destination": "/blog/how-to-love-others-in-times-of-crisis",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/how-to-flourish-in-times-of-despair",
+      "destination": "/blog/how-to-flourish-in-times-of-despair",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/how-do-you-spell-love-t-i-m-e",
+      "destination": "/pages/library.html?fmt=Watch&q=how%20you%20spell%20love",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/fear-of-god-or-fear-of-man",
+      "destination": "/blog/fear-of-godor-fear-of-man",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/why-authority-lets-just-love-one-another",
+      "destination": "/blog/why-authority-lets-just-love-one-another",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/authority-and-love-a-wake-up-call-for-marriage-family-and-the-church",
+      "destination": "/blog/authority-and-love-a-wake-up-call-for-marriage-family-and-the-church",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/love-and-lordship-god-and-me-part-2",
+      "destination": "/blog/love-and-lordship-god-and-mepart-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/st-valentine-martyr-for-marriagenot-just-romance",
+      "destination": "/blog/st-valentine-martyr-for-marriage-not-just-romance",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/love-and-lordship-god-and-me",
+      "destination": "/blog/love-and-lordship-god-and-me",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/where-is-god-when-tragedy-strikes",
+      "destination": "/blog/where-is-god-when-tragedy-strikes",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/in-his-image-agape-relationships-messy-nasty-stuff-marriage-family-and-his-church-part-2",
+      "destination": "/pages/library.html?fmt=Watch&q=his%20image%20agape%20relationships%20messy",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/in-his-image-agape-relationships-marriage-family-and-his-church-part-1",
+      "destination": "/blog/in-his-image-agape-relationships-marriage-family-and-his-church-part-1",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/mr-rogers-on-marriage",
+      "destination": "/pages/library.html?fmt=Watch&q=rogers%20marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/the-blessing-of-christmas",
+      "destination": "/blog/the-blessing-of-christmas",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/christmas-stories",
+      "destination": "/blog/christmas-stories",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/christmas-memories",
+      "destination": "/blog/christmas-memories",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/true-thanksgiving-for-gods-glory-and-our-good",
+      "destination": "/blog/true-thanksgivingfor-gods-glory-and-our-good",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/how-to-survive-and-thrive-during-the-holidays",
+      "destination": "/blog/how-to-survive-and-thrive-during-the-holidays",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/thanksgivinga-day-or-a-lifestyle",
+      "destination": "/blog/thanksgivinga-day-or-a-lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/true-authority-demanded-or-invited",
+      "destination": "/pages/library.html?fmt=Watch&q=true%20authority%20demanded%20invited",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/halloween-holiday-or-day-of-horror",
+      "destination": "/blog/halloween-holiday-or-day-of-horror",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/to-make-a-disciples-you-must-be-one",
+      "destination": "/pages/library.html?fmt=Watch&q=make%20disciple%20you%20must%20one",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/wheres-your-treasure-thats-where-youll-find-your-heart",
+      "destination": "/blog/wheres-your-treasure-thats-where-youll-find-your-heart",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/saved-for-what",
+      "destination": "/blog/saved-for-what",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/whats-love-and-whats-that-got-to-do-with-it",
+      "destination": "/blog/whats-love-and-whats-that-got-to-do-with-it",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/thanks-jesus-for-saving-me-but-ill-pass-on-your-lordship",
+      "destination": "/pages/library.html?fmt=Watch&q=thanks%20jesus%20saving%20but%20pass",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/so-you-got-gracewhats-next",
+      "destination": "/blog/so-you-got-gracewhats-next",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/grace-its-free-got-it",
+      "destination": "/blog/grace-its-free-got-it",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/welcome-to-love-and-lordship",
+      "destination": "/pages/library.html?fmt=Watch&q=welcome%20love%20lordship",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/why-love-and-lordship-a-story",
+      "destination": "/pages/library.html?fmt=Watch&q=why%20love%20lordship%20story",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/best-marriage-manual-ever",
+      "destination": "/pages/library.html?fmt=Watch&q=fireproof%20cross",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/living-in-harmony-with-all-others",
+      "destination": "/blog/living-in-harmony-with-all-others",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/loving-and-honoring-one-another",
+      "destination": "/blog/loving-and-honoring-one-another",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/how-to-one-another-one-another",
+      "destination": "/pages/library.html?fmt=Listen&q=how%20one%20another%20one%20another",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/loving-others",
+      "destination": "/blog/loving-others",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/whats-in-your-future",
+      "destination": "/blog/whats-in-your-future",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-christmas-blessing-2022",
+      "destination": "/pages/library.html?fmt=Listen&q=christmas%20blessing",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christmas-is-christ",
+      "destination": "/blog/christ-is-christmas",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christmas-stories-and-players",
+      "destination": "/pages/library.html?fmt=Listen&q=christmas%20stories%20players",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christmas-memories-2022",
+      "destination": "/blog/christmas-memories-2022",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/giving-thanks-our-ultimate-identity-in-christ",
+      "destination": "/blog/giving-thanks-our-ultimate-identity-in-christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/identity-in-christ-6",
+      "destination": "/blog/identity-in-christ-6",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/identity-in-christ-5",
+      "destination": "/blog/identity-in-christ-5",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/identity-in-christ-4",
+      "destination": "/blog/identity-in-christ-4",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/identity-in-christ-3",
+      "destination": "/pages/library.html?fmt=Listen&q=identity%20christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/knowing-and-loving-who-you-are-in-christ-pt-2",
+      "destination": "/blog/knowing-and-loving-who-you-are-in-christ-pt-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/knowing-and-loving-who-you-are-in-christ",
+      "destination": "/blog/knowing-and-loving-who-you-are-in-christ-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/identity-in-christ-a-much-needed-part-of-his-church",
+      "destination": "/blog/knowing-and-loving-who-you-are-in-christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/identity-in-christ-pt-2",
+      "destination": "/blog/identity-in-christ-pt-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/identity-in-christ",
+      "destination": "/blog/identity-in-christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/real-love-pt-2",
+      "destination": "/blog/real-love-pt-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/real-love",
+      "destination": "/blog/real-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/wisdom-from-gods-word-love",
+      "destination": "/pages/library.html?fmt=Listen&q=wisdom%20from%20god%20word%20love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/wisdom-from-gods-word-pt-2",
+      "destination": "/blog/wisdom-from-gods-word-pt-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/wisdom-of-god-pt-1",
+      "destination": "/pages/library.html?fmt=Listen&q=wisdom%20god%20word",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-25",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-24",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-23",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-22",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-21",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-20",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-19",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-18",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-17",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-16",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-15",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-14",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-13",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-12",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-11",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-10",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-pt-9",
+      "destination": "/blog/names-of-god-pt-9",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-8",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-7",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-6",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-5",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-4",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-3",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-2",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/names-of-god-1",
+      "destination": "/pages/library.html?fmt=Listen&q=names%20god",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/secure-in-christ",
+      "destination": "/blog/secure-in-christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christmas-blessing-2021",
+      "destination": "/pages/library.html?fmt=Listen&q=christmas%20blessing",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christmas-players-2",
+      "destination": "/blog/christmas-players",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/holiness-over-happiness",
+      "destination": "/blog/holiness-over-happiness",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/thanksgiving",
+      "destination": "/blog/thanksgiving",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/fighting-the-battle",
+      "destination": "/pages/library.html?fmt=Listen&q=fighting%20battle",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-lordship-of-christ",
+      "destination": "/pages/library.html?fmt=Listen&q=lordship%20christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/walking-in-christ",
+      "destination": "/pages/library.html?fmt=Listen&q=walking%20christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/a-living-sacrifice-pt-2",
+      "destination": "/pages/library.html?fmt=Listen&q=living%20sacrifice",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/a-living-sacrifice",
+      "destination": "/blog/a-living-sacrifice",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/disciples-not-zealots",
+      "destination": "/blog/disciples-not-zealots",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/gods-covenant-christ-in-us",
+      "destination": "/blog/gods-covenant-christ-in-us",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/3-indicators-of-christ-as-lord",
+      "destination": "/blog/3-indicators-of-christ-as-lord",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/recognizing-true-authority",
+      "destination": "/blog/recognizing-true-authority",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/my-mothers-legacy",
+      "destination": "/pages/library.html?fmt=Listen&q=mother%20legacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-life-god-always-intended",
+      "destination": "/blog/the-life-god-always-intended",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/gods-covenant-design-pt-2",
+      "destination": "/pages/library.html?fmt=Listen&q=god%20covenant%20design",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/gods-covenant-design-pt-1",
+      "destination": "/pages/library.html?fmt=Listen&q=god%20covenant%20design",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/renewing-our-minds-2",
+      "destination": "/pages/library.html?fmt=Listen&q=renewing%20our%20minds",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/renewing-our-minds",
+      "destination": "/blog/renewing-our-minds",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/whos-discipling-our-youth",
+      "destination": "/blog/whos-discipling-our-youth",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/serpents-and-doves",
+      "destination": "/pages/library.html?fmt=Listen&q=serpents%20doves",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/practical-loving-and-leading",
+      "destination": "/pages/library.html?fmt=Listen&q=practical%20loving%20leading",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/scriptural-solutions-to-loving-and-leading",
+      "destination": "/pages/library.html?fmt=Listen&q=scriptural%20loving%20leading",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-marriage-family-church-leadership-connection",
+      "destination": "/blog/the-marriage-family-church-leadership-connection",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/loving-and-leading-in-home-and-church",
+      "destination": "/pages/library.html?fmt=Listen&q=loving%20leading%20home%20church",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/gods-order-for-home-and-church",
+      "destination": "/blog/gods-order-for-home-and-church",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/best-decisions-as-a-father-pt-2",
+      "destination": "/pages/library.html?fmt=Listen&q=best%20decisions%20father",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/best-decisions-as-a-father-pt-1",
+      "destination": "/pages/library.html?fmt=Listen&q=best%20decisions%20father",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/parenting-is-discipleship-pt-2",
+      "destination": "/blog/parenting-is-discipleship",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/parenting-is-discipleship",
+      "destination": "/pages/library.html?fmt=Listen&q=parenting%20discipleship",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/character-in-parenting",
+      "destination": "/pages/library.html?fmt=Listen&q=character%20parenting",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/parenting-gods-way",
+      "destination": "/pages/library.html?fmt=Listen&q=parenting%20god%20way",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/navigating-marriage-2",
+      "destination": "/blog/navigating-marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/agape-godly-love",
+      "destination": "/blog/agape-godly-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/wisdom-living-all-our-life-in-gods-truth",
+      "destination": "/pages/library.html?fmt=Listen&q=wisdom%20living%20all%20our%20life",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/truth-in-grace",
+      "destination": "/blog/truth-in-grace",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-clashing-of-kingdoms",
+      "destination": "/blog/the-clashing-of-kingdoms",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/loving-our-neighbors",
+      "destination": "/pages/library.html?fmt=Listen&q=loving%20our%20neighbor",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/truth-in-love",
+      "destination": "/pages/library.html?fmt=Listen&q=truth%20love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-discipline-of-love",
+      "destination": "/blog/the-discipline-of-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/loving-response-required",
+      "destination": "/pages/library.html?fmt=Listen&q=loving%20response%20required",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/walking-according-to-his-truth-pt-2",
+      "destination": "/pages/library.html?fmt=Listen&q=walking%20according%20his%20truth",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/walking-according-to-his-truth",
+      "destination": "/pages/library.html?fmt=Listen&q=walking%20according%20his%20truth",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/valentine-marriage-and-family-privilege",
+      "destination": "/blog/valentine-marriage-and-family-privilege",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christ-as-lord-walking-as-his-disciple",
+      "destination": "/pages/library.html?fmt=Listen&q=walking%20his%20disciple",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/foundations-and-authority-the-lordship-of-christ",
+      "destination": "/pages/library.html?fmt=Listen&q=lordship%20christ",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/foundation-and-authority-whose-your-lord",
+      "destination": "/blog/foundation-and-authority-whose-your-lord",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/living-in-christs-love-lordship-and-victory",
+      "destination": "/blog/living-in-christs-love-lordship-and-victory",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/goodbye-2020-happy-new-year-2021",
+      "destination": "/blog/goodbye-2020-happy-new-year-2021",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/lessons-from-advent-christmas-pt-3",
+      "destination": "/blog/lessons-from-advent-christmas-pt-3",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/lessons-from-advent-christmas-pt-2",
+      "destination": "/pages/library.html?fmt=Listen&q=lessons%20from%20advent%20christmas",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/lesssons-from-advent-christmas",
+      "destination": "/pages/library.html?fmt=Listen&q=lesssons%20from%20advent%20christmas",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/hot-topics-part-two",
+      "destination": "/pages/library.html?fmt=Listen&q=hot%20topics%20two",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/hot-topics-in-marriage",
+      "destination": "/pages/library.html?fmt=Listen&q=hot%20topics%20marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/forgiven-and-trust-unconditional-love",
+      "destination": "/pages/library.html?fmt=Listen&q=forgiven%20trust%20unconditional%20love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/in-christs-kingdom-loving-is-serving-is-authority",
+      "destination": "/pages/library.html?fmt=Listen&q=christ%20kingdom%20loving%20serving%20authority",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-authority-of-love-book-and-conference-promo",
+      "destination": "/pages/library.html?fmt=Listen&q=authority%20love%20book%20conference%20promo",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/navigating-marriage",
+      "destination": "/blog/navigating-marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/agape-marriage-and-kingdom-relationships-a-personal-story",
+      "destination": "/pages/library.html?fmt=Listen&q=agape%20marriage%20kingdom%20relationships%20personal",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/building-agape-marriages-and-kingdom-relationships",
+      "destination": "/blog/building-agape-marriages-and-kingdom-relationships",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/marriage-to-be-honored-by-all",
+      "destination": "/pages/library.html?fmt=Listen&q=marriage%20honored%20all",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/marriage-the-highest-of-human-relationships",
+      "destination": "/blog/marriage-the-highest-of-human-relationships",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/gods-covenant-order-and-his-love",
+      "destination": "/blog/gods-covenant-order-and-his-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/a-tale-of-two-loves-gods-full-orbed-love",
+      "destination": "/pages/library.html?fmt=Listen&q=tale%20two%20loves%20god%20full",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/self-and-lust-a-biblical-story-and-modern-movie-mash-up",
+      "destination": "/blog/self-and-lust-a-biblical-story-and-modern-movie-mash-up",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-cookie-jar-a-satire-on-love",
+      "destination": "/blog/the-cookie-jar-a-satire-on-love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/loving-discipline-vs-lustful-desires",
+      "destination": "/blog/loving-discipline-vs-lustful-desires",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/loving-relationships-vs-stuff-success",
+      "destination": "/blog/loving-relationships-vs-stuff-success",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/loving-relationships-the-currency-of-christs-kingdom",
+      "destination": "/pages/library.html?fmt=Listen&q=loving%20relationships%20currency%20christ%20kingdom",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/social-injustice-and-loving-relationships",
+      "destination": "/blog/social-injustice-and-loving-relationships",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/social-injustice-responding-with-compassion-in-truth",
+      "destination": "/blog/social-injustice-responding-with-compassion-in-truth",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/practical-discipleship-part-2",
+      "destination": "/blog/practical-discipleship-part-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/practical-discipleship-part-1",
+      "destination": "/blog/practical-discipleship-part-1",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/discipleship-finding-out-who-you-were-created-to-be",
+      "destination": "/blog/discipleship-finding-out-who-you-were-created-to-be",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/three-threats-which-is-the-greatest-threat",
+      "destination": "/pages/library.html?fmt=Listen&q=three%20threats%20which%20greatest%20threat",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/gods-redemption-and-reconciliation",
+      "destination": "/pages/library.html?fmt=Listen&q=god%20redemption%20reconciliation",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/god-in-the-pandemic-church-dont-go-back-to-the-status-quo",
+      "destination": "/pages/library.html?fmt=Listen&q=god%20pandemic%20church%20don%20back",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/discipleship-response-required",
+      "destination": "/blog/discipleship-response-required",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/do-you-know-my-jesus",
+      "destination": "/pages/library.html?fmt=Listen&q=you%20know%20jesus",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-two-kingdoms-series-part-3",
+      "destination": "/blog/the-two-kingdoms-series-part-3",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-story-of-2-kingdoms-part-2-authority-and-truth",
+      "destination": "/pages/library.html?fmt=Listen&q=story%20kingdoms%20authority%20truth",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-story-of-two-kingdoms-series",
+      "destination": "/pages/library.html?fmt=Listen&q=story%20two%20kingdoms%20series",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/true-authority-in-gods-covenant-order",
+      "destination": "/pages/library.html?fmt=Listen&q=true%20authority%20god%20covenant%20order",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/how-to-love-others-in-times-of-crisis",
+      "destination": "/blog/how-to-love-others-in-times-of-crisis",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/why-authority-lets-just-love-one-another",
+      "destination": "/blog/why-authority-lets-just-love-one-another",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/how-to-flourish-in-times-of-despair",
+      "destination": "/blog/how-to-flourish-in-times-of-despair",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/how-do-you-spell-love-t-i-m-e",
+      "destination": "/pages/library.html?fmt=Listen&q=how%20you%20spell%20love",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/fear-of-god-or-fear-of-man",
+      "destination": "/blog/fear-of-godor-fear-of-man",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/authority-and-love-a-wake-up-call-for-marriage-family-and-the-church",
+      "destination": "/blog/authority-and-love-a-wake-up-call-for-marriage-family-and-the-church",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/love-and-lordship-god-and-me-part-2",
+      "destination": "/blog/love-and-lordship-god-and-mepart-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/st-valentine-martyr-for-marriagenot-just-romance",
+      "destination": "/blog/st-valentine-martyr-for-marriage-not-just-romance",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/love-and-lordship-god-and-me",
+      "destination": "/blog/love-and-lordship-god-and-me",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/where-is-god-when-tragedy-strikes",
+      "destination": "/blog/where-is-god-when-tragedy-strikes",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/in-his-image-relationshipsmessy-nasty-stuff-marriage-family-and-his-church-part-2",
+      "destination": "/blog/in-his-image-relationshipsmessy-nasty-stuff-marriage-family-and-his-church-part-2",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/n-his-image-agape-relationshipsmarriage-family-and-his-church-part-1",
+      "destination": "/pages/library.html?fmt=Listen&q=his%20image%20agape%20relationships%20marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/mr-rogers-on-marriage",
+      "destination": "/pages/library.html?fmt=Listen&q=rogers%20marriage",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christmas-special-w-scott-collins",
+      "destination": "/pages/library.html?fmt=Listen&q=christmas%20special%20scott%20collins",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/the-blessing-of-christmas",
+      "destination": "/blog/the-blessing-of-christmas",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christmas-stories",
+      "destination": "/blog/christmas-stories",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/christmas-memories",
+      "destination": "/blog/christmas-memories",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/true-thanksgivingfor-gods-glory-and-our-good",
+      "destination": "/blog/true-thanksgivingfor-gods-glory-and-our-good",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/how-to-survive-and-thrive-during-the-holidays",
+      "destination": "/blog/how-to-survive-and-thrive-during-the-holidays",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/thanksgivinga-day-or-a-lifestyle",
+      "destination": "/blog/thanksgivinga-day-or-a-lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/authority-demanded-or-invited",
+      "destination": "/blog/true-authority-demanded-or-invited",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/halloween-holiday-or-day-of-horror-how-do-we-respond",
+      "destination": "/pages/library.html?fmt=Listen&q=halloween%20holiday%20day%20horror%20how",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/to-make-a-disciple-you-must-be-one",
+      "destination": "/blog/to-make-a-disciple-you-must-be-one",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/wheres-your-treasure-thats-where-youll-find-your-heart",
+      "destination": "/blog/wheres-your-treasure-thats-where-youll-find-your-heart",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/saved-for-what",
+      "destination": "/blog/saved-for-what",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/whats-love-and-whats-that-got-to-do-with-it",
+      "destination": "/blog/whats-love-and-whats-that-got-to-do-with-it",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/thanks-jesus-for-saving-me-but-ill-pass-on-your-lordship",
+      "destination": "/pages/library.html?fmt=Listen&q=thanks%20jesus%20saving%20but%20pass",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/soyou-got-grace-whats-next",
+      "destination": "/blog/so-you-got-gracewhats-next",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/grace-its-free-got-it",
+      "destination": "/blog/grace-its-free-got-it",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/why-love-and-lordship-a-story",
+      "destination": "/pages/library.html?fmt=Listen&q=why%20love%20lordship%20story",
+      "statusCode": 301
+    },
+    {
+      "source": "/video_post/:slug",
+      "destination": "/pages/library.html?fmt=Watch",
+      "statusCode": 301
+    },
+    {
+      "source": "/listen/:slug",
+      "destination": "/pages/library.html?fmt=Listen",
+      "statusCode": 301
+    }
   ],
   "rewrites": [
-    { "source": "/", "destination": "/Love%20and%20Lordship.html" },
-    { "source": "/blog", "destination": "/pages/blog.html" },
-    { "source": "/blog/:slug", "destination": "/blog/:slug.html" }
+    {
+      "source": "/",
+      "destination": "/Love%20and%20Lordship.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/pages/blog.html"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog/:slug.html"
+    }
   ]
 }
