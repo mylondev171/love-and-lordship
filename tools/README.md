@@ -9,7 +9,13 @@ python pull_wp.py      # articles  -> wp_posts.json      (loveandlordship.com Wo
 python pull_pb.py      # podcasts  -> podbean_all.json   (loveandlordship.podbean.com, all pages)
 python pull_yt.py      # videos    -> youtube.json       (YouTube channel UCY9DJ9AIFc3eXXvmmWn-6AQ, no API key)
 python build_library.py   # merges, classifies into the 7 priorities, writes ../data/library.js
+cd ..
+python tools/build_articles.py   # repoints Read links to the rehosted /blog/ pages
+python tools/build_featured.py   # newest 5 Watch/Listen/Read -> data/featured.js (homepage Media section)
+python tools/build_sitemap.py    # sitemap.xml + robots.txt
 ```
+
+The pull_*.json files are scratch; delete them after building.
 
 Only the Python standard library is needed. `build_library.py` sets `TODAY`
 near the top; bump it when re-running so "future" radio air-dates sort right.

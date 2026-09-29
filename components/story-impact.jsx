@@ -51,15 +51,16 @@ function Story() {
 }
 
 function Impact() {
+  // Countries named on the Invite Greg page (where Greg has spoken). Positions
+  // are a stylized west-to-east layout, spread out so the labels don't collide.
   const countries = [
-    { name: "USA", x: 22, y: 38 },
-    { name: "Cameroon", x: 54, y: 60 },
-    { name: "UK", x: 48, y: 30 },
-    { name: "Brazil", x: 32, y: 70 },
-    { name: "Kenya", x: 58, y: 64 },
-    { name: "India", x: 70, y: 50 },
-    { name: "Philippines", x: 80, y: 58 },
-    { name: "Australia", x: 84, y: 78 },
+    { name: "USA", x: 16, y: 34 },
+    { name: "Jamaica", x: 24, y: 56 },
+    { name: "Ireland", x: 40, y: 22 },
+    { name: "Bosnia & Herzegovina", x: 44, y: 42 },
+    { name: "Cameroon", x: 50, y: 68 },
+    { name: "Ukraine", x: 58, y: 30 },
+    { name: "Russia", x: 64, y: 14 },
   ];
 
   return (

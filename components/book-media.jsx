@@ -59,29 +59,24 @@ function Book({ onDonate }) {
 }
 
 /* ================= Media ================= */
-const MEDIA = {
-  watch: [
-    { dur: "Featured", title: "What the Authority of Love really means", img: "video · keynote stage, wide", imgPath: "assets/images/keynote-stage.png", big: true, badge: "Latest sermon" },
-    { dur: "12 min",   title: "Marriage isn't a contract — it's a covenant", img: "video · marriage talk", imgPath: "assets/images/marriage-talk.png", badge: "Marriage Unleashed" },
-    { dur: "8 min",    title: "Character starts in the home", img: "video · classroom", imgPath: "assets/images/classroom.png", badge: "Character Matters" },
-    { dur: "23 min",   title: "Greg in Cameroon — the African church rising", img: "video · conference, africa", imgPath: "assets/images/conference-africa.png", badge: "Conference" },
-    { dur: "6 min",    title: "A father's blessing changes a son", img: "video · father & son", imgPath: "assets/images/father-blessing.png", badge: "Devotional" },
-  ],
-  read: [
-    { dur: "Cover story", title: "The week we re-learned forgiveness", img: "photo · open book and journal", imgPath: "assets/images/open-journal.png", big: true, badge: "Featured essay" },
-    { dur: "5 min read", title: "Why we don't teach 'find your purpose'", img: "photo · notebook", imgPath: "assets/images/notebook.png", badge: "Article" },
-    { dur: "8 min read", title: "The first conversation every couple needs", img: "photo · two coffee cups", imgPath: "assets/images/two-coffee-cups.png", badge: "Marriage" },
-    { dur: "Study", title: "Authority of Love — 30-day reading plan", img: "photo · bible & pen", imgPath: "assets/images/bible-and-pen.png", badge: "Plan" },
-    { dur: "3 min read", title: "Grandparenting on purpose", img: "photo · grandparent & child", imgPath: "assets/images/grandparent-and-child.png", badge: "Family" },
-  ],
-  listen: [
-    { dur: "Daily · 15 min", title: "The Authority of Love — weekdays, 11 AM ET", img: "audio · microphone, studio", imgPath: "assets/images/microphone-studio.png", big: true, badge: "WJMM 99.1 FM" },
-    { dur: "Ep. 142 · 38 min", title: "Discipleship in a distracted age", img: "audio · podcast cover", imgPath: "assets/images/podcast-cover.png", badge: "Podcast" },
-    { dur: "Monthly", title: "KY's Voice — on Word Media", img: "audio · radio dial", imgPath: "assets/images/radio-dial.png", badge: "WGTK 970 AM" },
-    { dur: "Ep. 141 · 41 min", title: "When marriages survive the hard years", img: "audio · couple interview", imgPath: "assets/images/marriage-resilient.png", badge: "Podcast" },
-    { dur: "Apple · Spotify · YouTube", title: "Subscribe wherever you listen", img: "audio · platforms", imgPath: "assets/images/platforms.png", badge: "Subscribe" },
-  ],
+// The newest real items from the library, generated into data/featured.js by
+// tools/build_featured.py. Watch cards use the YouTube thumbnail; Listen and
+// Read have no artwork of their own, so they rotate through the site imagery.
+const MEDIA_ART = {
+  listen: ["assets/images/microphone-studio.png", "assets/images/podcast-cover.png", "assets/images/radio-dial.png", "assets/images/marriage-resilient.png", "assets/images/waveform.png"],
+  read: ["assets/images/open-journal.png", "assets/images/notebook.png", "assets/images/two-coffee-cups.png", "assets/images/bible-and-pen.png", "assets/images/open-bible-morning.png"],
 };
+const MEDIA_LIB = { watch: "Watch", listen: "Listen", read: "Read" };
+
+function mediaItems(tab) {
+  const list = (window.LL_FEATURED && window.LL_FEATURED[tab]) || [];
+  return list.map((m, i) => {
+    const art = tab === "watch" && m.th
+      ? (i === 0 ? m.th.replace("mqdefault", "maxresdefault") : m.th)
+      : MEDIA_ART[tab][i % MEDIA_ART[tab].length];
+    return { ...m, art, big: i === 0 };
+  });
+}
 
 function Play() {
   return <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 3l7 4-7 4z" fill="currentColor"/></svg>;
@@ -89,7 +84,7 @@ function Play() {
 
 function Media() {
   const [tab, setTab] = React.useState("watch");
-  const items = MEDIA[tab];
+  const items = mediaItems(tab);
   return (
     <section id="media" className="media">
       <div className="wrap">
@@ -107,23 +102,22 @@ function Media() {
 
         <div className="media-grid">
           {items.map((m, i) => (
-            <a className={"media-card" + (m.big ? " big" : "")} href="pages/library.html" key={tab + i}>
+            <a className={"media-card" + (m.big ? " big" : "")} href={m.u} target={m.u.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" key={tab + i}>
               <div className="imgph dark">
-                {m.imgPath && <img src={m.imgPath} alt="" />}
-                <span className="lbl">{m.img}</span>
+                <img src={m.art} alt="" loading="lazy" />
               </div>
-              <span className="badge">{m.badge}</span>
-              <span className="play" aria-hidden="true"><Play /></span>
+              <span className="badge">{m.s.replace("The Authority of Love · ", "")}</span>
+              {tab !== "read" && <span className="play" aria-hidden="true"><Play /></span>}
               <div className="media-card-meta">
-                <div className="duration">{m.dur}</div>
-                <h3>{m.title}</h3>
+                <div className="duration">{m.d}</div>
+                <h3>{m.t}</h3>
               </div>
             </a>
           ))}
         </div>
 
         <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>
-          <a className="btn btn-ghost" href="pages/library.html">View full library →</a>
+          <a className="btn btn-ghost" href={`pages/library.html?fmt=${MEDIA_LIB[tab]}`}>View the full {tab === "read" ? "article" : tab === "watch" ? "video" : "audio"} library →</a>
         </div>
       </div>
     </section>

@@ -1,5 +1,22 @@
 {
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/about", "destination": "/pages/about.html", "permanent": true },
+    { "source": "/contact", "destination": "/pages/contact.html", "permanent": true },
+    { "source": "/newsletter", "destination": "/#newsletter", "permanent": true },
+    { "source": "/read", "destination": "/pages/blog.html", "permanent": true },
+    { "source": "/watch", "destination": "/pages/library.html?fmt=Watch", "permanent": true },
+    { "source": "/listen-podcasts", "destination": "/pages/library.html?fmt=Listen", "permanent": true },
+    { "source": "/ministry-updates-events", "destination": "/pages/events.html", "permanent": true },
+    { "source": "/events", "destination": "/pages/events.html", "permanent": true },
+    { "source": "/the-authority-of-love", "destination": "/pages/the-authority-of-love.html", "permanent": true },
+    { "source": "/mentoring-minutes-4-16-21", "destination": "/pages/library.html?series=Mentoring%20Minutes", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/category/:path*", "destination": "/pages/blog.html", "permanent": true },
+    { "source": "/feed", "destination": "/pages/blog.html", "permanent": false },
+    { "source": "/wp-content/uploads/2019/09/LL-Privacy-Statement-092019.pdf", "destination": "/pages/privacy.html", "permanent": true },
+    { "source": "/wp-content/uploads/2019/09/LL-Terms-Of-Use-092019.pdf", "destination": "/pages/terms.html", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/Love%20and%20Lordship.html" },
     { "source": "/blog", "destination": "/pages/blog.html" },

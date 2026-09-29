@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Vercel serves this for any missing path, at any depth, so every relative
+       URL below (and inside the shared components) resolves from the site root. -->
+  <base href="/" />
+  <title>Page not found — Love &amp; Lordship</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#234090" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="components/nav.css" />
+  <link rel="stylesheet" href="components/hero.css" />
+  <link rel="stylesheet" href="components/pillars.css" />
+  <link rel="stylesheet" href="components/book-media.css" />
+  <link rel="stylesheet" href="components/sections.css" />
+  <link rel="stylesheet" href="components/pages.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="components/nav.jsx"></script>
+  <script type="text/babel" src="components/footer-events-app.jsx"></script>
+
+  <script type="text/babel">
+    // Turn the missing path into a search guess: /blog/forgiving-one-another/ -> "forgiving one another"
+    const guess = decodeURIComponent(window.location.pathname)
+      .split("/").filter(Boolean).pop() || "";
+    const GUESS = guess.replace(/\.html?$/, "").replace(/-\d+$/, "").replace(/[-_]+/g, " ").trim();
+
+    function NotFound() {
+      const [donateOpen, setDonateOpen] = React.useState(false);
+      const [q, setQ] = React.useState(GUESS);
+      const search = (e) => {
+        e.preventDefault();
+        window.location.href = `/pages/library.html?q=${encodeURIComponent(q)}`;
+      };
+      return (
+        <>
+          <Nav onDonate={() => setDonateOpen(true)} />
+          <main className="page">
+            <header className="page-header">
+              <span className="deco" aria-hidden="true">?</span>
+              <div className="wrap">
+                <div className="eyebrow">Page not found</div>
+                <h1>We couldn't find <em>that page</em>.</h1>
+                <p className="page-sub">It may have moved when the site was rebuilt. Every article, video and podcast is still here — try a search, or start from one of the links below.</p>
+              </div>
+            </header>
+            <section className="page-section">
+              <div className="wrap">
+                <form className="lib-search" onSubmit={search} style={{ maxWidth: 640 }}>
+                  <input type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Search articles, videos and podcasts" aria-label="Search the library" />
+                </form>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
+                  <button className="btn btn-primary" type="button" onClick={search}>Search the library</button>
+                  <a className="btn btn-ghost" href="/">Go to the homepage</a>
+                  <a className="btn-link" href="pages/blog.html">Browse all articles <span className="arr">→</span></a>
+                </div>
+              </div>
+            </section>
+          </main>
+          <Footer onDonate={() => setDonateOpen(true)} />
+          <DonateModal open={donateOpen} onClose={() => setDonateOpen(false)} />
+        </>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<NotFound />);
+  </script>
+</body>
+</html>

@@ -66,7 +66,7 @@ def clean_html(raw, slug):
     # Internal blog links -> keep the same path on the new site.
     def internal(m):
         target = m.group(1)
-        return f'href="/blog/{target}/"' if target in SLUGS else f'href="/pages/library.html"'
+        return f'href="/blog/{target}"' if target in SLUGS else f'href="/pages/library.html"'
     s = re.sub(rf'href="https?://{OLD_HOSTS}/blog/([^/"?#]+)/?"', internal, s)
 
     # Bare old-domain links -> new site home.
@@ -130,10 +130,20 @@ HEAD = """<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title} &mdash; Love &amp; Lordship</title>
   <meta name="description" content="{desc}" />
-  <link rel="canonical" href="https://loveandlordship.com/blog/{slug}/" />
+  <link rel="canonical" href="https://loveandlordship.com/blog/{slug}" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{title}" />
   <meta property="og:description" content="{desc}" />
+  <meta property="og:url" content="https://loveandlordship.com/blog/{slug}" />
+  <meta property="og:image" content="https://loveandlordship.com/assets/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Love &amp; Lordship" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#234090" />
   <meta property="article:published_time" content="{date}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -179,8 +189,8 @@ HEAD = """<!doctype html>
 
   <div id="footer-root"></div>
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
   <script type="text/babel" src="../components/nav.jsx"></script>
@@ -197,7 +207,7 @@ def build_page(p):
     desc = re.sub(r"\s+", " ", html.unescape(desc)).strip()
     d = datetime.date.fromisoformat(p["date"])
     pills = "".join(
-        f'<a class="article-pill" href="../pages/library.html#{k}">{esc(PILLAR_LABEL[k])}</a>'
+        f'<a class="article-pill" href="../pages/library.html?fmt=Read&amp;pillar={k}">{esc(PILLAR_LABEL[k])}</a>'
         for k in p["_pillars"] if k in PILLAR_LABEL)
     series = (LIB_BY_SLUG.get(p["slug"], {}) or {}).get("s") or "Articles"
 
@@ -223,7 +233,7 @@ def build_page(p):
         "author": {"@type": "Person", "name": "Greg Williams"},
         "publisher": {"@type": "Organization", "name": "Love & Lordship"},
         "description": desc,
-        "mainEntityOfPage": f"https://loveandlordship.com/blog/{p['slug']}/",
+        "mainEntityOfPage": f"https://loveandlordship.com/blog/{p['slug']}",
     }, ensure_ascii=False)
 
     return HEAD.format(

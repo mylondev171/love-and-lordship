@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Authority of Love — Greg Williams</title>
   <meta name="description" content="The Authority of Love by Greg Williams — a discipleship foundation for marriage, family, and every relationship. Now available in second edition." />
+  <link rel="canonical" href="https://loveandlordship.com/pages/the-authority-of-love.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="The Authority of Love" />
+  <meta property="og:description" content="The Authority of Love by Greg Williams — a discipleship foundation for marriage, family, and every relationship. Now available in second edition." />
+  <meta property="og:url" content="https://loveandlordship.com/pages/the-authority-of-love.html" />
+  <meta property="og:image" content="https://loveandlordship.com/assets/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Love &amp; Lordship" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#234090" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,8 +35,8 @@
 <body>
   <div id="root"></div>
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
   <script type="text/babel" src="../components/nav.jsx"></script>
@@ -30,8 +44,8 @@
   <script type="text/babel" src="../components/page-shell.jsx"></script>
 
   <script type="text/babel">
-    // NOTE: Chapter titles and page numbers below are PLACEHOLDERS — to be
-    // replaced with the actual Table of Contents from the printed book.
+    // Table of Contents: fill in from the printed second edition. The section
+    // stays hidden until at least one real title replaces a "TBD" row.
     const CHAPTERS = [
       { n: "01", t: "Section title — TBD from print copy", p: "" },
       { n: "02", t: "Section title — TBD from print copy", p: "" },
@@ -42,15 +56,14 @@
       { n: "07", t: "Section title — TBD from print copy", p: "" },
       { n: "08", t: "Section title — TBD from print copy", p: "" },
     ];
-    // NOTE: Endorsements below were drafted for the design pass — they should
-    // be replaced or trimmed by the client. Bob Russell endorsement is from
-    // the printed back cover; the others should be selected from the existing
-    // loveandlordship.com endorsements list.
+    // Only verified endorsements go here. Bob Russell's is from the printed back
+    // cover; add others as Greg supplies them (quote, name, role).
     const ENDORSE = [
       { q: "This is such an important book for today's church. In my fifty plus years of ministry I have witnessed churches so concerned about being relevant that they wind up reflecting the culture rather than redeeming it. Greg's book is indeed, a 'wake up call for the modern-day American church' to restore the Biblical standards of marriage, family and the church which are still compelling and transforming.", by: "Bob Russell", role: "CEO, Bob Russell Ministries · Senior Minister (Retired), Southeast Christian Church, Louisville, KY" },
-      { q: "Greg's foundational message centers on the Lordship of Christ, encouraging discipleship beyond marriage, family, and purity into all areas of Christian life.", by: "International Marriage & Family Conference", role: "Douala, Cameroon" },
-      { q: "We've placed The Authority of Love into the hands of every mother we serve. It's the curriculum that finally connects love to discipleship.", by: "Director, Sisters for Life", role: "Louisville, KY" },
     ];
+    const HAS_TOC = CHAPTERS.some(c => !c.t.includes("TBD"));
+    const ALT = (on) => (on ? { background: "var(--paper)" } : undefined);
+
     const ORDER_LINKS = [
       { t: "Paperback", d: "The Authority of Love, Second Edition. Order a copy for yourself, your marriage, or your whole small group — ships from Amazon.", href: "https://bit.ly/TAOL2edPB", cta: "Order on Amazon" },
       { t: "Kindle edition", d: "Read the full second edition on any device. Available instantly for Kindle.", href: "https://bit.ly/TAOL2EdKindle", cta: "Order for Kindle" },
@@ -98,11 +111,11 @@
             </div>
           </section>
 
+          {HAS_TOC && (
           <section className="page-section" style={{ background: "var(--paper)" }}>
             <div className="wrap">
               <div className="eyebrow">Table of Contents</div>
               <h2>What you'll <em>walk through</em>.</h2>
-              <p style={{ color: "var(--ink-mute)", fontSize: 14, marginTop: 8 }}>Section titles and page numbers will be added from the printed second edition.</p>
               <div className="toc" style={{ marginTop: 28 }}>
                 {CHAPTERS.map(c => (
                   <div className="toc-row" key={c.n}>
@@ -114,26 +127,30 @@
               </div>
             </div>
           </section>
+          )}
 
-          <section className="page-section" id="preview">
+          <section className="page-section" id="preview" style={ALT(!HAS_TOC)}>
             <div className="wrap">
               <div className="eyebrow">First look</div>
               <h2>Watch the <em>introduction</em>.</h2>
               <p>Before you buy, watch a short video introduction to <em>The Authority of Love</em> — the heart of the book, who it's for, and how to use it in your marriage, small group, or church.</p>
+              <div className="video-embed" style={{ marginTop: 24 }}>
+                <iframe src="https://www.youtube-nocookie.com/embed/fry-GUJbcgA?start=3&rel=0" title="The Authority of Love — book introduction" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullScreen></iframe>
+              </div>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", marginTop: 18 }}>
                 <a className="btn btn-primary" href="https://www.youtube.com/watch?v=fry-GUJbcgA&t=3s" target="_blank" rel="noopener noreferrer">
-                  Watch the book introduction
+                  Watch on YouTube
                 </a>
                 <a className="btn-link" href="#order">Where to order the book <span className="arr">→</span></a>
               </div>
             </div>
           </section>
 
-          <section className="page-section" style={{ background: "var(--paper)" }}>
+          <section className="page-section" style={ALT(HAS_TOC)}>
             <div className="wrap">
-              <div className="eyebrow">Endorsements</div>
-              <h2>What partners are <em>saying</em>.</h2>
-              <div className="endorse-grid" style={{ marginTop: 28 }}>
+              <div className="eyebrow">Endorsement</div>
+              <h2>What leaders are <em>saying</em>.</h2>
+              <div className="endorse-grid" style={{ marginTop: 28, maxWidth: ENDORSE.length === 1 ? 860 : undefined }}>
                 {ENDORSE.map((e, i) => (
                   <div className="endorse" key={i}>
                     <p className="q">"{e.q}"</p>
@@ -145,7 +162,7 @@
             </div>
           </section>
 
-          <section className="page-section" id="order">
+          <section className="page-section" id="order" style={ALT(!HAS_TOC)}>
             <div className="wrap">
               <div className="eyebrow">Order</div>
               <h2>Where to <em>get the book</em>.</h2>

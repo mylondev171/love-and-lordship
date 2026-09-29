@@ -121,7 +121,7 @@ function PhoneScreen({ kind }) {
       <div className="ph-head"><span>9:41</span><span>Give</span></div>
       <div className="ph-title">Partner with the mission</div>
       <div className="ph-card" style={{ flexDirection: "column", alignItems: "flex-start", gap: 6 }}>
-        <div className="ph-meta-l">Monthly · 24 partners this week</div>
+        <div className="ph-meta-l">Monthly partner</div>
         <div style={{ display: "flex", gap: 6, width: "100%" }}>
           {[25, 50, 100, 250].map(n => (
             <div key={n} style={{ flex: 1, padding: "10px 0", textAlign: "center", border: "1px solid var(--line)", borderRadius: 6, fontFamily: "var(--font-display)", fontSize: 13, background: n === 50 ? "var(--ink)" : "transparent", color: n === 50 ? "var(--bg)" : "var(--ink)" }}>${n}</div>
@@ -209,10 +209,25 @@ function AppPromo() {
   );
 }
 
+// Sign-ups go to the ministry's existing Google Form (the same one the old
+// site used). The form has more required fields than an email, so we open it
+// in a new tab with the email pre-filled rather than posting silently.
+const NEWSLETTER_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSffcuHoVZduG2a2KXJxI8qW5p0vpgDcVG9Qi7h1LtF168Pfpw/viewform";
+const newsletterUrl = (email) => {
+  if (!email) return NEWSLETTER_FORM;
+  const e = encodeURIComponent(email.trim());
+  return `${NEWSLETTER_FORM}?usp=pp_url&entry.1244255637=${e}&entry.82372611=${e}`;
+};
+window.LL_newsletterUrl = newsletterUrl;
+
 function Newsletter() {
   const [email, setEmail] = React.useState("");
   const [sent, setSent] = React.useState(false);
-  const submit = (e) => { e.preventDefault(); if (email.includes("@")) setSent(true); };
+  const submit = (e) => {
+    e.preventDefault();
+    window.open(newsletterUrl(email), "_blank", "noopener");
+    setSent(true);
+  };
 
   return (
     <section id="newsletter" className="newsletter">
@@ -221,13 +236,13 @@ function Newsletter() {
           <div>
             <div className="eyebrow">Newsletter</div>
             <h2>The <em>Love &amp; Lordship</em> letter.</h2>
-            <p>Weekly devotionals, event invites, and a short reflection from Greg — written for marriages, families, and the leaders who shepherd them.</p>
+            <p>Upcoming events, articles of interest, and ministry updates from Greg — written for marriages, families, and the leaders who shepherd them.</p>
           </div>
           <div>
             {sent ? (
               <div className="nl-success">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9.5l3.5 3.5L14 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                Welcome — check your inbox for the 30-day reading plan.
+                <span>Almost done — finish the short sign-up form in the new tab. <a href={newsletterUrl(email)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>Open it again</a></span>
               </div>
             ) : (
               <form className="nl-form" onSubmit={submit}>
@@ -235,7 +250,7 @@ function Newsletter() {
                 <button className="btn btn-give" type="submit">Subscribe</button>
               </form>
             )}
-            <div className="nl-bonus"><span className="pip"></span>New subscribers get the 30-day Authority of Love reading plan, free.</div>
+            <div className="nl-bonus"><span className="pip"></span>Free — the sign-up form takes about a minute.</div>
           </div>
         </div>
       </div>
@@ -244,13 +259,13 @@ function Newsletter() {
 }
 
 const SOCIALS = [
-  { name: "Apple Podcasts", path: "M9 1a8 8 0 0 0-3 15.4V12a3 3 0 0 1 6 0v4.4A8 8 0 0 0 9 1zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" },
-  { name: "YouTube", path: "M3 5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm5 1v4l3-2-3-2z" },
-  { name: "Instagram", path: "M5 2.5h8a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 13V5A2.5 2.5 0 0 1 5 2.5zM9 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4-1a.6.6 0 1 1 0 1.2.6.6 0 0 1 0-1.2z" },
-  { name: "Facebook", path: "M11 3h2v3h-2c-.6 0-1 .4-1 1v2h3l-.5 3H10v6H7v-6H5V9h2V6.5C7 4.6 8.6 3 10.5 3h.5z" },
-  { name: "X / Twitter", path: "M3 3l5.5 7L3.5 15h2l4-4.5L13 15h2l-5.7-7.5L14.5 3h-2l-3.5 4L6 3H3z" },
-  { name: "LinkedIn", path: "M3 4a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zM3 7h3v8H3V7zm5 0h3v1.2A3 3 0 0 1 13.5 7c2 0 2.5 1.5 2.5 3.5V15h-3v-4c0-1-.4-1.5-1.2-1.5S10 10 10 11v4H8V7z" },
-  { name: "Vimeo", path: "M2 5c1-1 3-2 4-1 .8.7 1 2 1.5 4 .3 1 .5 2 1 2 .4 0 1-.7 1.5-1.5-.5-.1-1-.5-1-1.5 0-.8.7-1.5 1.5-1.5 1 0 1.5.8 1.5 1.8 0 1.5-1 3.5-2 5-1 1.5-2 2.2-3 2-1.5-.3-2-3-2.5-5-.3-1-.5-2-1-2-.2 0-.5.2-.8.5L2 5z" },
+  { name: "Apple Podcasts", href: "https://podcasts.apple.com/us/podcast/love-and-lordship/id1478796007", path: "M9 1a8 8 0 0 0-3 15.4V12a3 3 0 0 1 6 0v4.4A8 8 0 0 0 9 1zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" },
+  { name: "YouTube", href: "https://www.youtube.com/channel/UCY9DJ9AIFc3eXXvmmWn-6AQ", path: "M3 5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm5 1v4l3-2-3-2z" },
+  { name: "Instagram", href: "https://www.instagram.com/loveandlordship/", path: "M5 2.5h8a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 13V5A2.5 2.5 0 0 1 5 2.5zM9 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm4-1a.6.6 0 1 1 0 1.2.6.6 0 0 1 0-1.2z" },
+  { name: "Facebook", href: "https://www.facebook.com/loveandlordship/", path: "M11 3h2v3h-2c-.6 0-1 .4-1 1v2h3l-.5 3H10v6H7v-6H5V9h2V6.5C7 4.6 8.6 3 10.5 3h.5z" },
+  { name: "X / Twitter", href: "https://twitter.com/LoveAndLordship", path: "M3 3l5.5 7L3.5 15h2l4-4.5L13 15h2l-5.7-7.5L14.5 3h-2l-3.5 4L6 3H3z" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/26513884/", path: "M3 4a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zM3 7h3v8H3V7zm5 0h3v1.2A3 3 0 0 1 13.5 7c2 0 2.5 1.5 2.5 3.5V15h-3v-4c0-1-.4-1.5-1.2-1.5S10 10 10 11v4H8V7z" },
+  { name: "Vimeo", href: "https://vimeo.com/loveandlordship", path: "M2 5c1-1 3-2 4-1 .8.7 1 2 1.5 4 .3 1 .5 2 1 2 .4 0 1-.7 1.5-1.5-.5-.1-1-.5-1-1.5 0-.8.7-1.5 1.5-1.5 1 0 1.5.8 1.5 1.8 0 1.5-1 3.5-2 5-1 1.5-2 2.2-3 2-1.5-.3-2-3-2.5-5-.3-1-.5-2-1-2-.2 0-.5.2-.8.5L2 5z" },
 ];
 
 function Footer({ onDonate, homeBase = "" }) {
@@ -273,7 +288,7 @@ function Footer({ onDonate, homeBase = "" }) {
             <p>Building every life and relationship on the Love &amp; Lordship of Jesus Christ.</p>
             <div className="footer-socials">
               {SOCIALS.map(s => (
-                <a key={s.name} href="#" aria-label={s.name}>
+                <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}>
                   <svg width="16" height="16" viewBox="0 0 18 18" fill="currentColor"><path d={s.path} /></svg>
                 </a>
               ))}
@@ -330,20 +345,6 @@ function Footer({ onDonate, homeBase = "" }) {
 }
 
 function DonateModal({ open, onClose }) {
-  const [freq, setFreq] = React.useState("monthly");
-  const [amt, setAmt] = React.useState(50);
-  const [custom, setCustom] = React.useState("");
-  const amounts = freq === "monthly" ? [25, 50, 100, 250] : [50, 100, 250, 500];
-  const impactText = {
-    25: "underwrites 25 audio devotionals for the L&L app",
-    50: "sends a copy of The Authority of Love to a partner ministry",
-    100: "sponsors one marriage conference scholarship",
-    250: "trains a small-group leader through the curriculum",
-    500: "funds a regional discipleship intensive",
-  };
-  const eff = custom ? parseInt(custom) || 0 : amt;
-  const nearest = Object.keys(impactText).map(Number).sort((a, b) => Math.abs(eff - a) - Math.abs(eff - b))[0];
-
   React.useEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") onClose(); };
     if (open) window.addEventListener("keydown", onKey);
@@ -352,36 +353,20 @@ function DonateModal({ open, onClose }) {
 
   return (
     <div className={"modal-back" + (open ? " open" : "")} onClick={onClose}>
-      <div className="modal donate-modal" onClick={(e) => e.stopPropagation()}>
+      <div className="modal donate-modal" role="dialog" aria-modal="true" aria-label="Give to Love & Lordship" onClick={(e) => e.stopPropagation()}>
         <button className="donate-close" onClick={onClose} aria-label="Close">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
         </button>
         <div className="eyebrow" style={{ marginBottom: 8 }}>Partner with us</div>
         <h3>Build the next <em>thousand</em> disciples.</h3>
-        <p className="sub">Every gift trains marriages, equips parents, and sends teaching to the ten countries already using the message.</p>
-
-        <div className="donate-frequency">
-          <button className={freq === "monthly" ? "on" : ""} onClick={() => setFreq("monthly")}>Monthly partner</button>
-          <button className={freq === "once" ? "on" : ""} onClick={() => setFreq("once")}>One-time gift</button>
-        </div>
-
-        <div className="donate-amounts">
-          {amounts.map(a => (
-            <button key={a} className={!custom && amt === a ? "on" : ""} onClick={() => { setAmt(a); setCustom(""); }}>${a}</button>
-          ))}
-        </div>
-        <div className="donate-custom">
-          <span className="dollar">$</span>
-          <input type="number" placeholder="Custom amount" value={custom} onChange={e => setCustom(e.target.value)} />
-          <span style={{ color: "var(--ink-mute)", fontSize: 13, fontFamily: "var(--font-mono)" }}>{freq === "monthly" ? "/ month" : "once"}</span>
-        </div>
+        <p className="sub">Every gift supports the teaching, broadcasts, and discipleship of Love &amp; Lordship — in Kentucky and in the countries already using the message.</p>
 
         <div className="donate-impact">
           <div className="ic">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14s-5-3.5-5-7.5A3 3 0 0 1 8 4a3 3 0 0 1 5 2.5C13 10.5 8 14 8 14z" fill="currentColor"/></svg>
           </div>
           <div className="txt">
-            <strong>${eff || nearest}{freq === "monthly" ? " / month" : ""}</strong> {impactText[nearest]}.
+            Giving is handled on <strong>Cornerstone's secure page</strong>. Choose any amount there, and give once or set up a weekly, monthly, quarterly or yearly gift.
           </div>
         </div>
 
@@ -398,7 +383,7 @@ function DonateModal({ open, onClose }) {
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="2" y="5" width="7" height="5" rx="0.5"/><path d="M3.5 5V3a2 2 0 0 1 4 0v2"/></svg>
             Secure · Cornerstone giving
           </span>
-          <span>501(c)(3) · Tax-deductible</span>
+          <span>Or mail a check · 324 Timothy Dr, Nicholasville, KY 40356</span>
         </div>
       </div>
     </div>

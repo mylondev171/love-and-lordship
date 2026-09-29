@@ -2,6 +2,39 @@
    and a consistent <PageHeader /> for the top of every page. */
 const HOME_BASE = "../Love%20and%20Lordship.html";
 
+/* The site has no form backend yet, so the contact and speaking-request forms
+   hand off to the visitor's email app with everything they typed filled in.
+   Each field is read as "Label: value" from the .field wrappers. */
+const LL_EMAIL = "loveandlordship@gmail.com";
+
+function emailForm(form, subject) {
+  const lines = [];
+  form.querySelectorAll(".field").forEach((f) => {
+    const label = f.querySelector("label");
+    const el = f.querySelector("input, select, textarea");
+    if (label && el && el.value.trim()) lines.push(`${label.textContent.trim()}: ${el.value.trim()}`);
+  });
+  const body = lines.join("\n\n");
+  window.location.href = `mailto:${LL_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function EmailSent({ title, onBack }) {
+  return (
+    <div style={{ textAlign: "center", padding: "32px 0" }}>
+      <div style={{ width: 56, height: 56, borderRadius: "50%", background: "var(--wine)", color: "var(--bg)", display: "grid", placeItems: "center", margin: "0 auto 16px" }}>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16v10H3z M3 6l8 6 8-6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/></svg>
+      </div>
+      <h3 style={{ margin: 0 }}>{title}</h3>
+      <p style={{ margin: "8px auto 0", maxWidth: 380 }}>
+        Your email app should have opened with your message filled in — just press send.
+        If nothing opened, email us directly at <a href={`mailto:${LL_EMAIL}`} style={{ textDecoration: "underline" }}>{LL_EMAIL}</a> or
+        call <a href="tel:+18592296504" style={{ textDecoration: "underline" }}>(859) 229-6504</a>.
+      </p>
+      <button className="btn btn-ghost" type="button" onClick={onBack} style={{ marginTop: 18 }}>Back to the form</button>
+    </div>
+  );
+}
+
 function PageHeader({ eyebrow, title, sub, deco }) {
   return (
     <header className="page-header">
@@ -57,3 +90,6 @@ window.PageHeader = PageHeader;
 window.PageShell = PageShell;
 window.CTAStrip = CTAStrip;
 window.HOME_BASE = HOME_BASE;
+window.LL_EMAIL = LL_EMAIL;
+window.emailForm = emailForm;
+window.EmailSent = EmailSent;
