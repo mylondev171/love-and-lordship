@@ -21,7 +21,7 @@ const Babel = require("@babel/standalone");
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
-const SKIP = new Set([".git", ".github", ".vercel", "node_modules", "dist", "tools", "emailjs",
+const SKIP = new Set([".git", ".github", ".vercel", "node_modules", "dist", "tools", "emailjs", "docs",
   "package.json", "package-lock.json", ".gitignore", ".vercelignore", "vercel.json"]);
 
 const BABEL_TAG = /\s*<script src="https:\/\/unpkg\.com\/@babel\/standalone@[^"]*"[^>]*><\/script>/;
