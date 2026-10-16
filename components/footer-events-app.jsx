@@ -332,7 +332,7 @@ function Footer({ onDonate, homeBase = "" }) {
           </div>
         </div>
         <div className="footer-bottom">
-          <div>© 2026 Building Healthy Relationships, dba Love &amp; Lordship, a 501(c)(3) nonprofit · 324 Timothy Drive, Nicholasville, KY 40356 · (859) 229-6504</div>
+          <div>© 2026 Building Healthy Relationships, dba Love &amp; Lordship, a 501(‌c)(3) nonprofit · 324 Timothy Drive, Nicholasville, KY 40356 · (859) 229-6504 · All donations are fully tax deductible.</div>
           <div style={{ display: "flex", gap: 16 }}>
             <a href={link("pages/terms.html")}>Terms of Use</a>
             <a href={link("pages/privacy.html")}>Privacy</a>
@@ -366,7 +366,7 @@ function DonateModal({ open, onClose }) {
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14s-5-3.5-5-7.5A3 3 0 0 1 8 4a3 3 0 0 1 5 2.5C13 10.5 8 14 8 14z" fill="currentColor"/></svg>
           </div>
           <div className="txt">
-            Giving is handled on <strong>Cornerstone's secure page</strong>. Choose any amount there, and give once or set up a weekly, monthly, quarterly or yearly gift. Love &amp; Lordship (Building Healthy Relationships) is a 501(c)(3) nonprofit, so your gift is tax-deductible as allowed by law.
+            Giving is handled on <strong>Cornerstone's secure page</strong>. Choose any amount there, and give once or set up a weekly, monthly, quarterly or yearly gift. Love &amp; Lordship (Building Healthy Relationships) is a 501(‌c)(3) nonprofit. All donations are fully tax deductible.
           </div>
         </div>
 

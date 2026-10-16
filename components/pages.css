@@ -745,3 +745,51 @@
 .form-error { margin: 14px 0 0; padding: 12px 14px; border-radius: var(--r-sm, 8px); background: oklch(0.96 0.03 25); color: oklch(0.42 0.14 25); font-size: 14px; line-height: 1.5; }
 .form-error a { color: inherit; text-decoration: underline; }
 button[disabled] { opacity: 0.7; cursor: progress; }
+
+/* Book page: multi-paragraph endorsements + "read more" */
+.endorse .q + .q { margin-top: -6px; }
+.endorse ul.q { padding-left: 1.1em; }
+.endorse ul.q li { margin-bottom: 8px; }
+.endorse-wide { grid-column: 1 / -1; }
+.endorse-wide .q { max-width: 70ch; }
+.endorse-more { margin-top: 24px; }
+.endorse-more > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: border-color 0.2s var(--ease);
+}
+.endorse-more > summary::-webkit-details-marker { display: none; }
+.endorse-more > summary::after { content: "+"; font-size: 18px; line-height: 1; color: var(--wine); }
+.endorse-more[open] > summary::after { content: "–"; }
+.endorse-more > summary:hover { border-color: var(--ink); }
+.endorse-more > .endorse-grid { margin-top: 20px; }
+
+/* Book page: table of contents by section */
+.toc-section { grid-template-columns: 96px 1fr auto; }
+.toc-chapters {
+  margin: 12px 0 0;
+  padding-left: 2.2em;
+  columns: 2;
+  column-gap: 32px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.toc-chapters li { break-inside: avoid; margin-bottom: 6px; }
+.toc-chapters li::marker { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); }
+.toc-chapters .toc-guide { list-style: none; font-style: italic; color: var(--ink-mute); }
+@media (max-width: 760px) {
+  .toc-section { grid-template-columns: 1fr; gap: 6px; }
+  .toc-section .toc-pages { display: none; }
+  .toc-chapters { columns: 1; }
+}
+.endorse-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }

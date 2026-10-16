@@ -45,24 +45,35 @@
   <script type="text/babel" src="../components/page-shell.jsx"></script>
 
   <script type="text/babel">
-    // Table of Contents: fill in from the printed second edition. The section
-    // stays hidden until at least one real title replaces a "TBD" row.
-    const CHAPTERS = [
-      { n: "01", t: "Section title — TBD from print copy", p: "" },
-      { n: "02", t: "Section title — TBD from print copy", p: "" },
-      { n: "03", t: "Section title — TBD from print copy", p: "" },
-      { n: "04", t: "Section title — TBD from print copy", p: "" },
-      { n: "05", t: "Section title — TBD from print copy", p: "" },
-      { n: "06", t: "Section title — TBD from print copy", p: "" },
-      { n: "07", t: "Section title — TBD from print copy", p: "" },
-      { n: "08", t: "Section title — TBD from print copy", p: "" },
+    const BOB_RUSSELL = { q: "This is such an important book for today's church. In my fifty plus years of ministry I have witnessed churches so concerned about being relevant that they wind up reflecting the culture rather than redeeming it. Greg's book is indeed, a 'wake up call for the modern-day American church' to restore the Biblical standards of marriage, family and the church which are still compelling and transforming.", by: "Bob Russell", role: "CEO, Bob Russell Ministries · Senior Minister (Retired), Southeast Christian Church, Louisville, KY" };
+    // Table of Contents from Greg's "TAOL TOC - Website" doc (printed second edition).
+    const SECTIONS = [
+      { n: "1", t: "Authority & Love", ch: [[1, "True Authority"], [2, "But Why Authority? Let’s Just Love One Another"], [3, "Authority According to God’s Covenant Order"]] },
+      { n: "2", t: "The Story of Two Kingdoms", ch: [[4, "The Kingdom & Lordship of Christ"], [5, "Authority & Truth"], [6, "The False Kingdom"], [7, "Only Two Kingdoms, Two Kings, Two Lords"]] },
+      { n: "3", t: "Discipleship: Response Required", ch: [[8, "Discipleship: Responding to Your Lord"], [9, "Discipleship: Finding Out Who You Were Created To Be"], [10, "Practical Application: Living as Christ’s Disciples"], [11, "A Judgment Day Parable: Lordship, Discipleship & Relationship"]] },
+      { n: "4", t: "Relationships: What We Were Created For", ch: [[12, "The Currency of Christ’s Kingdom: Loving Relationships"], [13, "Love & Lust…Pornography & Porneia"], [14, "Self & Lust: A Modern Day Movie/Biblical Story Mash-up"], [15, "The Full-Orbed Love of God"], [16, "God’s Priorities"]] },
+      { n: "5", t: "Marriage: In God’s Image", ch: [[17, "Marriage is the #2 Priority"], [18, "Building Agape Marriages & Kingdom Relationships"], [19, "Biblical Tips for Navigating Marriage"], [20, "Touching the Hot Topics"]] },
+      { n: "6", t: "Marriage, Family & Parenting God’s Way", ch: [[21, "Two Contrasting Stories of Home"], [22, "God’s Design for Parenting & Family"], [23, "Character in Scripture"], [24, "Biblical Discipleship in Parenting"], [25, "Our Family Story: Discipling Our Children"]] },
+      { n: "7", t: "The Home & Relational Servant-leadership in Christ’s Family", ch: [[26, "Our Families & Christ’s Family"], [27, "Loving & Leading in The Home & in His Church"], [28, "The Marriage–Family–Church Leadership Connection"], [29, "“What Would Jesus Say to Today’s Megachurch?”"]] },
+      { n: "8", t: "Wise as Serpents, Gentle as Doves", ch: [[30, "Serpents & Doves…Taking His Message to The World"], [31, "Who’s Discipling Our Youth?"], [32, "Changing the Paradigm: Transformed by Renewing our Minds"]] },
     ];
-    // Only verified endorsements go here. Bob Russell's is from the printed back
-    // cover; add others as Greg supplies them (quote, name, role).
-    const ENDORSE = [
-      { q: "This is such an important book for today's church. In my fifty plus years of ministry I have witnessed churches so concerned about being relevant that they wind up reflecting the culture rather than redeeming it. Greg's book is indeed, a 'wake up call for the modern-day American church' to restore the Biblical standards of marriage, family and the church which are still compelling and transforming.", by: "Bob Russell", role: "CEO, Bob Russell Ministries · Senior Minister (Retired), Southeast Christian Church, Louisville, KY" },
+    // Endorsements from Greg's "TAOL Book Endorsements - Website" doc, verbatim.
+    // His top three lead; Bob Russell's is from the printed back cover.
+    const ENDORSE_TOP = [
+      {"q": ["Just this week, week seven of the imposed coronavirus quarantine, I was asked by a fellow Christian leader, ‘Other than the Bible, what book have you read during this extended period of isolation at home that has been most personally inspirational?’", "My answer was, Love and Lordship’s “The Authority of Love” by my friend, Greg Williams.", "It is Biblical, clear, transparent and relevant:", {"ul": ["Books that are intended to be discipling tools, especially for men, must have the authority of God’s Word laced into the text. Men will pay attention when God is allowed to speak. The exposition of scripture and the illustrations from scripture underpin the content of the book at every turn of a page.", "Greg is a linear thinker... like me! His book is logical. There is no way to get lost chasing ‘rabbit trails’ because there are none. He lays a foundation and then moves us step-by-step down a path of understanding the motives and methods for becoming a more devoted disciple of Jesus Christ.", "I am not sure I have ever read a book in which the author has been as open and honest as Greg. His humility in sharing his life journey is both endearing and engaging. Again and again he draws us into his story, a story with which the reader will easily identify.", "Greg is not an ivory-tower theologian. He is a down-to-earth practitioner of faithful Christian living. “The Authority of Love” is in touch with the real ‘world, flesh and devil’ and how each seeks to threaten and corrupt our daily walk with Christ."]}, "[Don’t start reading this book at 10:00 PM at night! You may find yourself groggy from lack of sleep the next day...]"], "by": "Dr. Ken Idleman", "role": "Former President, Ozark Christian College (1979 – 2006) · V.P. of Leadership Development for The Solomon Foundation", "wide": true},
+      {"q": ["Greg’s passion for the Lord, His Word and his own family is the actual force behind this book. Like a vitamin supplement, “The Authority of Love” is packed with Biblical truth and wisdom that every family should have at its disposal. God’s goal is healthy families that thrive, not just in and for themselves, but for the Lord and His purposes. Read the book, build these truths into your own life and relationships and move forward into the things that God created you to do."], "by": "Kent Ostrander", "role": "Executive Director, The Family Foundation"},
+      {"q": ["I am delighted to recommend Greg Williams’ latest book “The Authority of Love.” This book is grounded firmly in Biblical principles for marriage, family and the Christian home. These are timeless truths Greg has taught for many years. He not only teaches but models them in his own life, marriage and parenting. This book will be particularly helpful for discipleship and small group studies. When I pastored a local church Greg came and taught these principles. His lessons were very well received and desperately needed in a day when marriage, family and home are under attack."], "by": "Wally Rendel", "role": "Senior Minister (Retired), Jessamine Christian Church, Nicholasville, KY"},
+      BOB_RUSSELL,
     ];
-    const HAS_TOC = CHAPTERS.some(c => !c.t.includes("TBD"));
+    const ENDORSE_MORE = [
+      {"q": ["I have gleaned from Greg’s friendship for over a decade. I love how he expounds the Scripture and weaves it tightly into the principles of marriage. This book will not only encourage your own marriage, but the small group study will give you the tools to influence other men and women as well. Greg has done a marvelous job of coupling his own experiences in marriage and counseling with the Lordship of Christ in his own personal walk."], "by": "Dr. Tim Turner", "role": "Director of Evangelism and Discipleship, WV Convention of Southern Baptist"},
+      {"q": ["Greg is a passionate voice for Christian marriages. As the family goes, so goes the church. I never enjoyed weddings but I loved to see Christian marriages because they are the building blocks of society. Greg can encourage your church and couples and help bear the load if you let him use what he has learned."], "by": "Wayne B. Smith (1929-2016)", "role": "Founder/Senior Minister, Southland Christian Church, Lexington, KY"},
+      {"q": ["The Authority of Love and the foundation of God’s Truth that it stands on are desperately needed, as we see people being devoured by today’s culture. Under Greg Williams’ leadership and gifted speaking ability, we have been challenged and reminded to live our lives in a way that glorifies God each time we have hosted Love & Lordship event. The passion that Greg and the ministry have to make a difference in the lives of all Christ followers is something we all should strive for."], "by": "Greg Horn", "role": "HOPE is Here Host, Lexington, KY"},
+      {"q": ["My wife and I had the privilege of attending Greg’s 7-session Love and Lordship event held at our church. Those sessions were extremely well done and everyone from our church loved them. I’ve since used some of his materials in my pre-marriage counseling sessions. Greg’s passion for marriage and the family lights up the stage. We were so impressed with that first event that we had Greg come back and lead one of our church-wide group sessions as well. This book will be a great tool for those looking to fulfill God’s covenant design for marriage and family."], "by": "Terry Cooper", "role": "Senior Minister, Ninevah Christian Church, Lawrenceburg, KY"},
+      {"q": ["The traditional American family is under assault and getting weaker by the day. Restoring it to its original purpose and function will only happen by highly intentional effort. Greg Williams provides key instruction and motivation for men to become diligent disciples, humble husbands and faithful fathers. A relevant and powerful message presented in a clear and effective way. Expect to be radically changed from the inside out!"], "by": "Kent Laufenburger", "role": "Lexington, KY"},
+      {"q": ["This was the best material I have heard and I have a masters of divinity in pastoral counseling from Southern Baptist Seminary. Right on the money. Convicting and liberating. I’ve been telling everyone about the teaching. I wish I had been trained to teach and live this as I attended seminary…would have saved a lot of heartache, mine and others."], "by": "James Driver", "role": "Frankfort, KY"},
+    ];
+    const HAS_TOC = SECTIONS.length > 0;
     const ALT = (on) => (on ? { background: "var(--paper)" } : undefined);
 
     const ORDER_LINKS = [
@@ -70,6 +81,20 @@
       { t: "Kindle edition", d: "Read the full second edition on any device. Available instantly for Kindle.", href: "https://bit.ly/TAOL2EdKindle", cta: "Order for Kindle" },
       { t: "Companion workbook", d: "Living in God's Covenant Design — the workbook for personal reflection and small-group facilitation.", href: "https://bit.ly/TAOLWorkbook", cta: "Order the workbook" },
     ];
+
+    function Endorsement({ e }) {
+      const blocks = typeof e.q === "string" ? [e.q] : e.q;
+      const last = blocks.length - 1;
+      return (
+        <div className={"endorse" + (e.wide ? " endorse-wide" : "")}>
+          {blocks.map((b, i) => typeof b === "string"
+            ? <p className="q" key={i}>{i === 0 ? "“" : ""}{b}{i === last ? "”" : ""}</p>
+            : <ul className="q" key={i}>{b.ul.map((li, k) => <li key={k}>{li}</li>)}</ul>)}
+          <div className="by">{e.by}</div>
+          <div className="role">{e.role}</div>
+        </div>
+      );
+    }
 
     function BookPage() {
       return (
@@ -117,12 +142,19 @@
             <div className="wrap">
               <div className="eyebrow">Table of Contents</div>
               <h2>What you'll <em>walk through</em>.</h2>
+              <p>Eight sections and thirty-two chapters, each section closing with a study guide for personal reflection or small-group discussion.</p>
               <div className="toc" style={{ marginTop: 28 }}>
-                {CHAPTERS.map(c => (
-                  <div className="toc-row" key={c.n}>
-                    <div className="toc-num">{c.n}</div>
-                    <div className="toc-title" dangerouslySetInnerHTML={{ __html: c.t }} />
-                    <div className="toc-pages">{c.p}</div>
+                {SECTIONS.map(s => (
+                  <div className="toc-row toc-section" key={s.n}>
+                    <div className="toc-num">Section {s.n}</div>
+                    <div>
+                      <div className="toc-title">{s.t}</div>
+                      <ol className="toc-chapters" start={s.ch[0][0]}>
+                        {s.ch.map(c => <li key={c[0]}>{c[1]}</li>)}
+                        <li className="toc-guide">Study Guide</li>
+                      </ol>
+                    </div>
+                    <div className="toc-pages">Ch. {s.ch[0][0]}–{s.ch[s.ch.length - 1][0]}</div>
                   </div>
                 ))}
               </div>
@@ -149,17 +181,17 @@
 
           <section className="page-section" style={ALT(HAS_TOC)}>
             <div className="wrap">
-              <div className="eyebrow">Endorsement</div>
+              <div className="eyebrow">Endorsements</div>
               <h2>What leaders are <em>saying</em>.</h2>
-              <div className="endorse-grid" style={{ marginTop: 28, maxWidth: ENDORSE.length === 1 ? 860 : undefined }}>
-                {ENDORSE.map((e, i) => (
-                  <div className="endorse" key={i}>
-                    <p className="q">"{e.q}"</p>
-                    <div className="by">{e.by}</div>
-                    <div className="role">{e.role}</div>
-                  </div>
-                ))}
+              <div className="endorse-grid" style={{ marginTop: 28 }}>
+                {ENDORSE_TOP.map((e, i) => <Endorsement e={e} key={i} />)}
               </div>
+              <details className="endorse-more">
+                <summary>Read {ENDORSE_MORE.length} more endorsements</summary>
+                <div className="endorse-grid">
+                  {ENDORSE_MORE.map((e, i) => <Endorsement e={e} key={i} />)}
+                </div>
+              </details>
             </div>
           </section>
 

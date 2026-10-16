@@ -4,7 +4,7 @@ const { useState, useEffect, useRef } = React;
 function NavLogo({ homeBase = "#top", imgBase = "" }) {
   return (
     <a href={homeBase} className="nav-logo" aria-label="Love and Lordship — Home">
-      <img className="nav-logo-img" src={`${imgBase}assets/images/logo-white-on-blue.jpg`} alt="Love & Lordship" />
+      <img className="nav-logo-img" src={`${imgBase}assets/images/logo-white-on-blue-tight.jpg`} alt="Love & Lordship" />
     </a>
   );
 }
@@ -137,7 +137,7 @@ function Nav({ onDonate, homeBase = "" }) {
   };
 
   return (
-    <header className={"nav-shell" + (scrolled ? " scrolled" : "")}>
+    <header className={"nav-shell" + (homeBase ? "" : " home") + (scrolled ? " scrolled" : "")}>
       <div className="nav-inner">
         <NavLogo homeBase={homeBase || "#top"} imgBase={homeBase ? "../" : ""} />
         <nav className="nav-links" onMouseLeave={handleLeave}>
