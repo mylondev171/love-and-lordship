@@ -1,3 +1,20 @@
+# UPDATE 2026-10-16 evening, after the call with Greg (read first)
+- `3fafd1a` LIVE on the preview: book page endorsements (Greg's top 3 + Bob Russell, then
+  6 behind "Read more", verbatim from his doc) and the full TOC (8 sections, 32 chapters);
+  "All donations are fully tax deductible." in the footer, donate modal and giving FAQ;
+  homepage logo is 112px at the top of the page and shrinks on scroll (desktop only);
+  501(c)(3) ligature fix (Manrope turns "(c)" into ©, so the text uses a ZWNJ: "(‌c)").
+- Source docs: Downloads\TAOL Book Endorsement - Website (1).docx, TAOL TOC - Website (1).docx.
+- 🔴 KNOWN BUG, not fixed (awaiting Mylon's OK): `.nav-shell.scrolled` uses backdrop-filter,
+  which becomes the containing block for the fixed `.mobile-drawer`. Result: the phone menu
+  opened after scrolling is a ~100px strip, and the closed drawer adds horizontal scroll
+  on desktop once scrolled. Fix: move the drawer out of `<header>` (or drop backdrop-filter).
+- Decided on the call: newsletter -> Greg's CONSTANT CONTACT (welcome email + auto-add);
+  photos rotate QUARTERLY, Greg sends them; greg@ email: cheapest of GoDaddy M365 ($23.88/yr)
+  vs his own M365 (likely Family/Personal, which can't add custom domains since 2023-11-30).
+  Restream is Greg's to set up (YouTube, Podbean, LinkedIn). Prepare/Enrich link: Greg.
+- Credentials were spoken on the call; they are NOT stored in the repo or in memory.
+
 # UPDATE 2026-10-16 (read first)
 - `d8b492f` (pushed, verified live on the preview): Greg's 10-16 answers applied. The
   501(c)(3) legal name "Building Healthy Relationships (dba Love & Lordship)" is now in
