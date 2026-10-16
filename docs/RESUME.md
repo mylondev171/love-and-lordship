@@ -1,3 +1,19 @@
+# UPDATE 2026-10-16 (read first)
+- `d8b492f` (pushed, verified live on the preview): Greg's 10-16 answers applied. The
+  501(c)(3) legal name "Building Healthy Relationships (dba Love & Lordship)" is now in
+  the footer, terms, giving FAQ, donate modal and schema. Office hours are removed.
+- Greg APPROVED: privacy + terms, the access code "love", "eleven channels" (the app has
+  11 channels; the site library's 7 priorities are separate), Restream Standard,
+  launching without a full library review. Call with Greg 10-16 at 3:30 ET.
+- STILL NEEDED: the endorsements doc + TOC photo (Greg's email attachments; not on disk yet),
+  4-6 homepage photos (Greg sends, or pull from his Facebook "Gregory Scott Williams"),
+  a newsletter platform decision (signups go to a Google Form today, no thank-you email),
+  greg@loveandlordship.com forwarding to YAHOO ONLY (GoDaddy, do on the call),
+  the Prepare/Enrich link (Greg), loading the library into the connectapp. channels.
+- The working folder had 7 tracked files deleted (moved to the sibling
+  "Love and Lordship" folder, identical copies). Restored from HEAD on 10-16; the
+  sibling copies were left in place.
+
 # RESUME HERE (saved 2026-09-29)
 
 Live preview: https://love-and-lordship.vercel.app (Vercel project `love-and-lordship`,
