@@ -62,10 +62,10 @@ function Impact() {
     { name: "Ukraine", x: 58, y: 30 },
     { name: "Russia", x: 64, y: 14 },
     { name: "Liberia", x: 34, y: 82 },
-    { name: "Uganda", x: 64, y: 62 },
+    { name: "Uganda", x: 62, y: 58 },
     { name: "Kenya", x: 70, y: 80 },
-    { name: "Pakistan", x: 74, y: 44 },
-    { name: "India", x: 82, y: 60 },
+    { name: "Pakistan", x: 77, y: 52 },
+    { name: "India", x: 81, y: 68 },
   ];
 
   return (
