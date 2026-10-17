@@ -137,6 +137,7 @@ function Nav({ onDonate, homeBase = "" }) {
   };
 
   return (
+    <React.Fragment>
     <header className={"nav-shell" + (homeBase ? "" : " home") + (scrolled ? " scrolled" : "")}>
       <div className="nav-inner">
         <NavLogo homeBase={homeBase || "#top"} imgBase={homeBase ? "../" : ""} />
@@ -216,23 +217,27 @@ function Nav({ onDonate, homeBase = "" }) {
         </div>
       ))}
 
-      <div className={"mobile-drawer" + (mobile ? " open" : "")}>
-        <h6>Mission</h6>
-        {["Love & Lordship","Discipleship","Relationship","Marriage","Family","Church","Culture"].map(n => <a key={n} href={link("#pillars")} onClick={() => setMobile(false)}>{n}</a>)}
-        <h6>Media</h6>
-        <a href={link("#media")} onClick={() => setMobile(false)}>Watch</a>
-        <a href={link("#media")} onClick={() => setMobile(false)}>Read</a>
-        <a href={link("#media")} onClick={() => setMobile(false)}>Listen</a>
-        <h6>Engage</h6>
-        <a href={link("#events")} onClick={() => setMobile(false)}>Events</a>
-        <a href={link("#app")} onClick={() => setMobile(false)}>The L&amp;L App</a>
-        <a href={link("#story")} onClick={() => setMobile(false)}>About</a>
-        <a href={link("#newsletter")} onClick={() => setMobile(false)}>Newsletter</a>
-        <div style={{ marginTop: 24 }}>
-          <button className="btn btn-give" style={{ width: "100%", justifyContent: "center" }} onClick={() => { setMobile(false); onDonate(); }}>Give</button>
-        </div>
-      </div>
     </header>
+
+    {/* Outside <header>: its backdrop-filter (when scrolled) would otherwise become
+        the containing block for this fixed drawer and shrink it to the header. */}
+    <div className={"mobile-drawer" + (mobile ? " open" : "")}>
+      <h6>Mission</h6>
+      {["Love & Lordship","Discipleship","Relationship","Marriage","Family","Church","Culture"].map(n => <a key={n} href={link("#pillars")} onClick={() => setMobile(false)}>{n}</a>)}
+      <h6>Media</h6>
+      <a href={link("#media")} onClick={() => setMobile(false)}>Watch</a>
+      <a href={link("#media")} onClick={() => setMobile(false)}>Read</a>
+      <a href={link("#media")} onClick={() => setMobile(false)}>Listen</a>
+      <h6>Engage</h6>
+      <a href={link("#events")} onClick={() => setMobile(false)}>Events</a>
+      <a href={link("#app")} onClick={() => setMobile(false)}>The L&amp;L App</a>
+      <a href={link("#story")} onClick={() => setMobile(false)}>About</a>
+      <a href={link("#newsletter")} onClick={() => setMobile(false)}>Newsletter</a>
+      <div style={{ marginTop: 24 }}>
+        <button className="btn btn-give" style={{ width: "100%", justifyContent: "center" }} onClick={() => { setMobile(false); onDonate(); }}>Give</button>
+      </div>
+    </div>
+    </React.Fragment>
   );
 }
 

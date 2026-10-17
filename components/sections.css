@@ -782,3 +782,14 @@
 }
 .app-code .lbl { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
 .app-code .code { font-family: var(--font-mono); font-size: 18px; font-weight: 500; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; }
+
+/* App how-to-join steps (AppPromo) */
+.app-steps { list-style: none; margin: -8px 0 28px; padding: 0; display: grid; gap: 10px; }
+.app-steps li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; }
+.app-steps .n {
+  flex: none; width: 24px; height: 24px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 12px; color: var(--gold);
+  border: 1px solid oklch(0.55 0.05 250 / 0.6);
+}
+.app-steps a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }

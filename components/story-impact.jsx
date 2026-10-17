@@ -61,6 +61,11 @@ function Impact() {
     { name: "Cameroon", x: 50, y: 68 },
     { name: "Ukraine", x: 58, y: 30 },
     { name: "Russia", x: 64, y: 14 },
+    { name: "Liberia", x: 34, y: 82 },
+    { name: "Uganda", x: 64, y: 62 },
+    { name: "Kenya", x: 70, y: 80 },
+    { name: "Pakistan", x: 74, y: 44 },
+    { name: "India", x: 82, y: 60 },
   ];
 
   return (
@@ -108,9 +113,9 @@ function Impact() {
               From Kentucky to Cameroon — and beyond.
             </h3>
             <p style={{ color: "var(--ink-soft)", fontSize: 16, lineHeight: 1.55, margin: "0 0 20px" }}>
-              The Authority of Love serves as discipleship curriculum for Sisters for Life and
-              Marriage for Life as they rescue moms, babies, and fathers off the streets — from
-              Louisville to LA, Dallas, Cincinnati, Indianapolis, and beyond.
+              The Love &amp; Lordship ministry with "The Authority of Love" message has been picked up
+              and followed by numerous ministries, churches, Christian schools and orphanages in
+              several countries around the world.
             </p>
             <a className="btn-link" href="pages/about.html#reach">See where we're going next <span className="arr">→</span></a>
           </div>

@@ -60,8 +60,23 @@ function Book({ onDonate }) {
 
 /* ================= Media ================= */
 // The newest real items from the library, generated into data/featured.js by
-// tools/build_featured.py. Watch cards use the YouTube thumbnail; Listen and
-// Read have no artwork of their own, so they rotate through the site imagery.
+// tools/build_featured.py. Watch cards use Greg's own photos (sent 2026-10-16)
+// instead of YouTube thumbnails, rotating once per quarter. Only the
+// high-resolution photos go in the big card. Listen and Read have no artwork
+// of their own, so they rotate through the site imagery.
+const WATCH_PHOTOS_BIG = ["assets/images/photo-greg-ami-book.webp", "assets/images/photo-greg-ami-2019.webp", "assets/images/photo-greg-with-cameron.webp"];
+const WATCH_PHOTOS = WATCH_PHOTOS_BIG.concat(["assets/images/photo-greg-teaching-cameroon.webp", "assets/images/photo-greg-cameroon-retreat.webp", "assets/images/photo-greg-teaching.webp"]);
+
+function watchPhotos(count) {
+  const now = new Date();
+  const q = now.getFullYear() * 4 + Math.floor(now.getMonth() / 3);
+  const big = WATCH_PHOTOS_BIG[q % WATCH_PHOTOS_BIG.length];
+  const rest = WATCH_PHOTOS.filter(p => p !== big);
+  const out = [big];
+  for (let i = 0; out.length < count; i++) out.push(rest[(q + i) % rest.length]);
+  return out;
+}
+
 const MEDIA_ART = {
   listen: ["assets/images/microphone-studio.webp", "assets/images/podcast-cover.webp", "assets/images/radio-dial.webp", "assets/images/marriage-resilient.webp", "assets/images/waveform.webp"],
   read: ["assets/images/open-journal.webp", "assets/images/notebook.webp", "assets/images/two-coffee-cups.webp", "assets/images/bible-and-pen.webp", "assets/images/open-bible-morning.webp"],
@@ -70,10 +85,9 @@ const MEDIA_LIB = { watch: "Watch", listen: "Listen", read: "Read" };
 
 function mediaItems(tab) {
   const list = (window.LL_FEATURED && window.LL_FEATURED[tab]) || [];
+  const photos = tab === "watch" ? watchPhotos(list.length) : null;
   return list.map((m, i) => {
-    const art = tab === "watch" && m.th
-      ? (i === 0 ? m.th.replace("mqdefault", "maxresdefault") : m.th)
-      : MEDIA_ART[tab][i % MEDIA_ART[tab].length];
+    const art = photos ? photos[i] : MEDIA_ART[tab][i % MEDIA_ART[tab].length];
     return { ...m, art, big: i === 0 };
   });
 }

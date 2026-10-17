@@ -149,13 +149,18 @@ function AppPromo() {
             <p className="lead">
               The Love &amp; Lordship app lives inside <strong>connectapp.</strong> — a private, ad-free community
               platform. Download it, search for <strong>Love &amp; Lordship</strong>, and enter the access code
-              to join. Every message, podcast, article and event lands there first, sorted into channels
-              that match the seven priorities on this site.
+              to join. Every message, podcast, article and event lands there first, sorted into eleven
+              channels.
             </p>
             <div className="app-code" aria-label="Access code">
               <span className="lbl">Access code</span>
               <span className="code">love</span>
             </div>
+            <ol className="app-steps" aria-label="How to get the app">
+              <li><span className="n">1</span><span>Download <strong>connectapp.</strong> free from the <a href="https://apps.apple.com/us/app/connectapp/id6447310443" target="_blank" rel="noopener noreferrer">App Store</a> or <a href="https://play.google.com/store/apps/details?id=social.inthezone.com" target="_blank" rel="noopener noreferrer">Google Play</a>.</span></li>
+              <li><span className="n">2</span><span>Open it and search for <strong>Love &amp; Lordship</strong>.</span></li>
+              <li><span className="n">3</span><span>Enter the access code <strong>love</strong> to join.</span></li>
+            </ol>
             <div className="app-features">
               <div className="app-feature">
                 <div className="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 3v10M12 3v10M4 6h8M4 10h8"/></svg></div>
