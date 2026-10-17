@@ -7,8 +7,9 @@
     Pakistan, India (12 dots now, but the stats still say "10 countries" - asked Greg).
   - App section: 3-step "how to join" list; lead copy now says "eleven channels".
   - Mobile menu bug FIXED: drawer moved outside <header> (+ visibility:hidden when closed).
-- Reply to Greg drafted in chat 10-17 (Mylon sends): photos answer, 10 vs 12 countries,
-  Constant Contact login, confirm app join steps.
+- Mylon HAS the Constant Contact + Greg M365 logins (from the 10-16 call); never ask Greg for them.
+  He signs in to Chrome, Claude drives. Reply to Greg drafted 10-17: photos answer, 10 vs 12 countries,
+  confirm app join steps.
 - Next for Claude on Mylon's go: load the library into the connectapp. channels
   (creds are in Greg's 10-15 email; not stored here).
 
