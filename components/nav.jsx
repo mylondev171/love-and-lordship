@@ -4,7 +4,7 @@ const { useState, useEffect, useRef } = React;
 function NavLogo({ homeBase = "#top", imgBase = "" }) {
   return (
     <a href={homeBase} className="nav-logo" aria-label="Love and Lordship — Home">
-      <img className="nav-logo-img" src={`${imgBase}assets/images/logo-white-on-blue-tight.jpg`} alt="Love & Lordship" />
+      <img className="nav-logo-img" src={`${imgBase}assets/images/logo-horizontal.png`} alt="Love & Lordship" />
     </a>
   );
 }

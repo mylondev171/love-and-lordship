@@ -24,7 +24,7 @@ function Book({ onDonate }) {
             <ul className="book-bullets">
               {[
                 "Chosen by Sisters for Life as core discipleship curriculum",
-                "Shared in at least 10 countries and 50+ partner ministries",
+                "Shared in at least 12 countries and 50+ partner ministries",
                 "Designed for personal study, marriages, and small groups",
                 "Companion study guide for family, class and small-groups",
               ].map((b) => (

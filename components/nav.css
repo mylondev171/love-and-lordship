@@ -25,7 +25,7 @@
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  height: 48px;
+  height: 44px;
 }
 .nav-logo-img {
   height: 100%;
@@ -39,14 +39,12 @@
 .nav-logo { transition: height 0.35s var(--ease), margin 0.35s var(--ease); }
 @media (min-width: 1000px) {
   .nav-shell.home:not(.scrolled) .nav-logo {
-    height: 112px;
-    align-self: start;
-    margin-top: 12px;
+    height: 64px;
   }
-  .nav-shell.home:not(.scrolled) .nav-logo-img { border-radius: 12px; }
+  .nav-shell.home:not(.scrolled) .nav-logo-img { border-radius: 10px; }
 }
 @media (max-width: 720px) {
-  .nav-logo { height: 40px; }
+  .nav-logo { height: 36px; }
   .nav-logo-img { border-radius: 6px; }
 }
 

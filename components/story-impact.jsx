@@ -35,7 +35,7 @@ function Story() {
                 <div className="l">Years of ministry</div>
               </div>
               <div className="item">
-                <div className="n">10</div>
+                <div className="n">12</div>
                 <div className="l">Countries reached</div>
               </div>
             </div>
@@ -82,7 +82,7 @@ function Impact() {
             <div className="label">Partner ministries &amp; churches actively engaged with the message</div>
           </div>
           <div className="impact-stat">
-            <div className="n">10</div>
+            <div className="n">12</div>
             <div className="label">Countries receiving Love &amp; Lordship teaching</div>
           </div>
           <div className="impact-stat">
