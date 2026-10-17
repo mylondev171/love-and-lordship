@@ -4,9 +4,11 @@
     rotating each quarter (`watchPhotos()` in components/book-media.jsx; only the 3 hi-res
     photos take the big card). Files: assets/images/photo-greg-*.webp.
   - The Reach: Greg's 10-17 paragraph verbatim; map dots added for Liberia, Uganda, Kenya,
-    Pakistan, India (12 dots now, but the stats still say "10 countries" - asked Greg).
+    Pakistan, India. Count is now 12 countries site-wide (Mylon: "obvious, just do it").
   - App section: 3-step "how to join" list; lead copy now says "eleven channels".
   - Mobile menu bug FIXED: drawer moved outside <header> (+ visibility:hidden when closed).
+- Nav logo is now the HORIZONTAL assets/images/logo-horizontal.png (`7d68f61`), built from the
+  original letterforms; 44px (64px homepage top, 36px phone).
 - Mylon HAS the Constant Contact + Greg M365 logins (from the 10-16 call); never ask Greg for them.
   He signs in to Chrome, Claude drives. Reply to Greg drafted 10-17: photos answer, 10 vs 12 countries,
   confirm app join steps.
