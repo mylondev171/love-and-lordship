@@ -270,7 +270,7 @@
 .media-card:hover { transform: translateY(-3px); }
 .media-card.big { grid-row: 1 / span 2; min-height: 600px; }
 .media-card .imgph { position: absolute; inset: 0; }
-.media-card .imgph img { object-position: center 25%; }
+.media-card .imgph img { object-position: center 12%; }
 .media-card .badge {
   position: absolute;
   top: 16px; left: 16px;
