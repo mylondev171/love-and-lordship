@@ -1,3 +1,17 @@
+# UPDATE 2026-10-17 (read first)
+- LIVE on the preview (`c878dcf`, `8b1339d`, `df53ccb`), verified on the deployed site:
+  - Homepage Watch cards use Greg's 6 photos (his 10-16 email) instead of YouTube thumbnails,
+    rotating each quarter (`watchPhotos()` in components/book-media.jsx; only the 3 hi-res
+    photos take the big card). Files: assets/images/photo-greg-*.webp.
+  - The Reach: Greg's 10-17 paragraph verbatim; map dots added for Liberia, Uganda, Kenya,
+    Pakistan, India (12 dots now, but the stats still say "10 countries" - asked Greg).
+  - App section: 3-step "how to join" list; lead copy now says "eleven channels".
+  - Mobile menu bug FIXED: drawer moved outside <header> (+ visibility:hidden when closed).
+- Reply to Greg drafted in chat 10-17 (Mylon sends): photos answer, 10 vs 12 countries,
+  Constant Contact login, confirm app join steps.
+- Next for Claude on Mylon's go: load the library into the connectapp. channels
+  (creds are in Greg's 10-15 email; not stored here).
+
 # UPDATE 2026-10-16 evening, after the call with Greg (read first)
 - `3fafd1a` LIVE on the preview: book page endorsements (Greg's top 3 + Bob Russell, then
   6 behind "Read more", verbatim from his doc) and the full TOC (8 sections, 32 chapters);
