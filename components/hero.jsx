@@ -102,7 +102,7 @@ function Hero({ onDonate }) {
               For more than thirty years, Greg Williams has been making disciples who make disciples —
               sharing a biblical foundation of Christ's Lordship and our discipleship for life,
               marriage, family, and relationship with individuals, couples, families and churches
-              across the USA and in twelve countries and counting.
+              across the USA and in seven countries and counting.
             </p>
             <div className="hero-ctas">
               <button className="btn btn-primary" onClick={() => document.getElementById("pillars").scrollIntoView({ behavior: "smooth" })}>

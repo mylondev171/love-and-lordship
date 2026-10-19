@@ -22,8 +22,8 @@ function Story() {
             </p>
             <p>
               He's spoken to thousands across the United States and as keynote at the
-              International Marriage &amp; Family Conference in Cameroon. Ami stands beside him in every
-              setting — a partnership that started in 1991 and has only deepened.
+              International Marriage &amp; Family Conference in Cameroon. Ami has been his greatest support every
+              step of the way — a partnership that started in 1991 and has only deepened.
             </p>
             <div className="story-credentials">
               <div className="item">
@@ -35,7 +35,7 @@ function Story() {
                 <div className="l">Years of ministry</div>
               </div>
               <div className="item">
-                <div className="n">12</div>
+                <div className="n">7</div>
                 <div className="l">Countries reached</div>
               </div>
             </div>
@@ -51,21 +51,16 @@ function Story() {
 }
 
 function Impact() {
-  // Countries named on the Invite Greg page (where Greg has spoken). Positions
+  // Countries where the ministry is having impact (Greg's list, 2026-10-17). Positions
   // are a stylized west-to-east layout, spread out so the labels don't collide.
   const countries = [
-    { name: "USA", x: 16, y: 34 },
-    { name: "Jamaica", x: 24, y: 56 },
-    { name: "Ireland", x: 40, y: 22 },
-    { name: "Bosnia & Herzegovina", x: 44, y: 42 },
-    { name: "Cameroon", x: 50, y: 68 },
-    { name: "Ukraine", x: 58, y: 30 },
-    { name: "Russia", x: 64, y: 14 },
-    { name: "Liberia", x: 34, y: 82 },
-    { name: "Uganda", x: 62, y: 58 },
-    { name: "Kenya", x: 70, y: 80 },
-    { name: "Pakistan", x: 77, y: 52 },
-    { name: "India", x: 81, y: 68 },
+    { name: "USA", x: 18, y: 30 },
+    { name: "Cameroon", x: 50, y: 54 },
+    { name: "Liberia", x: 34, y: 72 },
+    { name: "Uganda", x: 60, y: 34 },
+    { name: "Kenya", x: 68, y: 74 },
+    { name: "Pakistan", x: 74, y: 18 },
+    { name: "India", x: 80, y: 50 },
   ];
 
   return (
@@ -78,11 +73,11 @@ function Impact() {
 
         <div className="impact-stats reveal">
           <div className="impact-stat">
-            <div className="n"><em>50</em><sub>+</sub></div>
-            <div className="label">Partner ministries &amp; churches actively engaged with the message</div>
+            <div className="n"><em>20</em><sub>+</sub></div>
+            <div className="label">Churches &amp; ministries involved, engaged and impacted at any one time</div>
           </div>
           <div className="impact-stat">
-            <div className="n">12</div>
+            <div className="n">7</div>
             <div className="label">Countries receiving Love &amp; Lordship teaching</div>
           </div>
           <div className="impact-stat">
@@ -108,7 +103,7 @@ function Impact() {
             }}></div>
           </div>
           <div>
-            <div className="eyebrow">Partner countries</div>
+            <div className="eyebrow">Impacted Countries</div>
             <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 350, fontSize: 32, lineHeight: 1.05, letterSpacing: "-0.02em", margin: "12px 0 18px" }}>
               From Kentucky to Cameroon — and beyond.
             </h3>

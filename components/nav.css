@@ -3,7 +3,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease), border-color 0.4s var(--ease);
+  transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease), border-color 0.4s var(--ease), margin-bottom 0.35s var(--ease);
   border-bottom: 1px solid transparent;
 }
 .nav-shell.scrolled {
@@ -37,11 +37,21 @@
 /* Homepage, top of page: the logo fills the open space above the hero tagline
    (Greg's request, 10-16 call), then shrinks back once the visitor scrolls. */
 .nav-logo { transition: height 0.35s var(--ease), margin 0.35s var(--ease); }
+.nav-inner { transition: height 0.35s var(--ease); }
 @media (min-width: 1000px) {
   .nav-shell.home:not(.scrolled) .nav-logo {
     height: 64px;
   }
   .nav-shell.home:not(.scrolled) .nav-logo-img { border-radius: 10px; }
+}
+/* Wide screens: Greg asked (10-17) for the logo to fill nearly all of the
+   upper-left space. The taller header is pulled back with a negative margin
+   so the hero below doesn't move, and nothing jumps when it shrinks on scroll. */
+@media (min-width: 1200px) {
+  .nav-shell.home:not(.scrolled) { margin-bottom: -54px; }
+  .nav-shell.home:not(.scrolled) .nav-inner { height: 126px; }
+  .nav-shell.home:not(.scrolled) .nav-logo { height: 110px; }
+  .nav-shell.home:not(.scrolled) .nav-logo-img { border-radius: 14px; }
 }
 @media (max-width: 720px) {
   .nav-logo { height: 36px; }
