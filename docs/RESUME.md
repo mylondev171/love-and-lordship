@@ -1,3 +1,21 @@
+# UPDATE 2026-10-19 (read first)
+- LIVE (`3805639`), verified on the deployed site. Greg's 10-17 evening emails:
+  - Countries are SEVEN, not 12 (Greg: the 12 were places he's been). Map is USA, Cameroon,
+    Liberia, Uganda, Kenya, Pakistan, India; Ireland/Russia/Ukraine/Bosnia/Jamaica removed.
+    Changed in hero, Story, Reach, meta, and the about page (timeline h2 + fact).
+  - "50+ partner ministries" -> "20+ Churches & ministries involved, engaged and impacted at
+    any one time" (Reach stat + about fact). Eyebrow "Impacted Countries".
+  - Book bullets: Sisters for Life bullet removed; first is now "Shared in several countries
+    and with numerous ministries" (verbatim). Story: "Ami has been his greatest support every
+    step of the way" (verbatim).
+  - Homepage logo at >=1200px is 110px tall (570 wide); header grows to 126px with
+    margin-bottom -54px so the hero doesn't move. Shrinks to 44px on scroll.
+- WAITING ON GREG: exact app join steps (his test "didn't work as I thought") + the app's QR
+  code (put BOTH on the site); new Constant Contact password (he changed it after seeing
+  Mylon's Kissimmee login). Best days for codes: Mon/Wed/Thu afternoons.
+- Sisters for Life is still named in the nav mega-menu, about, contact FAQ, invite page
+  (Greg only asked to drop the book bullet). Ask before changing.
+
 # UPDATE 2026-10-17 (read first)
 - LIVE on the preview (`c878dcf`, `8b1339d`, `df53ccb`), verified on the deployed site:
   - Homepage Watch cards use Greg's 6 photos (his 10-16 email) instead of YouTube thumbnails,
