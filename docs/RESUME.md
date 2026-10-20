@@ -1,3 +1,37 @@
+# 🔴 RESUME HERE (saved 2026-10-19 night) — read this block first
+State: main `d3f8184` LIVE on https://love-and-lordship.vercel.app/ , working tree clean.
+Done today (on top of the 10-19 block below):
+- `photo-greg-teaching.webp` replaced with an AI-restored 736x1412 version (Gemini
+  gemini-3-pro-image-preview). Original backed up at
+  C:\Users\mylon\Downloads\greg-photos\photo-greg-teaching-ORIGINAL.webp. Mylon/Greg to
+  confirm the face still looks like Greg; revert = copy the backup back.
+- Greg's 10-19 evening emails (Website thread): new Constant Contact password sent (in the
+  thread, not stored here); free THURSDAY 10-22, 11am-4pm, for the CC + greg@ email setup;
+  asked (a) is the app populated yet, (b) put the app QR code on the site, (c) does
+  "Coming Up" update automatically.
+
+NEXT STEPS:
+1. connectapp. app load (PROMISED, Greg asking): Mylon signs in at connectapp.live in Chrome
+   with Greg's 10-15 login (loveandlordship@gmail.com; Claude can't type passwords). Then
+   Claude loads the library into the 11 channels. Unknown yet: bulk import vs one-by-one.
+   While logged in, look for the group's QR code + the real join flow.
+2. Join steps on the site are probably WRONG: the web join page (connectapp.live/join-with-code)
+   asks for EMAIL + group code, not "search for Love & Lordship". Fix once confirmed.
+3. QR code: add next to the 3 app steps (AppPromo in components/footer-events-app.jsx) once we
+   have it (admin area, or from Greg's app folks).
+4. "Coming Up": past events drop off automatically; NEW events are a hand-edited list
+   (LL_EVENTS in components/footer-events-app.jsx). Answer Greg; offer (Mylon decides) to
+   feed it from a Google Calendar Greg edits.
+5. Thursday session: Constant Contact list + sign-up form + welcome automation (replace the
+   Google Form), then greg@loveandlordship.com forwarding to Yahoo only (M365/GoDaddy).
+6. Reply to Greg covering 1-4 (not yet drafted or sent).
+
+Gotchas: the google-image-gen MCP tool kept returning 402 after credits were added; calling
+the API directly with the same key via `uv run --project C:\Users\mylon\tools\google-image-gen-api-starter`
+worked (script pattern: read key from ~/.claude.json mcpServers.google-image-gen.env).
+`C:\Users\mylon\types.py` + `functools.py` shadow the stdlib: run Python with `-I` or from
+another folder.
+
 # UPDATE 2026-10-19 (read first)
 - LIVE (`3805639`), verified on the deployed site. Greg's 10-17 evening emails:
   - Countries are SEVEN, not 12 (Greg: the 12 were places he's been). Map is USA, Cameroon,
