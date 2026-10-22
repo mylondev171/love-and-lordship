@@ -1,4 +1,8 @@
-# 🔴🔴 RESUME HERE (saved 2026-10-22 afternoon) — connectapp. library import IN PROGRESS
+# ✅ 2026-10-22 ~4:45pm: IMPORT DONE. 2,395 posted (0 failures), group total 2,613, newest on
+# top of each feed. notify_users turned back ON on all 24 feeds (verified 24/24). The block
+# below is the record of how it was done; the "MUST be turned back ON" item is resolved.
+# Article cards show a plain "loveandlordship.com" preview until the domain points at the new site.
+# 🔴🔴 RESUME HERE (saved 2026-10-22 afternoon) — connectapp. library import
 - Mylon OK'd: whole library, deduped, PRIMARY priority only, notifications paused during import,
   back-catalog NOT in the main newsfeed (display_newsfeed:false).
 - App structure (group 115 "Love and Lordship", code LOVE): 11 channels; each of the 7 site
