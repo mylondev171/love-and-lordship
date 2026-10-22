@@ -1,4 +1,24 @@
-# 🔴 RESUME HERE (saved 2026-10-19 night) — read this block first
+# 🔴🔴 RESUME HERE (saved 2026-10-22 afternoon) — connectapp. library import IN PROGRESS
+- Mylon OK'd: whole library, deduped, PRIMARY priority only, notifications paused during import,
+  back-catalog NOT in the main newsfeed (display_newsfeed:false).
+- App structure (group 115 "Love and Lordship", code LOVE): 11 channels; each of the 7 site
+  priorities + Kingdom has Watch/Read/Listen sub-feeds. Feed ids [Watch, Read, Listen]:
+  lordship 47787/47786/47788, discipleship 47797/47796/47798, relationship 47818/47817/47819,
+  marriage 47813/47814/47816, family 47801/47800/47802, church 47809/47808/47810,
+  culture 47812/47811/47815, kingdom 47793/47792/47794 (Kingdom left as Greg had it).
+- API: https://wl-v2.api.connectapp.live/public/v1 , Bearer = localStorage.accessToken on
+  connectapp.live. POST /social/posts (VIDEO+youtu.be for Watch, LINK+podbean for Listen,
+  LINK+loveandlordship.com/blog/<slug>/ for Read). PATCH /group/115/channels/<id> needs the FULL
+  field set (title, description, channel_img, channel_cover_img, allowed_post_types...).
+- 🔴 notify_users is OFF on all 24 Watch/Read/Listen feeds (all were ON before). MUST be turned
+  back ON when the import ends (side effect seen: the server also flips filters_enabled
+  false->true on save; invisible, no filters are selected).
+- Import: 2,395 posts (4 test + 2,391), oldest first, progress in localStorage `ll_import_prog`
+  on connectapp.live. Greg's 218 original posts untouched. Test post 66275 was deleted.
+- Still open: QR code (not in admin; ask Greg's app contact), confirm real join steps (code is
+  "LOVE"; site says "love"), reply to Greg.
+
+# RESUME HERE (saved 2026-10-19 night)
 State: main `d3f8184` LIVE on https://love-and-lordship.vercel.app/ , working tree clean.
 Done today (on top of the 10-19 block below):
 - `photo-greg-teaching.webp` replaced with an AI-restored 736x1412 version (Gemini
