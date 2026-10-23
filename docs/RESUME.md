@@ -1,3 +1,36 @@
+# 🔴🔴🔴 RESUME HERE (saved 2026-10-23) — read this block first
+State: site main unchanged since `d3f8184` (live on the preview); only docs commits since.
+connectapp. app is FULLY LOADED (details in the blocks below). Nothing in flight.
+
+DONE 10-22/23:
+- connectapp. library: 2,395 posts added (0 fails), group total 2,613, all visible in the home
+  Newsfeed (Mylon's choice after the hidden-posts bug). notify_users ON 24/24 (verified).
+- Greg's logins collected into C:\Users\mylon\OneDrive\Desktop\Greg Williams - Love & Lordship Logins.txt
+  (app, Constant Contact = gdubya31@yahoo.com, M365, GoDaddy, EmailJS, Mailjet). Never put the
+  passwords in the repo or memory.
+- greg@loveandlordship.com research: Greg's Microsoft account (loveandlordship@gmail.com) has NO
+  paid M365 subscription (free tier only); GoDaddy has domain + Web Hosting Deluxe (cPanel, 0 email
+  accounts included). Options given to Mylon: M365 Business Basic NONPROFIT grant $0 (recommended,
+  L&L is a 501(c)(3)), Google Workspace for Nonprofits $0, free forwarding (Cloudflare/ImprovMX),
+  M365 Business Basic $7/mo, GoDaddy Email Essentials $1.99/mo yr1 then $8.99/mo.
+  Web Hosting Deluxe becomes redundant after the Vercel cutover (cancel = savings; not touched).
+  NO DECISION YET from Mylon.
+
+NEXT (pick up here):
+1. Mylon's pick for the greg@ inbox, then set it up (needs MX/DNS at GoDaddy; best with cutover).
+2. Constant Contact: newsletter list + sign-up form + welcome email (replace the Google Form).
+3. App QR code: not in the connectapp. admin; ask Greg's app contact. Then add it beside the 3
+   app steps (AppPromo in components/footer-events-app.jsx).
+4. Join steps on the site likely wrong ("search for Love & Lordship"); group code is "LOVE"
+   (site says "love"). Waiting on Greg's exact instructions.
+5. Site edits still owed from Greg's 10-20 emails: "Coming Up" = 4th Annual KY Family Forum (not
+   3rd); Prepare/Enrich: add the link + "Greg is a facilitator" + contact greg@loveandlordship.com
+   (his email typo'd it "loveandlorship").
+6. Answer Greg: "Coming Up" is a hand-edited list (offer a Google Calendar feed); app populated.
+   Reply not drafted or sent.
+7. Older items still waiting: photo-greg-teaching face check, GitHub Action push, n8n PAT,
+   EmailJS/Mailjet IDs, domain cutover.
+
 # ✅ 2026-10-22 ~4:45pm: IMPORT DONE. 2,395 posted (0 failures), group total 2,613, newest on
 # top of each feed. notify_users turned back ON on all 24 feeds (verified 24/24). The block
 # below is the record of how it was done; the "MUST be turned back ON" item is resolved.
