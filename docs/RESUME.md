@@ -4,7 +4,7 @@
 - Constant Contact: inline form "Website Newsletter Sign-up (loveandlordship.com)"
   id d3a7509f-c5e1-400b-b44b-5d1925cd100c, list General Interest (724), fields email/first/last,
   button "Subscribe". ACTIVE (published 10-23 on Mylon's OK; renders in the site modal, verified locally).
-  must publish it (Sign-up forms > Edit > Publish). Account key e420cd6603496bbfb3bd2b695fc03d41.
+  Account key e420cd6603496bbfb3bd2b695fc03d41.
   No welcome email exists (Aug "Welcome: Basic" was deleted); copy needs Greg/Mylon.
 - Site (de975b5): SubscribeModal mounted in Footer (every page) with the CC form; nav Subscribe
   button (hidden <480px, in drawer); newsletter section opens the modal with the email prefilled;
