@@ -1,3 +1,19 @@
+# 🔴 10-23 PM: forms + newsletter (commit de975b5 LOCAL, NOT PUSHED)
+- Read AI 10-23 call: greg@loveandlordship.com now exists (GoDaddy email, bought on the call).
+  Greg wants a once-a-day subscribe pop-up AND a persistent Subscribe button near Give.
+- Constant Contact: inline form "Website Newsletter Sign-up (loveandlordship.com)"
+  id d3a7509f-c5e1-400b-b44b-5d1925cd100c, list General Interest (724), fields email/first/last,
+  button "Subscribe". SAVED BUT INACTIVE: Publish was blocked by the permission check; Mylon
+  must publish it (Sign-up forms > Edit > Publish). Account key e420cd6603496bbfb3bd2b695fc03d41.
+  No welcome email exists (Aug "Welcome: Basic" was deleted); copy needs Greg/Mylon.
+- Site (de975b5): SubscribeModal mounted in Footer (every page) with the CC form; nav Subscribe
+  button (hidden <480px, in drawer); newsletter section opens the modal with the email prefilled;
+  daily pop-up after 12s, only if the CC form rendered, never after a submit. Google Form removed.
+  PUSH ONLY AFTER the CC form is published (else empty modal).
+- Contact/Invite forms now route to greg@loveandlordship.com (LL_EMAIL + emailjs/SETUP.md).
+  EmailJS (Greg's account) has no service yet; Mailjet was signed out (needs Mylon to log in).
+  Mailjet domain SPF/DKIM at GoDaddy must MERGE with the new GoDaddy email SPF (one SPF record).
+
 # 🔴🔴🔴 RESUME HERE (saved 2026-10-23) — read this block first
 State: site main unchanged since `d3f8184` (live on the preview); only docs commits since.
 connectapp. app is FULLY LOADED (details in the blocks below). Nothing in flight.
