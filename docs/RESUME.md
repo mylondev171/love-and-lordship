@@ -23,9 +23,7 @@ NEXT (pick up here):
    app steps (AppPromo in components/footer-events-app.jsx).
 4. Join steps on the site likely wrong ("search for Love & Lordship"); group code is "LOVE"
    (site says "love"). Waiting on Greg's exact instructions.
-5. Site edits still owed from Greg's 10-20 emails: "Coming Up" = 4th Annual KY Family Forum (not
-   3rd); Prepare/Enrich: add the link + "Greg is a facilitator" + contact greg@loveandlordship.com
-   (his email typo'd it "loveandlorship").
+5. DONE 10-23 (`9a525b9`): 4th Annual KY Family Forum; Prepare/Enrich link + greg@ contact (mailto bounces until the inbox exists). Greg OKd GoDaddy Email Essentials + MS nonprofit grant (10-22 "Email Decision" email).
 6. Answer Greg: "Coming Up" is a hand-edited list (offer a Google Calendar feed); app populated.
    Reply not drafted or sent.
 7. Older items still waiting: photo-greg-teaching face check, GitHub Action push, n8n PAT,
