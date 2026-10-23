@@ -2,6 +2,11 @@
 # top of each feed. notify_users turned back ON on all 24 feeds (verified 24/24). The block
 # below is the record of how it was done; the "MUST be turned back ON" item is resolved.
 # Article cards show a plain "loveandlordship.com" preview until the domain points at the new site.
+# 10-23: display_newsfeed:false BROKE the home Newsfeed (server filters AFTER paginating, so pages
+# 1-239 came back empty: "No posts found"). Mylon chose to flip all 2,395 imported posts to
+# display_newsfeed:true (done, 0 failures, notify paused + restored 24/24). Home feed works; its top
+# is the newest library items, Greg's May posts are further down. 🔴 PATCH /social/posts/<id> with a
+# PARTIAL body wipes the attachment and resets post_type to TEXT: always send the full post body.
 # 🔴🔴 RESUME HERE (saved 2026-10-22 afternoon) — connectapp. library import
 - Mylon OK'd: whole library, deduped, PRIMARY priority only, notifications paused during import,
   back-catalog NOT in the main newsfeed (display_newsfeed:false).
