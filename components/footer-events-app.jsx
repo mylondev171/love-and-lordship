@@ -148,18 +148,18 @@ function AppPromo() {
             <h2>The teaching, the community, and the daily rhythm — in your <em>pocket</em>.</h2>
             <p className="lead">
               The Love &amp; Lordship app lives inside <strong>connectapp.</strong> — a private, ad-free community
-              platform. Download it, search for <strong>Love &amp; Lordship</strong>, and enter the access code
+              platform. Download it, enter your email address and the access code, and tap Continue
               to join. Every message, podcast, article and event lands there first, sorted into eleven
               channels.
             </p>
             <div className="app-code" aria-label="Access code">
               <span className="lbl">Access code</span>
-              <span className="code">love</span>
+              <span className="code">LOVE</span>
             </div>
             <ol className="app-steps" aria-label="How to get the app">
               <li><span className="n">1</span><span>Download <strong>connectapp.</strong> free from the <a href="https://apps.apple.com/us/app/connectapp/id6447310443" target="_blank" rel="noopener noreferrer">App Store</a> or <a href="https://play.google.com/store/apps/details?id=social.inthezone.com" target="_blank" rel="noopener noreferrer">Google Play</a>.</span></li>
-              <li><span className="n">2</span><span>Open it and search for <strong>Love &amp; Lordship</strong>.</span></li>
-              <li><span className="n">3</span><span>Enter the access code <strong>love</strong> to join.</span></li>
+              <li><span className="n">2</span><span>Enter your email address and the access code <strong>LOVE</strong>.</span></li>
+              <li><span className="n">3</span><span><strong>Love &amp; Lordship</strong> will display. Tap <strong>Continue</strong> to sign up.</span></li>
             </ol>
             <div className="app-features">
               <div className="app-feature">
