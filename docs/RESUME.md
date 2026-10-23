@@ -21,8 +21,7 @@ NEXT (pick up here):
 2. Constant Contact: newsletter list + sign-up form + welcome email (replace the Google Form).
 3. App QR code: not in the connectapp. admin; ask Greg's app contact. Then add it beside the 3
    app steps (AppPromo in components/footer-events-app.jsx).
-4. Join steps on the site likely wrong ("search for Love & Lordship"); group code is "LOVE"
-   (site says "love"). Waiting on Greg's exact instructions.
+4. DONE 10-23: join steps now "download, enter email + code LOVE, Love & Lordship displays, tap Continue" (Mylon's wording).
 5. DONE 10-23 (`9a525b9`): 4th Annual KY Family Forum; Prepare/Enrich link + greg@ contact (mailto bounces until the inbox exists). Greg OKd GoDaddy Email Essentials + MS nonprofit grant (10-22 "Email Decision" email).
 6. Answer Greg: "Coming Up" is a hand-edited list (offer a Google Calendar feed); app populated.
    Reply not drafted or sent.
