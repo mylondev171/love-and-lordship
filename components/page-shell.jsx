@@ -9,7 +9,7 @@ const HOME_BASE = "../Love%20and%20Lordship.html";
    keys are filled in, the form hands off to the visitor's email app instead.
    A hidden "company_website" field catches bots: if it's filled we show
    success and send nothing. */
-const LL_EMAIL = "loveandlordship@gmail.com";
+const LL_EMAIL = "greg@loveandlordship.com";
 
 function emailjsReady() {
   const c = window.LL_EMAILJS || {};

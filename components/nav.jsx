@@ -173,6 +173,9 @@ function Nav({ onDonate, homeBase = "" }) {
               <path d="M14 14l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </a>
+          <button className="btn btn-ghost nav-subscribe" onClick={() => window.LL_openSubscribe && window.LL_openSubscribe()}>
+            Subscribe
+          </button>
           <button className="btn btn-give nav-give" onClick={onDonate}>
             <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
               <path d="M8 14s-5-3.5-5-7.5A3 3 0 0 1 8 4a3 3 0 0 1 5 2.5C13 10.5 8 14 8 14z" fill="currentColor"/>
@@ -233,7 +236,8 @@ function Nav({ onDonate, homeBase = "" }) {
       <a href={link("#app")} onClick={() => setMobile(false)}>The L&amp;L App</a>
       <a href={link("#story")} onClick={() => setMobile(false)}>About</a>
       <a href={link("#newsletter")} onClick={() => setMobile(false)}>Newsletter</a>
-      <div style={{ marginTop: 24 }}>
+      <div style={{ marginTop: 24, display: "grid", gap: 8 }}>
+        <button className="btn btn-ghost" style={{ width: "100%", justifyContent: "center" }} onClick={() => { setMobile(false); window.LL_openSubscribe && window.LL_openSubscribe(); }}>Subscribe</button>
         <button className="btn btn-give" style={{ width: "100%", justifyContent: "center" }} onClick={() => { setMobile(false); onDonate(); }}>Give</button>
       </div>
     </div>

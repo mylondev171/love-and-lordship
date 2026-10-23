@@ -214,24 +214,110 @@ function AppPromo() {
   );
 }
 
-// Sign-ups go to the ministry's existing Google Form (the same one the old
-// site used). The form has more required fields than an email, so we open it
-// in a new tab with the email pre-filled rather than posting silently.
-const NEWSLETTER_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSffcuHoVZduG2a2KXJxI8qW5p0vpgDcVG9Qi7h1LtF168Pfpw/viewform";
-const newsletterUrl = (email) => {
-  if (!email) return NEWSLETTER_FORM;
-  const e = encodeURIComponent(email.trim());
-  return `${NEWSLETTER_FORM}?usp=pp_url&entry.1244255637=${e}&entry.82372611=${e}`;
+// Newsletter sign-ups go to Greg's Constant Contact list "General Interest"
+// through the inline form "Website Newsletter Sign-up (loveandlordship.com)".
+// The Constant Contact widget fills each .ctct-inline-form once, when its
+// script loads, so a single form lives in an always-mounted modal and every
+// Subscribe button (nav, newsletter section, daily pop-up) opens that modal.
+const CTCT_ACCOUNT = "e420cd6603496bbfb3bd2b695fc03d41";
+const CTCT_FORM_ID = "d3a7509f-c5e1-400b-b44b-5d1925cd100c";
+const SUB_PROMPT_KEY = "ll_sub_prompt";  // date the daily pop-up last showed
+const SUB_DONE_KEY = "ll_subscribed";    // set once this browser submits the form
+const SUB_PROMPT_DELAY = 12000;
+
+const subStore = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
 };
-window.LL_newsletterUrl = newsletterUrl;
+
+function loadConstantContact() {
+  if (document.getElementById("signupScript")) return;
+  window._ctct_m = CTCT_ACCOUNT;
+  const s = document.createElement("script");
+  s.id = "signupScript";
+  s.async = true;
+  s.defer = true;
+  s.src = "https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js";
+  document.body.appendChild(s);
+}
+
+window.LL_openSubscribe = (email) =>
+  window.dispatchEvent(new CustomEvent("ll:subscribe", { detail: { email: email || "" } }));
+
+function SubscribeModal() {
+  const [open, setOpen] = React.useState(false);
+  const formRef = React.useRef(null);
+  const close = React.useCallback(() => setOpen(false), []);
+
+  // Copy an email typed elsewhere (the newsletter section) into the form.
+  const prefill = (email) => {
+    if (!email) return;
+    setTimeout(() => {
+      const input = formRef.current && formRef.current.querySelector('input[type="email"]');
+      if (!input) return;
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(input, email);
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+    }, 50);
+  };
+
+  React.useEffect(() => {
+    loadConstantContact();
+    const onOpen = (e) => { setOpen(true); prefill(e.detail.email); };
+    window.addEventListener("ll:subscribe", onOpen);
+
+    const onSubmit = (e) => {
+      if (formRef.current && formRef.current.contains(e.target)) subStore.set(SUB_DONE_KEY, "1");
+    };
+    document.addEventListener("submit", onSubmit, true);
+
+    // Daily pop-up: once per day, never after this browser has subscribed,
+    // and only if the Constant Contact form actually rendered.
+    const today = new Date().toDateString();
+    let timer;
+    if (!subStore.get(SUB_DONE_KEY) && subStore.get(SUB_PROMPT_KEY) !== today) {
+      timer = setTimeout(() => {
+        const ready = formRef.current && formRef.current.querySelector("input");
+        const busy = document.querySelector(".modal-back.open");
+        if (!ready || busy) return;
+        subStore.set(SUB_PROMPT_KEY, today);
+        setOpen(true);
+      }, SUB_PROMPT_DELAY);
+    }
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("ll:subscribe", onOpen);
+      document.removeEventListener("submit", onSubmit, true);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") close(); };
+    if (open) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, close]);
+
+  return (
+    <div className={"modal-back" + (open ? " open" : "")} onClick={close} aria-hidden={!open}>
+      <div className="modal subscribe-modal" role="dialog" aria-modal="true" aria-label="Subscribe to the Love & Lordship letter" onClick={(e) => e.stopPropagation()}>
+        <button className="donate-close" onClick={close} aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+        </button>
+        <div className="eyebrow" style={{ marginBottom: 8 }}>Newsletter</div>
+        <h3>The <em>Love &amp; Lordship</em> letter.</h3>
+        <p className="sub">Upcoming events, articles of interest, and ministry updates from Greg, delivered to your inbox. Free, and you can unsubscribe anytime.</p>
+        <div ref={formRef} className="subscribe-form">
+          <div className="ctct-inline-form" data-form-id={CTCT_FORM_ID}></div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Newsletter() {
   const [email, setEmail] = React.useState("");
-  const [sent, setSent] = React.useState(false);
   const submit = (e) => {
     e.preventDefault();
-    window.open(newsletterUrl(email), "_blank", "noopener");
-    setSent(true);
+    window.LL_openSubscribe(email.trim());
   };
 
   return (
@@ -244,18 +330,11 @@ function Newsletter() {
             <p>Upcoming events, articles of interest, and ministry updates from Greg — written for marriages, families, and the leaders who shepherd them.</p>
           </div>
           <div>
-            {sent ? (
-              <div className="nl-success">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9.5l3.5 3.5L14 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                <span>Almost done — finish the short sign-up form in the new tab. <a href={newsletterUrl(email)} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>Open it again</a></span>
-              </div>
-            ) : (
-              <form className="nl-form" onSubmit={submit}>
-                <input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} aria-label="Email address" required />
-                <button className="btn btn-give" type="submit">Subscribe</button>
-              </form>
-            )}
-            <div className="nl-bonus"><span className="pip"></span>Free — the sign-up form takes about a minute.</div>
+            <form className="nl-form" onSubmit={submit}>
+              <input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} aria-label="Email address" required />
+              <button className="btn btn-give" type="submit">Subscribe</button>
+            </form>
+            <div className="nl-bonus"><span className="pip"></span>Free. Unsubscribe anytime.</div>
           </div>
         </div>
       </div>
@@ -345,6 +424,7 @@ function Footer({ onDonate, homeBase = "" }) {
           </div>
         </div>
       </div>
+      <SubscribeModal />
     </footer>
   );
 }

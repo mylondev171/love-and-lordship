@@ -20,11 +20,11 @@ message is lost in the meantime.
    secret. Copy the **Service ID**.
 3. **Email Templates → Create New Template**, name it `L&L website form`.
    - **Content** tab → Code editor → paste all of `template-notification.html`.
-   - Settings: **To Email** `loveandlordship@gmail.com` · **From Name** `Love & Lordship Website` ·
+   - Settings: **To Email** `greg@loveandlordship.com` · **From Name** `Love & Lordship Website` ·
      **From Email** `noreply@loveandlordship.com` (uncheck "use default") ·
      **Reply To** `{{reply_to}}` · **Subject** `{{subject}}`.
    - **Auto-Reply** tab → turn on → paste `template-auto-reply.html`.
-     **To** `{{reply_to}}` · **Reply To** `loveandlordship@gmail.com` ·
+     **To** `{{reply_to}}` · **Reply To** `greg@loveandlordship.com` ·
      **Subject** `We received your message, {{from_name}}`.
    - Save and copy the **Template ID**.
 4. **Account → General:** copy the **Public Key**.
@@ -39,7 +39,7 @@ commit and push. Vercel redeploys in about a minute.
 
 ## 4. Test
 Send one message from each form on the live site. Check that the notification
-reaches loveandlordship@gmail.com (with Reply going to the visitor) and that the
+reaches greg@loveandlordship.com (with Reply going to the visitor) and that the
 auto-reply reaches the visitor. EmailJS → **History** shows every send and any error.
 
 ## Variables the site sends

@@ -655,7 +655,7 @@
 }
 
 /* ========= Donate modal ========= */
-.donate-modal h3 {
+.donate-modal h3, .subscribe-modal h3 {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 36px;
@@ -663,7 +663,7 @@
   margin: 0 0 8px;
   letter-spacing: -0.02em;
 }
-.donate-modal h3 em { font-style: italic; color: var(--wine); }
+.donate-modal h3 em, .subscribe-modal h3 em { font-style: italic; color: var(--wine); }
 .donate-modal .sub { color: var(--ink-soft); font-size: 15px; line-height: 1.5; margin: 0 0 24px; }
 .donate-frequency {
   display: grid;
@@ -793,3 +793,30 @@
   border: 1px solid oklch(0.55 0.05 250 / 0.6);
 }
 .app-steps a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Newsletter sign-up modal (Constant Contact inline form inside) */
+.subscribe-modal .sub { color: var(--ink-soft); font-size: 15px; line-height: 1.55; margin-bottom: 18px; }
+.subscribe-form .ctct-form-embed.form_0 .ctct-form-defaults { background: transparent !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; }
+.subscribe-form .ctct-form-header,
+.subscribe-form .ctct-form-text:not(.ctct-gdpr-text) { display: none !important; }
+.subscribe-form .ctct-form-label { font-family: var(--font-sans) !important; font-size: 13px !important; color: var(--ink) !important; }
+.subscribe-form .ctct-form-element {
+  font-family: var(--font-sans) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r-sm) !important;
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+}
+.subscribe-form .ctct-form-element:focus { border-color: var(--ink) !important; outline: none; }
+.subscribe-form .ctct-form-button {
+  font-family: var(--font-sans) !important;
+  background: var(--wine) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  font-weight: 500 !important;
+}
+.subscribe-form .ctct-gdpr-text { font-size: 11px !important; color: var(--ink-mute) !important; }
+.subscribe-form .ctct-form-success { color: var(--ink) !important; }
+@media (max-width: 560px) {
+  .subscribe-modal { padding: 28px 20px; max-height: calc(100vh - 32px); overflow-y: auto; }
+}
