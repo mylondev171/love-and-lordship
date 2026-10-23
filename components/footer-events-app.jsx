@@ -22,7 +22,7 @@ const LL_EVENTS = [
   { on: "2026-10-02", date: "Oct 2",     name: "Upper Room Men — speaking",                    loc: "Southeast Christian Church · Louisville, KY",   type: "Men's event" },
   { on: "2026-10-05", date: "Oct 5",     name: "KY Right to Life Golf Scramble",               loc: "Shelbyville Country Club · Shelbyville, KY",    type: "Partner event" },
   { on: "2026-10-17", date: "Oct 17",    name: "Saturday Morning Men's Group",                 loc: "NECC · Lexington, KY",                          type: "Men's event" },
-  { on: "2026-10-24", date: "Oct 24",    name: "3rd Annual KY Family Forum — leadership role", loc: "Embassy Suites · Lexington, KY",                type: "Partner event" },
+  { on: "2026-10-24", date: "Oct 24",    name: "4th Annual KY Family Forum — leadership role", loc: "Embassy Suites · Lexington, KY",                type: "Partner event" },
   { on: "2026-11-07", date: "Nov 7",     name: "IronMan",                                      loc: "Russ Young's · Lexington, KY",                  type: "Men's event" },
   { on: "2026-11-10", date: "Nov 10",    name: "Celebrate Recovery",                           loc: "Jessamine Christian Church · Nicholasville, KY", type: "Partner event" },
   { on: "2026-11-15", date: "Nov 15",    name: "Ministry sharing event",                       loc: "The Mission Church · Lexington, KY",            type: "Church service" },

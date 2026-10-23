@@ -58,7 +58,7 @@ const PILLAR_DATA = [
     visualImg: "assets/images/hands-wedding-bands.webp",
     stat: "35 years, still going strong",
     h: "Marriage as covenant, not contract.",
-    extra: { label: "Premarital & marriage mentoring", note: "Greg is a certified Prepare/Enrich facilitator.", href: "https://www.prepare-enrich.com/" },
+    extra: { label: "Premarital & marriage mentoring", note: "Greg is a Prepare/Enrich facilitator.", href: "https://www.prepare-enrich.com/", linkText: "Learn about Prepare/Enrich", email: "greg@loveandlordship.com" },
   },
   {
     key: "family",
@@ -190,10 +190,16 @@ function Pillars({ layout = "tabs" }) {
                 </a>
               </div>
               {data.extra && (
-                <a className="pillar-extra" href={data.extra.href} target="_blank" rel="noopener noreferrer">
+                <div className="pillar-extra">
                   <span className="lbl">{data.extra.label}</span>
-                  <span className="note">{data.extra.note} <span className="arr">→</span></span>
-                </a>
+                  <span className="note">{data.extra.note}</span>
+                  <a className="note" href={data.extra.href} target="_blank" rel="noopener noreferrer">
+                    {data.extra.linkText} <span className="arr">→</span>
+                  </a>
+                  <span className="note">
+                    Connect with Greg: <a href={`mailto:${data.extra.email}`}>{data.extra.email}</a>
+                  </span>
+                </div>
               )}
             </div>
             <div className="actions">

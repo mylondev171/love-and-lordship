@@ -168,6 +168,8 @@
   color: var(--ink-soft);
 }
 .pillar-extra .arr { margin-left: 4px; color: var(--wine); }
+.pillar-extra a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.pillar-extra a:hover { color: var(--ink); }
 .pillar-detail .actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .pillar-visual {
