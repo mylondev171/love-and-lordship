@@ -66,7 +66,8 @@
     .btn-a:disabled { opacity: .55; cursor: wait; }
     .btn-b { font: inherit; font-size: 15px; padding: 12px 20px; border-radius: 999px; border: 1px solid #cfd5e1; background: #fff; color: inherit; cursor: pointer; }
     .btn-s { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px solid #cfd5e1; background: #fff; color: inherit; cursor: pointer; text-decoration: none; }
-    .btn-s.danger { border-color: #e5b4b4; color: #9b1c1c; }
+    .btn-s.danger { border-color: #e5b4b4; color: #9b1c1c; min-width: 84px; }
+    .btn-s.danger[data-armed="1"] { background: #9b1c1c; border-color: #9b1c1c; color: #fff; }
     .actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
     .msg { margin: 0 0 18px; padding: 14px 16px; border-radius: 12px; font-size: 15px; line-height: 1.5; }
     .msg.ok { background: #ecf7ef; border: 1px solid #b8dfc3; }
@@ -297,7 +298,7 @@
       if (edit) openForm(posts.find((p) => p.id === edit.dataset.edit));
       if (del) {
         // Two-step delete instead of a browser confirm box.
-        if (del.dataset.armed !== "1") { del.dataset.armed = "1"; del.textContent = "Press again to delete"; setTimeout(() => { del.dataset.armed = ""; del.textContent = "Delete"; }, 4000); return; }
+        if (del.dataset.armed !== "1") { del.dataset.armed = "1"; del.textContent = "Sure?"; setTimeout(() => { del.dataset.armed = ""; del.textContent = "Delete"; }, 4000); return; }
         const { error } = await db.from("posts").delete().eq("id", del.dataset.del);
         if (error) message($("appMsg"), "err", "Couldn't delete: " + esc(error.message));
         else message($("appMsg"), "ok", "Deleted. The site updates in about a minute.");
