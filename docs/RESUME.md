@@ -12,8 +12,9 @@ the vercel.app preview (config + SDK verified loaded, no send yet).
   "Welcome: Website Newsletter Sign-up", trigger = first time a contact joins General Interest, send
   immediately; email "Welcome email - Website Newsletter Sign-up", custom HTML from
   constant-contact/welcome-email.html, subject "Welcome to the Love & Lordship letter", from/reply-to
-  gdubya31@yahoo.com (only verified address). Test sent to mylon@ OK. 🔴 Automation is still a DRAFT:
-  activate only on Mylon's OK. After cutover, swap the Invite link /contact -> /pages/invite-greg.html.
+  gdubya31@yahoo.com (only verified address). Test sent to mylon@ OK. Automation ACTIVATED 10-26 on Mylon's OK. After cutover, swap the Invite link /contact -> /pages/invite-greg.html.
+- 10-26 Mylon: Sisters for Life + QR code -> Mylon emails Greg (draft given). "Coming Up" reply to
+  Greg = later. Photo check = fine, closed.
 - Still open from below: "Sisters for Life", QR code, reply to Greg, photo check, cutover.
 
 # 🔴🔴🔴🔴 RESUME HERE (saved 2026-10-25) — CONTACT FORMS, read first
