@@ -203,6 +203,10 @@
   margin: 12px 0 0;
 }
 .events-head h2 em { font-style: italic; color: var(--wine); }
+@media (max-width: 560px) {
+  .events-head { grid-template-columns: 1fr; align-items: start; }
+  .events-head > div:last-child { flex-wrap: wrap; }
+}
 
 .events-list {
   display: grid;
@@ -266,7 +270,9 @@
 .event-row:hover .go { background: var(--wine); color: var(--bg); border-color: var(--wine); }
 
 @media (max-width: 720px) {
-  .event-row { grid-template-columns: 1fr auto; }
+  .event-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .event-row > * { min-width: 0; }
+  .event-row .info .meta { flex-wrap: wrap; gap: 4px 12px; }
   .event-row .badge, .event-row .date { grid-column: 1 / -1; }
   .event-row .date { font-size: 18px; }
 }
@@ -825,6 +831,33 @@
 }
 .subscribe-form .ctct-gdpr-text { font-size: 11px !important; color: var(--ink-mute) !important; }
 .subscribe-form .ctct-form-success { color: var(--ink) !important; }
+.sub-dismiss {
+  display: block; margin: 14px auto 0; padding: 10px 16px;
+  font-size: 14px; color: var(--ink-mute); text-decoration: underline; text-underline-offset: 3px;
+  background: none; border: 0; cursor: pointer;
+}
+.modal-back { cursor: pointer; }
+.modal { cursor: auto; }
+/* No page scrolling behind an open pop-up */
+html:has(.modal-back.open) { overflow: hidden; }
 @media (max-width: 560px) {
-  .subscribe-modal { padding: 28px 20px; max-height: calc(100vh - 32px); overflow-y: auto; }
+  .modal-back { padding: 12px; }
+  .subscribe-modal, .donate-modal {
+    padding: 56px 20px 24px;
+    max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px);
+    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+  }
+  /* Close button pinned to the top corner of the screen, big enough to tap,
+     so it never scrolls away inside a tall pop-up. */
+  .modal-back.open .donate-close {
+    position: fixed; z-index: 5;
+    top: calc(env(safe-area-inset-top, 0px) + 18px); right: 18px;
+    width: 44px; height: 44px;
+    background: #fff; color: var(--ink); border: 1px solid var(--line); box-shadow: var(--shadow-2);
+  }
+  .modal-back.open .donate-close svg { width: 16px; height: 16px; }
+}
+/* iPhone zooms into any form field under 16px and stays zoomed */
+@media (max-width: 820px) {
+  input:not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea { font-size: 16px !important; }
 }

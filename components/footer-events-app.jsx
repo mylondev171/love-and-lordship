@@ -314,6 +314,7 @@ function SubscribeModal() {
         <div ref={formRef} className="subscribe-form">
           <div className="ctct-inline-form" data-form-id={CTCT_FORM_ID}></div>
         </div>
+        <button type="button" className="sub-dismiss" onClick={close}>No thanks</button>
       </div>
     </div>
   );

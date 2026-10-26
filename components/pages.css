@@ -102,6 +102,9 @@
   gap: clamp(40px, 6vw, 80px);
 }
 .split-cols.right { grid-template-columns: 1.4fr 1fr; }
+/* 1fr is minmax(auto, 1fr): a form's min-content width pushed the column past
+   the screen on phones. Let the columns shrink. */
+.split-cols > * { min-width: 0; }
 @media (max-width: 900px) {
   .split-cols, .split-cols.right { grid-template-columns: 1fr; }
 }
@@ -215,7 +218,8 @@
 }
 .form-row.full { grid-template-columns: 1fr; }
 @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
-.field { display: flex; flex-direction: column; gap: 6px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.form-row > * { min-width: 0; }
 .field label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -226,6 +230,7 @@
 .field input,
 .field textarea,
 .field select {
+  width: 100%; max-width: 100%; min-width: 0;
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: var(--r-md);

@@ -187,8 +187,8 @@
   font-style: italic;
   font-size: 64px;
   line-height: 0.9;
-  color: var(--bg);
-  mix-blend-mode: difference;
+  color: #fff;
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.45);
   z-index: 2;
 }
 .pillar-visual .meta {
@@ -201,8 +201,15 @@
   align-items: flex-end;
   gap: 16px;
   z-index: 2;
-  color: var(--bg);
-  mix-blend-mode: difference;
+  color: #fff;
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.45);
+}
+/* Dark fade under the caption: the old mix-blend-mode: difference turned the
+   text muddy on busy photos and was hard to read on phones. */
+.pillar-visual::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 55%;
+  background: linear-gradient(to top, rgb(10 14 30 / 0.78), rgb(10 14 30 / 0));
+  pointer-events: none; z-index: 1;
 }
 .pillar-visual .meta .h {
   font-family: var(--font-display);

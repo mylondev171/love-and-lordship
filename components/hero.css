@@ -367,3 +367,13 @@
   .hero-stage { min-height: 0; width: 100%; }
   .hero-card.float-br { right: 2%; width: 42%; }
 }
+
+/* Phones/tablets: keep every hero card inside the stage. The book hung 4% below
+   it and the scroll parallax pushed it up to 60px further, over the word strip. */
+@media (max-width: 920px) {
+  .hero-card.book { bottom: 0; width: 40%; }
+  .hero-card.book, .hero-card.float-tl { translate: none !important; }
+}
+@media (max-width: 820px) {
+  .scroll-hint { display: none; }
+}
