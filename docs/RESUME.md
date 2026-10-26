@@ -1,12 +1,13 @@
-# 🔴🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26) — FORMS WIRED, TEST SEND PENDING
+# 🔴🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26) — FORMS LIVE + TESTED
 Mylon validated loveandlordship.com in Mailjet and connected Mailjet to EmailJS (service_2wzse7s).
 Done 10-26: EmailJS templates "L&L website form" template_j8tpnfq (to greg@, from
 noreply@loveandlordship.com, reply-to {{reply_to}}) + "L&L website auto-reply" template_mnu9eib
 (linked in the main template's Auto-Reply tab). emailjs-config.js filled, pushed f4091ab, live on
 the vercel.app preview (config + SDK verified loaded, no send yet).
 - Allowed-domains lock is a PAID EmailJS feature (free plan refused it); honeypot only for now.
-- NEXT: test one send per form (Contact + Invite Greg) once Mylon OKs it (it lands in greg@'s
-  inbox), then check EmailJS History + both inboxes.
+- 10-26 10:26 test sends (Mylon OK'd): Contact + Invite Greg each sent form + auto-reply, all 4
+  "OK" via Mailjet in EmailJS History. Auto-replies went to mylon@digitalimpactmarketers.com.
+  Inbox arrival (greg@ + mylon@, incl. spam folder) not yet confirmed by eye.
 - Still open from below: welcome email copy, "Sisters for Life", QR code, reply to Greg, photo check, cutover.
 
 # 🔴🔴🔴🔴 RESUME HERE (saved 2026-10-25) — CONTACT FORMS, read first
