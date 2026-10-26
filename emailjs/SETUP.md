@@ -23,15 +23,23 @@ message is lost in the meantime.
    - Settings: **To Email** `greg@loveandlordship.com` · **From Name** `Love & Lordship Website` ·
      **From Email** `noreply@loveandlordship.com` (uncheck "use default") ·
      **Reply To** `{{reply_to}}` · **Subject** `{{subject}}`.
-   - **Auto-Reply** tab → turn on → paste `template-auto-reply.html`.
-     **To** `{{reply_to}}` · **Reply To** `greg@loveandlordship.com` ·
-     **Subject** `We received your message, {{from_name}}`.
    - Save and copy the **Template ID**.
-4. **Account → General:** copy the **Public Key**.
-5. **Account → Security:** add `loveandlordship.com` (and the vercel.app URL while
-   testing) to the allowed origins so the key can't be used from other sites.
-   Optionally turn on reCAPTCHA later if spam shows up; the forms already have a
-   hidden bot trap.
+4. **Create a second template** `L&L website auto-reply` (EmailJS now links the
+   auto-reply as its own template): Code editor → paste `template-auto-reply.html`.
+   **To** `{{reply_to}}` · **From Name** `Love & Lordship` · **From Email**
+   `noreply@loveandlordship.com` · **Reply To** `greg@loveandlordship.com` ·
+   **Subject** `We received your message, {{from_name}}`. Then in the main
+   template's **Auto-Reply** tab, pick it as the Linked Template and save.
+   (Each form send then uses 2 of the 200 free monthly requests.)
+5. **Account → General:** copy the **Public Key**.
+6. **Account → Security → Domains** (lock the key to loveandlordship.com) is a
+   PAID feature; on the free plan it shows "Subscription Limitation". The forms'
+   hidden bot trap is the protection for now; add reCAPTCHA if spam shows up.
+
+## Live values (set 2026-10-26)
+Service `service_2wzse7s` (Mailjet) · template `template_j8tpnfq` ("L&L website form")
+· auto-reply `template_mnu9rib` ("L&L website auto-reply") · public key in
+`components/emailjs-config.js`.
 
 ## 3. Paste the IDs
 Edit `components/emailjs-config.js`, replacing the three `YOUR_…` values, then

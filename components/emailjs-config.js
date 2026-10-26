@@ -9,7 +9,7 @@
    email app with the message pre-filled, so nothing is ever lost.
    ========================================================================= */
 window.LL_EMAILJS = {
-  publicKey: "YOUR_PUBLIC_KEY",     // Account → General → Public Key
-  serviceId: "YOUR_SERVICE_ID",     // Email Services → Mailjet service → Service ID
-  templateId: "YOUR_TEMPLATE_ID",   // Email Templates → "Website form" → Template ID
+  publicKey: "-qHcXWPinx0CyehXo",   // Account → General → Public Key
+  serviceId: "service_2wzse7s",      // Email Services → Mailjet service → Service ID
+  templateId: "template_j8tpnfq",    // Email Templates → "Website form" → Template ID
 };
