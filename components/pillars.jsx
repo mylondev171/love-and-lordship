@@ -95,7 +95,7 @@ const PILLAR_DATA = [
     title: "Salt &amp; light <em>where</em> we live.",
     body: "Christians aren't called to retreat from culture or be conformed to it — we're called to engage it as ambassadors of the Kingdom. The Love & Lordship of Christ shapes how we live, work, vote, raise families, and love our neighbors in a watching world.",
     visual: "Engaging culture as Kingdom ambassadors",
-    visualImg: "assets/images/keynote-stage.webp",
+    visualImg: "assets/images/photo-greg-teaching-kff.webp",
     stat: "Ambassadors of the Kingdom",
     h: "Engaging culture as Kingdom ambassadors.",
   },

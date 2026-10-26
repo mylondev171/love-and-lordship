@@ -59,11 +59,11 @@ function Book({ onDonate }) {
 
 /* ================= Media ================= */
 // The newest real items from the library, generated into data/featured.js by
-// tools/build_featured.py. Watch cards use Greg's own photos (sent 2026-10-16)
+// tools/build_featured.py. Watch cards use Greg's own photos (sent 2026-10-16, KY Family Forum 2026-10-26)
 // instead of YouTube thumbnails, rotating once per quarter. Only the
 // high-resolution photos go in the big card. Listen and Read have no artwork
 // of their own, so they rotate through the site imagery.
-const WATCH_PHOTOS_BIG = ["assets/images/photo-greg-ami-book.webp", "assets/images/photo-greg-ami-2019.webp", "assets/images/photo-greg-with-cameron.webp"];
+const WATCH_PHOTOS_BIG = ["assets/images/photo-greg-worship-kff.webp", "assets/images/photo-greg-ami-book.webp", "assets/images/photo-greg-ami-2019.webp", "assets/images/photo-greg-with-cameron.webp"];
 const WATCH_PHOTOS = WATCH_PHOTOS_BIG.concat(["assets/images/photo-greg-teaching-cameroon.webp", "assets/images/photo-greg-cameroon-retreat.webp", "assets/images/photo-greg-teaching.webp"]);
 
 function watchPhotos(count) {

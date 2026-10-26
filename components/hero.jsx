@@ -142,7 +142,7 @@ function Hero({ onDonate }) {
             </div>
             <div className="hero-card main">
               <div className="imgph" style={{ width: "100%", height: "100%" }}>
-                <img src="assets/images/hero-teaching-osh.webp" alt="" />
+                <img src="assets/images/photo-greg-podium-kff-portrait.webp" alt="Greg Williams speaking at the Kentucky Family Forum" />
                 <span className="lbl">photo · teaching, from the platform</span>
               </div>
             </div>
