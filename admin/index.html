@@ -276,7 +276,7 @@
       if (error) { $("postList").innerHTML = `<li>Couldn't load posts: ${esc(error.message)}</li>`; return; }
       posts = data || [];
       $("seriesList").innerHTML = [...new Set(posts.map((p) => p.series).filter(Boolean).concat(["One Another"]))].map((s) => `<option value="${esc(s)}">`).join("");
-      if (!posts.length) { $("postList").innerHTML = `<li>No posts yet. Press <b>+ New post</b> to write your first one.</li>`; return; }
+      if (!posts.length) { $("postList").innerHTML = `<li><span>No posts yet. Press <b>+ New post</b> to write your first one.</span></li>`; return; }
       $("postList").innerHTML = posts.map((p) => `
         <li>
           <div>
@@ -357,6 +357,26 @@
     let savedRange = null, linkMode = null;
     function saveSel() { const s = window.getSelection(); if (s.rangeCount && editor.contains(s.anchorNode)) savedRange = s.getRangeAt(0).cloneRange(); }
     function restoreSel() { if (!savedRange) return; const s = window.getSelection(); s.removeAllRanges(); s.addRange(savedRange); }
+
+    // Typing into an empty editor leaves the first line as bare text; start it
+    // in a paragraph, and wrap any stray top-level text/inline runs in one.
+    const BLOCKS = new Set(["P", "UL", "OL", "BLOCKQUOTE", "H2", "H3"]);
+    editor.addEventListener("focus", () => {
+      if (editor.textContent.trim() || editor.querySelector("p")) return;
+      editor.innerHTML = "<p><br></p>";
+      const r = document.createRange(); r.setStart(editor.firstChild, 0); r.collapse(true);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+    function normalizeBody() {
+      let run = null;
+      for (const n of [...editor.childNodes]) {
+        if (n.nodeType === 1 && BLOCKS.has(n.tagName)) { run = null; continue; }
+        if (n.nodeType === 1 && n.tagName === "DIV") { const p = document.createElement("p"); p.innerHTML = n.innerHTML; n.replaceWith(p); run = null; continue; }
+        if (n.nodeType === 3 && !n.textContent.trim() && !run) { n.remove(); continue; }
+        if (!run) { run = document.createElement("p"); n.before(run); }
+        run.appendChild(n);
+      }
+    }
     editor.addEventListener("keyup", saveSel); editor.addEventListener("mouseup", saveSel);
 
     $("toolbar").addEventListener("mousedown", (e) => e.preventDefault()); // keep the selection in the editor
@@ -469,6 +489,7 @@
       const title = $("title").value.trim();
       const media = $("mediaUrl").value.trim();
       const pillars = [...document.querySelectorAll("#pillars input:checked")].map((i) => i.value);
+      normalizeBody();
       const body = editor.innerHTML.trim();
       const plain = editor.textContent.trim();
       const problems = [];

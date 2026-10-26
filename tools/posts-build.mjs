@@ -68,6 +68,8 @@ export function sanitize(html) {
     }
     return n === "br" ? "<br>" : `<${n}>`;
   });
+  // Text typed before the first paragraph (an older admin quirk) gets its own <p>.
+  s = s.replace(/^((?:[^<]|<(?!\/?(?:p|ul|ol|li|blockquote|h2|h3)\b)[^>]*>)+)/, (m) => (m.trim() ? `<p>${m.trim()}</p>` : ""));
   s = s.replace(/<p>(\s|&nbsp;|<br>)*<\/p>/g, "");
   return s.trim();
 }
