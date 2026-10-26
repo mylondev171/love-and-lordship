@@ -15,6 +15,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
+import { buildPosts } from "./posts-build.mjs";
 
 const require = createRequire(import.meta.url);
 const Babel = require("@babel/standalone");
@@ -58,6 +59,8 @@ function htmlFiles(dir) {
 
 fs.rmSync(DIST, { recursive: true, force: true });
 copyTree(ROOT, DIST);
+// Posts written in /admin (Supabase) become pages before the JSX pass below.
+await buildPosts(ROOT, DIST);
 
 const compiled = new Map(); // absolute .jsx source path -> "?v=hash" suffix
 let pages = 0, inline = 0;

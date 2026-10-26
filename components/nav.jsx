@@ -53,7 +53,7 @@ const NAV_ITEMS = [
         ],
       },
     ],
-    feature: { eyebrow: "Now Available", title: "The Authority of Love, Second Edition", body: "Greg & Ami Williams' book — chosen as curriculum by Sisters for Life.", cta: "Order the book", href: "pages/the-authority-of-love.html" },
+    feature: { eyebrow: "Now Available", title: "The Authority of Love, Second Edition", body: "Greg & Ami Williams' book.", cta: "Order the book", href: "pages/the-authority-of-love.html" },
   },
   {
     key: "media",

@@ -1780,6 +1780,14 @@
     {
       "source": "/blog/:slug",
       "destination": "/blog/:slug.html"
+    },
+    {
+      "source": "/media/:slug",
+      "destination": "/media/:slug.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
     }
   ]
 }
