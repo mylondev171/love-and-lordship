@@ -118,6 +118,29 @@ function PillarIcon({ which }) {
 function Pillars({ layout = "tabs" }) {
   const [idx, setIdx] = React.useState(0);
   const data = PILLAR_DATA[idx];
+  const tabsRef = React.useRef(null);
+  const touch = React.useRef(null);
+  const go = (step) => setIdx((i) => (i + step + PILLAR_DATA.length) % PILLAR_DATA.length);
+
+  // Keep the active tab visible in the scrolling tab strip (phones). Scrolls the
+  // strip only, never the page.
+  React.useEffect(() => {
+    const strip = tabsRef.current;
+    const tab = strip && strip.children[idx];
+    if (!tab || strip.scrollWidth <= strip.clientWidth) return;
+    strip.scrollTo({ left: tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2, behavior: "smooth" });
+  }, [idx]);
+
+  // Swipe the photo left/right to change priority. Mostly-vertical drags are
+  // left alone so the page still scrolls.
+  const onTouchStart = (e) => { const t = e.touches[0]; touch.current = { x: t.clientX, y: t.clientY }; };
+  const onTouchEnd = (e) => {
+    const start = touch.current; touch.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x, dy = t.clientY - start.y;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
+  };
 
   return (
     <section id="pillars" className="pillars" data-layout={layout}>
@@ -129,17 +152,17 @@ function Pillars({ layout = "tabs" }) {
           </div>
           <div className="right">
             <div className="pillar-arrows only-desktop">
-              <button className="pillar-arrow" aria-label="Previous priority" onClick={() => setIdx((idx - 1 + PILLAR_DATA.length) % PILLAR_DATA.length)}>
+              <button className="pillar-arrow" aria-label="Previous priority" onClick={() => go(-1)}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
-              <button className="pillar-arrow" aria-label="Next priority" onClick={() => setIdx((idx + 1) % PILLAR_DATA.length)}>
+              <button className="pillar-arrow" aria-label="Next priority" onClick={() => go(1)}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
             </div>
           </div>
         </div>
 
-        <div className="pillar-tabs" role="tablist">
+        <div className="pillar-tabs" role="tablist" ref={tabsRef}>
           {PILLAR_DATA.map((p, i) => (
             <button
               key={p.key}
@@ -208,7 +231,7 @@ function Pillars({ layout = "tabs" }) {
             </div>
           </div>
 
-          <div className="pillar-visual">
+          <div className="pillar-visual" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
             <span className="number">{data.n}</span>
             <div className="imgph dark" style={{ width: "100%", height: "100%" }}>
               {data.visualImg && <img src={data.visualImg} alt="" />}
@@ -217,6 +240,9 @@ function Pillars({ layout = "tabs" }) {
             <div className="meta">
               <div className="h">{data.h}</div>
               <div className="stat">{data.stat}</div>
+            </div>
+            <div className="pillar-dots" aria-hidden="true">
+              {PILLAR_DATA.map((p, i) => <span key={p.key} className={i === idx ? "on" : ""} />)}
             </div>
           </div>
         </div>

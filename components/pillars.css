@@ -283,6 +283,19 @@
 @media (max-width: 900px) {
   .pillars-head { grid-template-columns: 1fr; }
   .pillar-panel { grid-template-columns: 1fr; }
-  .pillar-visual { min-height: 380px; order: -1; }
+  .pillar-visual { min-height: 380px; order: -1; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  .pillar-visual img { -webkit-user-drag: none; pointer-events: none; }
   .pillar-channels { grid-template-columns: 1fr; }
+}
+
+/* Swipe position dots on the priority photo (phones/tablets only) */
+.pillar-dots { display: none; }
+@media (max-width: 900px) {
+  .pillar-dots {
+    display: flex; gap: 6px; justify-content: center;
+    position: absolute; left: 0; right: 0; bottom: 10px; z-index: 3;
+  }
+  .pillar-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgb(255 255 255 / 0.45); transition: width 0.25s var(--ease), background 0.25s var(--ease); }
+  .pillar-dots span.on { width: 18px; border-radius: 3px; background: #fff; }
+  .pillar-visual .meta { bottom: 28px; }
 }
