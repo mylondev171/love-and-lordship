@@ -1,3 +1,16 @@
+# 🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26 EVENING) — CUTOVER DONE
+- Domain LIVE on Vercel (Mylon did Vercel + GoDaddy DNS): loveandlordship.com -> 216.150.1.1, www 301 -> apex,
+  SSL OK, old-WP 301s working. Vercel MCP is READ-ONLY for this project (403 on add domain).
+- App QR code LIVE (f3539e5): assets/images/app-qr.png beside the join steps, hidden <=720px.
+  It encodes the APPLE App Store link only (caption says iPhone).
+- greg@ -> Yahoo forwarding: set up by Mylon.
+- Greg email (keep/cancel + Google for Nonprofits steps) drafted for Mylon. NO hosting terms in
+  Greg emails (Greg + Don discuss). Plan: Google Workspace for Nonprofits replaces GoDaddy email
+  before it renews (~$108/yr after year 1).
+- OPEN: Constant Contact welcome email Invite link -> /pages/invite-greg.html (needs Mylon signed in);
+  "Coming Up" (recommend Events tab in /admin vs Google Calendar, Mylon to pick); Connect support
+  (Megan Pinkston) post order; old WP backup not taken (domain moved; reach via GoDaddy cPanel if wanted).
+
 # 🔴🔴🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26 PM) — ADMIN PUBLISHING PANEL
 Built + pushed 1c512da (live on vercel.app): /admin lets Greg publish Article / Video (YouTube) /
 Podcast (Podbean) posts. Mylon's calls: posts live in SUPABASE (project "Love and Lordship"
