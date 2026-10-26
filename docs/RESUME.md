@@ -1,3 +1,27 @@
+# 🔴🔴🔴🔴 RESUME HERE (saved 2026-10-25) — CONTACT FORMS, read first
+Newsletter is DONE and live (block below). Contact/Invite forms are the open item: EmailJS has
+no service yet, so components/emailjs-config.js still has YOUR_PUBLIC_KEY / YOUR_SERVICE_ID /
+YOUR_TEMPLATE_ID placeholders. main == origin/main, nothing uncommitted.
+
+Done 10-23/25 in Mailjet (Greg's account): domain loveandlordship.com ADDED, not validated.
+Records it needs at GoDaddy DNS (NOTHING changed at GoDaddy yet; my edit was blocked by the
+permission check, SPF verified unchanged via DoH):
+- EDIT existing TXT @ SPF -> v=spf1 include:spf.mailjet.com include:secureserver.net -all
+  (one SPF record only; the M365/GoDaddy mail needs secureserver.net kept)
+- ADD TXT mailjet._a1aaf80c = a1aaf80cd59f8abc7edc31ce64f6ccfb  (domain validation)
+- ADD TXT mailjet._domainkey = DKIM key (copy from Mailjet > Domains and senders > SPF/DKIM)
+Mailjet secret key is "Not generated" (API key 425d...). I may not type API keys into fields.
+
+WAITING ON MYLON (asked 10-23, no answer yet):
+- Mailjet route: Mylon adds the 3 DNS records (or explicitly tells me to), generates the Mailjet
+  secret, adds EmailJS service "Mailjet" himself. OR faster: EmailJS > Add Service > Gmail as
+  loveandlordship@gmail.com (no DNS, sends from the gmail address, still delivers to greg@).
+- Then I: build the EmailJS template (to greg@loveandlordship.com, from noreply@, reply-to
+  {{reply_to}}, auto-reply per emailjs/template-*.html), add allowed origins, fill
+  emailjs-config.js, npm run build, push, test both forms.
+- Offered: a welcome email for new Constant Contact subscribers.
+- Unanswered: "Sisters for Life" mentions (nav, About, Contact FAQ, Invite Greg).
+
 # 🔴 10-23 PM: forms + newsletter (de975b5 + 16b603e PUSHED; CC form PUBLISHED by Mylon's OK)
 - Read AI 10-23 call: greg@loveandlordship.com now exists (GoDaddy email, bought on the call).
   Greg wants a once-a-day subscribe pop-up AND a persistent Subscribe button near Give.
