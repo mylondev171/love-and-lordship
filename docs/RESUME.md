@@ -1,3 +1,24 @@
+# 🔴🔴🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26 PM) — ADMIN PUBLISHING PANEL
+Built + pushed 1c512da (live on vercel.app): /admin lets Greg publish Article / Video (YouTube) /
+Podcast (Podbean) posts. Mylon's calls: posts live in SUPABASE (project "Love and Lordship"
+ugpaudgkiswakxiucvlz, us-east-1); manual posting only (NO auto-pull from YouTube/Podbean yet);
+only NEW posts (old 2,585 library items untouched); a ~1 min publish delay is fine.
+- DB: public.posts (RLS: anon reads published; writes only emails in public.admins = greg@,
+  gdubya31@yahoo, mylon@), bucket post-images, private.settings.vercel_deploy_hook + trigger
+  private.request_site_rebuild (pg_net, 30s timeout) -> Vercel deploy hook "Supabase admin posts".
+  Hook VERIFIED (draft insert started a deploy, READY).
+- Build: tools/posts-build.mjs (called from build-site.mjs) writes /blog/<slug>.html (Read) and
+  /media/<slug>.html (YouTube nocookie / Podbean oEmbed player), merges into dist/ library.js,
+  articles.js, featured.js, sitemap.xml. On Vercel a Supabase fetch failure FAILS the build (keeps
+  last good deploy). Local build test with 3 test posts passed (test rows deleted).
+- Login = email + password (Supabase Auth). Claude can't set passwords: Mylon creates users in
+  Supabase > Authentication > Users > Add user (auto-confirm). Forgot password = Mylon resets.
+- NEXT: Mylon creates Greg's + his own user, signs in at /admin, Claude runs an end-to-end publish
+  test, then writes Greg's how-to guide.
+- Greg 10-26 answers APPLIED (1c512da): Sisters for Life removed from nav book feature, About
+  timeline, Contact FAQ; Invite Greg gets Greg's sentence verbatim. App QR code: Greg emailed it to
+  mylon@ but it's INACTIVE until Meagan (connectapp.) reactivates it; add it after that.
+
 # 🔴🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26) — FORMS LIVE + TESTED
 Mylon validated loveandlordship.com in Mailjet and connected Mailjet to EmailJS (service_2wzse7s).
 Done 10-26: EmailJS templates "L&L website form" template_j8tpnfq (to greg@, from
