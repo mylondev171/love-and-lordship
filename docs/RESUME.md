@@ -8,7 +8,13 @@ the vercel.app preview (config + SDK verified loaded, no send yet).
 - 10-26 10:26 test sends (Mylon OK'd): Contact + Invite Greg each sent form + auto-reply, all 4
   "OK" via Mailjet in EmailJS History. Auto-replies went to mylon@digitalimpactmarketers.com.
   Inbox arrival (greg@ + mylon@, incl. spam folder) not yet confirmed by eye.
-- Still open from below: welcome email copy, "Sisters for Life", QR code, reply to Greg, photo check, cutover.
+- 10-26 Newsletter WELCOME EMAIL built in Constant Contact (Mylon approved the copy): automation
+  "Welcome: Website Newsletter Sign-up", trigger = first time a contact joins General Interest, send
+  immediately; email "Welcome email - Website Newsletter Sign-up", custom HTML from
+  constant-contact/welcome-email.html, subject "Welcome to the Love & Lordship letter", from/reply-to
+  gdubya31@yahoo.com (only verified address). Test sent to mylon@ OK. 🔴 Automation is still a DRAFT:
+  activate only on Mylon's OK. After cutover, swap the Invite link /contact -> /pages/invite-greg.html.
+- Still open from below: "Sisters for Life", QR code, reply to Greg, photo check, cutover.
 
 # 🔴🔴🔴🔴 RESUME HERE (saved 2026-10-25) — CONTACT FORMS, read first
 Newsletter is DONE and live (block below). Contact/Invite forms are the open item: EmailJS has
