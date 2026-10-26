@@ -38,7 +38,7 @@ message is lost in the meantime.
 
 ## Live values (set 2026-10-26)
 Service `service_2wzse7s` (Mailjet) · template `template_j8tpnfq` ("L&L website form")
-· auto-reply `template_mnu9rib` ("L&L website auto-reply") · public key in
+· auto-reply `template_mnu9eib` ("L&L website auto-reply") · public key in
 `components/emailjs-config.js`.
 
 ## 3. Paste the IDs
