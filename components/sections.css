@@ -794,6 +794,14 @@
 }
 .app-steps a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
+/* App QR code beside the steps (hidden on phones: you can't scan your own screen) */
+.app-join { display: flex; align-items: flex-start; gap: 28px; margin-bottom: 28px; }
+.app-join .app-steps { margin-bottom: 0; flex: 1; }
+.app-qr { flex: none; display: grid; justify-items: center; gap: 8px; margin-top: -8px; }
+.app-qr img { width: 112px; height: 112px; padding: 8px; background: #fff; border-radius: var(--r-md); image-rendering: pixelated; }
+.app-qr span { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); max-width: 128px; text-align: center; line-height: 1.4; }
+@media (max-width: 720px) { .app-qr { display: none; } }
+
 /* Newsletter sign-up modal (Constant Contact inline form inside) */
 .subscribe-modal .sub { color: var(--ink-soft); font-size: 15px; line-height: 1.55; margin-bottom: 18px; }
 .subscribe-form .ctct-form-embed.form_0 .ctct-form-defaults { background: transparent !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; }

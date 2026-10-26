@@ -156,11 +156,17 @@ function AppPromo() {
               <span className="lbl">Access code</span>
               <span className="code">LOVE</span>
             </div>
+            <div className="app-join">
             <ol className="app-steps" aria-label="How to get the app">
               <li><span className="n">1</span><span>Download <strong>connectapp.</strong> free from the <a href="https://apps.apple.com/us/app/connectapp/id6447310443" target="_blank" rel="noopener noreferrer">App Store</a> or <a href="https://play.google.com/store/apps/details?id=social.inthezone.com" target="_blank" rel="noopener noreferrer">Google Play</a>.</span></li>
               <li><span className="n">2</span><span>Enter your email address and the access code <strong>LOVE</strong>.</span></li>
               <li><span className="n">3</span><span><strong>Love &amp; Lordship</strong> will display. Tap <strong>Continue</strong> to sign up.</span></li>
             </ol>
+            <a className="app-qr" href="https://apps.apple.com/us/app/connectapp/id6447310443" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/app-qr.png" width="214" height="214" alt="QR code: download connectapp. from the App Store" loading="lazy" />
+              <span>Scan to download on iPhone</span>
+            </a>
+            </div>
             <div className="app-features">
               <div className="app-feature">
                 <div className="ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 3v10M12 3v10M4 6h8M4 10h8"/></svg></div>
