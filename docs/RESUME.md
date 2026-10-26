@@ -13,8 +13,13 @@ only NEW posts (old 2,585 library items untouched); a ~1 min publish delay is fi
   last good deploy). Local build test with 3 test posts passed (test rows deleted).
 - Login = email + password (Supabase Auth). Claude can't set passwords: Mylon creates users in
   Supabase > Authentication > Users > Add user (auto-confirm). Forgot password = Mylon resets.
-- NEXT: Mylon creates Greg's + his own user, signs in at /admin, Claude runs an end-to-end publish
-  test, then writes Greg's how-to guide.
+- 10-26 E2E TESTED as Mylon (0ddc848 live): article (Scripture link -> BibleGateway), video,
+  draft + image upload, edit, delete all work; pages live, in library/blog/featured; all test data
+  removed (incl. storage file; added "admins list post images" select policy). Fixed: first line not
+  a <p>, empty-list layout, Delete misclick onto Edit. Podcast tested via build only (Podbean oEmbed ok).
+- Greg's guide (Claude Doc): https://claude.ai/artifact/MRNwnjBj3KtU8ycqtrwheL
+- Mylon still to do: create Greg's Supabase user (greg@), turn off public sign-ups. Optional: leaked
+  password protection. Admin link says loveandlordship.com/... (works after cutover; vercel.app now).
 - Greg 10-26 answers APPLIED (1c512da): Sisters for Life removed from nav book feature, About
   timeline, Contact FAQ; Invite Greg gets Greg's sentence verbatim. App QR code: Greg emailed it to
   mylon@ but it's INACTIVE until Meagan (connectapp.) reactivates it; add it after that.
