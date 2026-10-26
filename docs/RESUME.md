@@ -1,3 +1,14 @@
+# 🔴🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26) — FORMS WIRED, TEST SEND PENDING
+Mylon validated loveandlordship.com in Mailjet and connected Mailjet to EmailJS (service_2wzse7s).
+Done 10-26: EmailJS templates "L&L website form" template_j8tpnfq (to greg@, from
+noreply@loveandlordship.com, reply-to {{reply_to}}) + "L&L website auto-reply" template_mnu9eib
+(linked in the main template's Auto-Reply tab). emailjs-config.js filled, pushed f4091ab, live on
+the vercel.app preview (config + SDK verified loaded, no send yet).
+- Allowed-domains lock is a PAID EmailJS feature (free plan refused it); honeypot only for now.
+- NEXT: test one send per form (Contact + Invite Greg) once Mylon OKs it (it lands in greg@'s
+  inbox), then check EmailJS History + both inboxes.
+- Still open from below: welcome email copy, "Sisters for Life", QR code, reply to Greg, photo check, cutover.
+
 # 🔴🔴🔴🔴 RESUME HERE (saved 2026-10-25) — CONTACT FORMS, read first
 Newsletter is DONE and live (block below). Contact/Invite forms are the open item: EmailJS has
 no service yet, so components/emailjs-config.js still has YOUR_PUBLIC_KEY / YOUR_SERVICE_ID /
