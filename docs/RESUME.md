@@ -1,3 +1,5 @@
+# 2026-10-30: Welcome email "Get the app" box now ends "When Love & Lordship comes up, tap Continue to join." (Greg asked). Saved in Constant Contact (series still Active) + repo 6318a5b.
+
 # 🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26 EVENING) — CUTOVER DONE
 - Domain LIVE on Vercel (Mylon did Vercel + GoDaddy DNS): loveandlordship.com -> 216.150.1.1, www 301 -> apex,
   SSL OK, old-WP 301s working. Vercel MCP is READ-ONLY for this project (403 on add domain).
