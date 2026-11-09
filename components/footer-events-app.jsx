@@ -1,7 +1,8 @@
 /* global React */
-// 2026 schedule, taken from loveandlordship.com/ministry-updates-events/ on
-// 2026-09-02. `on` is the ISO start date used to split upcoming from past.
-// Add new dates here (pages/events.html reads the same list via window.LL_EVENTS).
+// Events are managed in /admin (Supabase). This list is only the local-preview
+// fallback: the production build replaces it (tools/events-build.mjs).
+// `on` is the ISO start date used to split upcoming from past.
+// pages/events.html reads the same list via window.LL_EVENTS.
 const LL_EVENTS = [
   { on: "2026-01-24", date: "Jan 24",    name: "Super Saturday for Men",                       loc: "The Mission Church · Lexington, KY",            type: "Men's event" },
   { on: "2026-01-31", date: "Jan 31",    name: "Saturday Morning Men's Group",                 loc: "NECC · Lexington, KY",                          type: "Men's event" },

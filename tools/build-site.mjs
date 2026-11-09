@@ -16,6 +16,7 @@ import crypto from "node:crypto";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { buildPosts } from "./posts-build.mjs";
+import { fetchEvents, injectEvents } from "./events-build.mjs";
 
 const require = createRequire(import.meta.url);
 const Babel = require("@babel/standalone");
@@ -61,6 +62,7 @@ fs.rmSync(DIST, { recursive: true, force: true });
 copyTree(ROOT, DIST);
 // Posts written in /admin (Supabase) become pages before the JSX pass below.
 await buildPosts(ROOT, DIST);
+const events = await fetchEvents(ROOT);
 
 const compiled = new Map(); // absolute .jsx source path -> "?v=hash" suffix
 let pages = 0, inline = 0;
@@ -77,7 +79,9 @@ for (const file of htmlFiles(DIST)) {
     const distPath = path.resolve(base, src);
     const srcPath = path.join(ROOT, path.relative(DIST, distPath));
     if (!compiled.has(srcPath)) {
-      const js = compile(fs.readFileSync(srcPath, "utf8"), path.basename(srcPath));
+      let source = fs.readFileSync(srcPath, "utf8");
+      if (events && path.basename(srcPath) === "footer-events-app.jsx") source = injectEvents(source, events);
+      const js = compile(source, path.basename(srcPath));
       fs.writeFileSync(distPath.replace(/\.jsx$/, ".js"), js);
       compiled.set(srcPath, "?v=" + crypto.createHash("sha1").update(js).digest("hex").slice(0, 10));
     }

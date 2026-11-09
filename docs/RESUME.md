@@ -1,3 +1,14 @@
+# 🔴🔴 RESUME HERE (saved 2026-11-09) — ADMIN EVENTS + SCHEDULING, BUILT LOCALLY, NOT LIVE
+From Greg's 11-04 "Website Admin" thread. UNCOMMITTED in the working tree; nothing applied or pushed.
+- Events tab in /admin (public.events; build swaps LL_EVENTS via tools/events-build.mjs).
+- Future-dated Publish -> status 'scheduled' (DB trigger), pg_cron hourly at :05 publishes on the ET date.
+  "Save as draft" with a future date stays a draft and never auto-publishes.
+- Link tool fixes: doubled https://, and a URL pasted in the Scripture box is used as-is.
+- Word paste already kept links (real Word clipboard, 7/7). Word bullets arrive as "· text" paragraphs (not fixed).
+TO SHIP, IN ORDER (needs Mylon's go): apply tools/sql/2026-11-09-events-and-scheduling.sql, THEN push main
+(the build fails without public.events). Dry run of the SQL was NOT run (approval prompt expired twice).
+Decide: "Thriving During the Holidays" (dated 11-20) is LIVE early; 3 of its 4 links are broken.
+
 # 2026-10-30: Welcome email "Get the app" box now ends "When Love & Lordship comes up, tap Continue to join." (Greg asked). Saved in Constant Contact (series still Active) + repo 6318a5b.
 
 # 🔴🔴🔴🔴 RESUME HERE (saved 2026-10-26 EVENING) — CUTOVER DONE

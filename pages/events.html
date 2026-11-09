@@ -44,8 +44,8 @@
   <script type="text/babel" src="../components/page-shell.jsx"></script>
 
   <script type="text/babel">
-    // The 2026 schedule lives in components/footer-events-app.jsx (window.LL_EVENTS)
-    // so the homepage preview and this page never drift apart.
+    // Events come from window.LL_EVENTS (components/footer-events-app.jsx, filled
+    // from /admin at build time) so the homepage and this page never drift apart.
     const ALL_EVENTS = window.LL_EVENTS || [];
     const TODAY = new Date().toISOString().slice(0, 10);
     const FILTERS = ["All", "Men's event", "Retreat", "Church service", "Partner event", "Broadcast"];
@@ -81,7 +81,7 @@
                 </div>
                 <div className="chip-row" style={{ marginBottom: 0 }}>
                   <button className={"chip" + (!showPast ? " on" : "")} onClick={() => setShowPast(false)}>Upcoming ({upcoming.length})</button>
-                  <button className={"chip" + (showPast ? " on" : "")} onClick={() => setShowPast(true)}>Earlier in 2026 ({past.length})</button>
+                  <button className={"chip" + (showPast ? " on" : "")} onClick={() => setShowPast(true)}>Past events ({past.length})</button>
                 </div>
               </div>
 

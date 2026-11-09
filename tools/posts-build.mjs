@@ -21,7 +21,7 @@ const PILLAR_LABEL = {
   marriage: "Marriage", family: "Family", church: "Church", culture: "Culture",
 };
 
-function supabaseConfig(root) {
+export function supabaseConfig(root) {
   const src = fs.readFileSync(path.join(root, "components", "supabase-config.js"), "utf8");
   const url = /url:\s*"([^"]+)"/.exec(src)?.[1];
   const key = /key:\s*"([^"]+)"/.exec(src)?.[1];
