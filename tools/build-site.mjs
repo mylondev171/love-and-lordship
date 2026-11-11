@@ -17,6 +17,7 @@ import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { buildPosts } from "./posts-build.mjs";
 import { fetchEvents, injectEvents } from "./events-build.mjs";
+import { fetchMinistries, injectMinistries } from "./ministries-build.mjs";
 
 const require = createRequire(import.meta.url);
 const Babel = require("@babel/standalone");
@@ -63,6 +64,7 @@ copyTree(ROOT, DIST);
 // Posts written in /admin (Supabase) become pages before the JSX pass below.
 await buildPosts(ROOT, DIST);
 const events = await fetchEvents(ROOT);
+const ministries = await fetchMinistries(ROOT);
 
 const compiled = new Map(); // absolute .jsx source path -> "?v=hash" suffix
 let pages = 0, inline = 0;
@@ -81,6 +83,7 @@ for (const file of htmlFiles(DIST)) {
     if (!compiled.has(srcPath)) {
       let source = fs.readFileSync(srcPath, "utf8");
       if (events && path.basename(srcPath) === "footer-events-app.jsx") source = injectEvents(source, events);
+      if (ministries && path.basename(srcPath) === "footer-events-app.jsx") source = injectMinistries(source, ministries);
       const js = compile(source, path.basename(srcPath));
       fs.writeFileSync(distPath.replace(/\.jsx$/, ".js"), js);
       compiled.set(srcPath, "?v=" + crypto.createHash("sha1").update(js).digest("hex").slice(0, 10));

@@ -1,3 +1,12 @@
+# 🔴🔴 RESUME HERE (saved 2026-11-11) — MINISTRIES SECTION ON EVENTS PAGE (branch ministries-section)
+Greg's 11-11 ask in "Website Admin": an editable "Ministries We Support" list at the top of the Events page
+(1-2 lines per ministry: name, short description, location). Reply sent to Greg asking for his 8 ministries.
+- New public.ministries (name, description, location, sort_order); same RLS/rebuild triggers as events.
+- /admin: Ministries tab (add, edit, delete, move up/down). Build: tools/ministries-build.mjs swaps LL_MINISTRIES.
+- Events page: section above the calendar, hidden while the list is empty.
+- ORDER: run tools/sql/2026-11-11-ministries.sql FIRST (Supabase notebook "Add ministries table (Events page)"),
+  then merge to main. The Vercel build fails without public.ministries.
+
 # 🔴🔴 RESUME HERE (saved 2026-11-10) — GREG'S 11-09 ASKS SHIPPED (889f14a, live + verified)
 Greg's 3 follow-ups in the "Website Admin" thread, all done; Mylon's reply to Greg drafted, NOT sent yet.
 - Posts: optional "Go-live time" (hour, Eastern) -> posts.publish_hour; private.post_go_live(date,hour);

@@ -30,6 +30,13 @@ const LL_EVENTS = [
 ].map(e => ({ year: e.on ? e.on.slice(0, 4) : "", badge: e.type, ...e }));
 window.LL_EVENTS = LL_EVENTS;
 
+// "Ministries We Support", shown at the top of pages/events.html. Managed in
+// /admin (Ministries tab); the production build replaces this empty fallback
+// (tools/ministries-build.mjs). Fields: name, desc, loc (all plain text).
+const LL_MINISTRIES = [
+].map(m => ({ desc: "", loc: "", ...m }));
+window.LL_MINISTRIES = LL_MINISTRIES;
+
 // Local date, not UTC: in the evening (Eastern) UTC is already tomorrow, which
 // hid that day's event early. Events with no date (on: null) are "TBD" and are
 // always upcoming; the build sorts them last.

@@ -47,6 +47,9 @@
     // Events come from window.LL_EVENTS (components/footer-events-app.jsx, filled
     // from /admin at build time) so the homepage and this page never drift apart.
     const ALL_EVENTS = window.LL_EVENTS || [];
+    // "Ministries We Support": Greg keeps this list in /admin (Ministries tab).
+    // It sits above the calendar so it's the first thing people see from his links.
+    const MINISTRIES = window.LL_MINISTRIES || [];
     const TODAY = window.LL_todayISO ? window.LL_todayISO() : new Date().toISOString().slice(0, 10);
     // Shareable views: events.html?view=all (the whole calendar, past and upcoming)
     // or ?view=past. Greg links the full view in his twice-a-year letters.
@@ -84,6 +87,24 @@
             deco="E"
           />
         }>
+          {MINISTRIES.length > 0 && (
+            <section className="page-section ministries">
+              <div className="wrap">
+                <div className="eyebrow">Around the world</div>
+                <h2>Ministries we <em>support</em>.</h2>
+                <ul className="ministry-grid">
+                  {MINISTRIES.map((m, i) => (
+                    <li className="ministry" key={i}>
+                      <h3>{m.name}</h3>
+                      {m.desc && <p>{m.desc}</p>}
+                      {m.loc && <div className="loc"><Pin /> {m.loc}</div>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          )}
+
           <section className="page-section">
             <div className="wrap">
               <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", justifyContent: "space-between", marginBottom: 32 }}>
