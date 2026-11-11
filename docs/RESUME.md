@@ -1,3 +1,14 @@
+# 🔴🔴 RESUME HERE (saved 2026-11-10) — GREG'S 11-09 ASKS SHIPPED (889f14a, live + verified)
+Greg's 3 follow-ups in the "Website Admin" thread, all done; Mylon's reply to Greg drafted, NOT sent yet.
+- Posts: optional "Go-live time" (hour, Eastern) -> posts.publish_hour; private.post_go_live(date,hour);
+  trigger + hourly :05 pg_cron honour it. Blank = start of day (old behaviour; 11-20 post unaffected).
+  Hourly job => goes live ~5 min after the hour. For the 11-11:15 broadcast Greg should pick 12:00 PM.
+- Events: blank date = TBD (starts_on nullable; end date needs a start). Shows "TBD", last in Upcoming.
+- Events page: Upcoming / Past / All chips; shareable https://loveandlordship.com/pages/events.html?view=all
+- Fixed: events page split used UTC date, so today's event disappeared in the evening Eastern.
+- DB logic tested in a rolled-back transaction (4/4). Admin UI NOT clicked through logged in (no password).
+SQL on record: tools/sql/2026-11-10-post-time-and-tbd-events.sql. 11-20 auto-publish check still due.
+
 # 🔴🔴 RESUME HERE (saved 2026-11-09) — ADMIN EVENTS + SCHEDULING, LIVE
 From Greg's 11-04 "Website Admin" thread. SHIPPED 6d72ff6 on Mylon's go; migration events_and_scheduled_posts applied.
 "Thriving During the Holidays" pulled to Scheduled (goes live 11-20 ~12:05am ET) and its 3 broken links fixed.
