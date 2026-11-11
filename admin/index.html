@@ -158,8 +158,8 @@
           </div>
           <div class="two">
             <div class="fr">
-              <label class="f" for="evStart">Date</label>
-              <input type="date" id="evStart" required />
+              <label class="f" for="evStart">Date <span class="hint">Leave blank if the date is still TBD.</span></label>
+              <input type="date" id="evStart" />
             </div>
             <div class="fr">
               <label class="f" for="evEnd">End date <span class="hint">(only if it runs more than one day)</span></label>
@@ -215,10 +215,15 @@
               <input type="date" id="date" required />
             </div>
             <div class="fr">
-              <label class="f" for="series">Series <span class="hint">(optional, e.g. One Another)</span></label>
-              <input type="text" id="series" maxlength="80" list="seriesList" />
-              <datalist id="seriesList"></datalist>
+              <label class="f" for="hour">Go-live time <span class="hint">(optional, Eastern) Goes live within a few minutes after this time.</span></label>
+              <select id="hour"></select>
             </div>
+          </div>
+
+          <div class="fr">
+            <label class="f" for="series">Series <span class="hint">(optional, e.g. One Another)</span></label>
+            <input type="text" id="series" maxlength="80" list="seriesList" />
+            <datalist id="seriesList"></datalist>
           </div>
 
           <div class="fr">
@@ -301,6 +306,20 @@
     const liveUrl = (p) => `/${p.format === "Read" ? "blog" : "media"}/${p.slug}`;
     const today = () => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); };
 
+    // Go-live hour (Eastern). Blank = start of the day. The database decides the
+    // real status; this only picks the button label and the wording.
+    const hourLabel = (h) => h === 0 ? "12:00 AM" : h === 12 ? "12:00 PM (noon)" : h < 12 ? `${h}:00 AM` : `${h - 12}:00 PM`;
+    $("hour").innerHTML = `<option value="">Start of the day</option>` +
+      Array.from({ length: 23 }, (_, i) => i + 1).map((h) => `<option value="${h}">${hourLabel(h)}</option>`).join("");
+    const etNow = () => {
+      const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23" })
+        .formatToParts(new Date()).map((x) => [x.type, x.value]));
+      return { date: `${p.year}-${p.month}-${p.day}`, hour: Number(p.hour) };
+    };
+    const isFuture = (date, hour) => { const n = etNow(); return date > n.date || (date === n.date && hour !== "" && Number(hour) > n.hour); };
+    const goLiveText = (p) => new Date(p.published_on + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+      + (p.publish_hour != null ? ` shortly after ${hourLabel(p.publish_hour).replace(" (noon)", "")} Eastern` : "");
+
     // ------------------------------------------------------------ auth ---
     async function route() {
       const { data: { session } } = await db.auth.getSession();
@@ -341,7 +360,7 @@
         <li>
           <div>
             <div class="t">${esc(p.title)}</div>
-            <div class="m"><span class="tag">${KIND[p.format]}</span>${p.status === "draft" ? '<span class="tag draft">Draft</span>' : p.status === "scheduled" ? '<span class="tag scheduled">Scheduled</span>' : ""}${new Date(p.published_on + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</div>
+            <div class="m"><span class="tag">${KIND[p.format]}</span>${p.status === "draft" ? '<span class="tag draft">Draft</span>' : p.status === "scheduled" ? '<span class="tag scheduled">Scheduled</span>' : ""}${new Date(p.published_on + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}${p.status === "scheduled" && p.publish_hour != null ? " &middot; " + hourLabel(p.publish_hour).replace(" (noon)", "") + " ET" : ""}</div>
           </div>
           <div class="b">
             ${p.status === "published" ? `<a class="btn-s" href="${liveUrl(p)}" target="_blank" rel="noopener">View</a>` : ""}
@@ -388,6 +407,7 @@
       $("title").value = p ? p.title : "";
       $("mediaUrl").value = p ? (p.media_url || "") : "";
       $("date").value = p ? p.published_on : today();
+      $("hour").value = p && p.publish_hour != null ? String(p.publish_hour) : "";
       $("series").value = p ? (p.series || "") : "";
       $("summary").value = p ? (p.summary || "") : "";
       $("editor").innerHTML = p ? p.body_html : "";
@@ -401,9 +421,10 @@
     }
     function syncPublishLabel() {
       const live = state.editing && state.editing.status === "published";
-      $("publishBtn").textContent = $("date").value > today() ? "Schedule" : live ? "Save changes" : "Publish";
+      $("publishBtn").textContent = isFuture($("date").value, $("hour").value) ? "Schedule" : live ? "Save changes" : "Publish";
     }
     $("date").addEventListener("change", syncPublishLabel);
+    $("hour").addEventListener("change", syncPublishLabel);
     function closeForm() { show($("postForm"), false); show($("listView"), true); show($("tabs"), true); window.scrollTo(0, 0); }
     $("newBtn").addEventListener("click", () => openForm(null));
     $("cancelBtn").addEventListener("click", closeForm);
@@ -581,7 +602,7 @@
           imageUrl = db.storage.from("post-images").getPublicUrl(key).data.publicUrl;
         }
         const row = {
-          format: f, title, published_on: $("date").value, pillars,
+          format: f, title, published_on: $("date").value, publish_hour: $("hour").value === "" ? null : Number($("hour").value), pillars,
           series: $("series").value.trim() || null, summary: $("summary").value.trim() || null,
           body_html: plain ? body : "", media_url: f === "Read" ? null : media, image_url: imageUrl || null, status,
         };
@@ -596,9 +617,8 @@
         }
         closeForm();
         const url = liveUrl(saved);
-        const goLive = new Date(saved.published_on + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
         message($("appMsg"), "ok", saved.status === "scheduled"
-          ? `<b>Scheduled.</b> &ldquo;${esc(saved.title)}&rdquo; isn't on the site yet. It will go live automatically early in the morning on ${goLive}.`
+          ? `<b>Scheduled.</b> &ldquo;${esc(saved.title)}&rdquo; isn't on the site yet. It will go live automatically ${saved.publish_hour != null ? "on " + goLiveText(saved) : "early in the morning on " + goLiveText(saved)}.`
           : saved.status === "published"
           ? `<b>Published!</b> &ldquo;${esc(saved.title)}&rdquo; will be live in about a minute or two at <a href="${url}" target="_blank" rel="noopener">loveandlordship.com${url}</a>. It also appears in the Library${saved.format === "Read" ? " and on the Blog page" : ""}.`
           : `<b>Saved as a draft.</b> It isn't on the site yet. Open it and press <b>Publish</b> when it's ready.`);
@@ -620,6 +640,7 @@
     $("evType").innerHTML = EVENT_TYPES.map((t) => `<option value="${esc(t)}">${esc(t)}</option>`).join("");
 
     function eventDate(e) {
+      if (!e.starts_on) return "Date TBD";
       const [y, sm, sd] = e.starts_on.split("-").map(Number);
       const from = `${MONTHS[sm - 1]} ${sd}`;
       if (!e.ends_on || e.ends_on === e.starts_on) return `${from}, ${y}`;
@@ -636,8 +657,9 @@
 
     function renderEvents() {
       const now = today();
-      const upcoming = events.filter((e) => e.starts_on >= now);
-      const past = events.filter((e) => e.starts_on < now).reverse();
+      // TBD events (no date) sort last and always count as upcoming.
+      const upcoming = events.filter((e) => !e.starts_on || e.starts_on >= now);
+      const past = events.filter((e) => e.starts_on && e.starts_on < now).reverse();
       const shown = showPastEvents ? past : upcoming;
       $("eventList").innerHTML = shown.length ? shown.map((e) => `
         <li>
@@ -691,10 +713,10 @@
       const name = $("evName").value.trim(), start = $("evStart").value, end = $("evEnd").value;
       const problems = [];
       if (!name) problems.push("Add the event name.");
-      if (!start) problems.push("Pick a date.");
+      if (!start && end) problems.push("Add the start date too, or clear the end date to list it as TBD.");
       if (start && end && end < start) problems.push("The end date is before the start date.");
       if (problems.length) { message($("eventFormMsg"), "err", problems.join("<br>")); return; }
-      const row = { name, starts_on: start, ends_on: end && end !== start ? end : null, location: $("evLoc").value.trim(), type: $("evType").value, featured: $("evFeatured").checked };
+      const row = { name, starts_on: start || null, ends_on: start && end && end !== start ? end : null, location: $("evLoc").value.trim(), type: $("evType").value, featured: $("evFeatured").checked };
       $("eventSaveBtn").disabled = true;
       const { error } = editingEvent
         ? await db.from("events").update(row).eq("id", editingEvent.id)

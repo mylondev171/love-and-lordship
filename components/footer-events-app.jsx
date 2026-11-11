@@ -27,11 +27,15 @@ const LL_EVENTS = [
   { on: "2026-11-07", date: "Nov 7",     name: "IronMan",                                      loc: "Russ Young's · Lexington, KY",                  type: "Men's event" },
   { on: "2026-11-10", date: "Nov 10",    name: "Celebrate Recovery",                           loc: "Jessamine Christian Church · Nicholasville, KY", type: "Partner event" },
   { on: "2026-11-15", date: "Nov 15",    name: "Ministry sharing event",                       loc: "The Mission Church · Lexington, KY",            type: "Church service" },
-].map(e => ({ year: e.on.slice(0, 4), badge: e.type, ...e }));
+].map(e => ({ year: e.on ? e.on.slice(0, 4) : "", badge: e.type, ...e }));
 window.LL_EVENTS = LL_EVENTS;
 
-const todayISO = () => new Date().toISOString().slice(0, 10);
-const upcomingEvents = () => LL_EVENTS.filter(e => e.on >= todayISO());
+// Local date, not UTC: in the evening (Eastern) UTC is already tomorrow, which
+// hid that day's event early. Events with no date (on: null) are "TBD" and are
+// always upcoming; the build sorts them last.
+const todayISO = () => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); };
+window.LL_todayISO = todayISO;
+const upcomingEvents = () => LL_EVENTS.filter(e => !e.on || e.on >= todayISO());
 window.LL_upcomingEvents = upcomingEvents;
 
 // Homepage preview: the next four dates on the calendar.

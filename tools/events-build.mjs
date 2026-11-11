@@ -10,7 +10,9 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const LIST = /const LL_EVENTS = \[[\s\S]*?\n\]\.map\(/;
 
 // "Nov 7", "May 29–31", or "Sep 30 – Oct 2".
+// "TBD" when there is no date yet.
 export function dateLabel(start, end) {
+  if (!start) return "TBD";
   const [, sm, sd] = start.split("-").map(Number);
   const from = `${MONTHS[sm - 1]} ${sd}`;
   if (!end || end === start) return from;
@@ -41,7 +43,7 @@ export function injectEvents(source, events) {
 export async function fetchEvents(root) {
   try {
     const { url, key } = supabaseConfig(root);
-    const res = await fetch(url + "/rest/v1/events?select=*&order=starts_on.asc,created_at.asc", {
+    const res = await fetch(url + "/rest/v1/events?select=*&order=starts_on.asc.nullslast,created_at.asc", {
       headers: { apikey: key, Authorization: `Bearer ${key}` },
     });
     if (!res.ok) throw new Error(`Supabase ${res.status}: ${await res.text()}`);
